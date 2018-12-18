@@ -17,7 +17,7 @@ namespace ProyectoFotoMVC.App_Start
 
             bundles.Add(new StyleBundle("~/bundle/materializeCSS").Include(
                       "~/Content/materialize.css",
-                      "~/Content/stickyFooter.css"
+                      "~/Content/custom.css"
                       ));
         }
     }

@@ -6,12 +6,18 @@
 <div class="row">
     <div class="col s12">
         <div class="row">
-            <div>
-
+            <div class="col s12 m3 l2 xl2 offset-m3 offset-l3 offset-xl3">
+                @Html.ActionLink("Subir Imagenes", "subirImagenes", "admin", new { @class = "btn blue waves waves-effect waves-darken buttonWidth" })
+            </div>
+            <div class="col s12 m3 l2 xl2">
+                @Html.ActionLink("Editar Imagenes", "editarImagenes", "admin", new { @class = "btn blue darken-1 waves waves-effect waves-darken buttonWidth" })
+            </div>
+            <div class="col s12 m3 l2 xl2">
+                @Html.ActionLink("Sesiones", "sesiones", "admin", new { @class = "btn purple waves waves-effect waves-darken buttonWidth" })
             </div>
         </div>
     </div>
 </div>
-<h2>menu</h2>
+
 
 
