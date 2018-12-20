@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/bundle/materializeCSS")
+    
 </head>
 <body>
+
+
+
     <main class="grey lighten-4">
         <nav class="grey darken-4">
             <div class="nav-wrapper">
@@ -34,7 +38,11 @@
     </footer>
 
     @Scripts.Render("~/bundle/materializeJS")
-    @RenderSection("parallax", false)
+    @if (IsSectionDefined("parallax"))
+    {
+        @RenderSection("parallax")
+    }
+
 
 
 </body>

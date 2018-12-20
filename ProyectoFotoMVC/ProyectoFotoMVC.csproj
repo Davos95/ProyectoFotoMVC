@@ -102,13 +102,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\nikon-camera-wallpaper-4101.jpg" />
     <Content Include="Content\materialize.css" />
     <Content Include="Content\materialize.min.css" />
     <Content Include="Content\custom.css" />
-    <Content Include="Content\parallax1.jpg" />
-    <Content Include="Content\windows.jpg" />
+    <Content Include="Content\images\parallax1.jpg" />
+    <Content Include="Content\images\windows.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\materialize.js" />
     <Content Include="Scripts\materialize.min.js" />

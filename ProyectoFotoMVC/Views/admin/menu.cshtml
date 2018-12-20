@@ -7,8 +7,9 @@
 
 @section parallax{
     <script>
+        
         $(document).ready(function () {
-            $(".parallax").parallax();
+            $('.parallax').parallax();
         });
     </script>
 }
@@ -16,30 +17,34 @@
 <div class="row">
     <div class="col s12">
         <div class="row">
-            <div class="col s12 m3 l2 xl2 offset-m3 offset-l3 offset-xl3">
-                @Html.ActionLink("Subir Imagenes", "subirImagenes", "admin", new { @class = "btn blue waves waves-effect waves-darken buttonWidth" })
+            <div class="col s12 m3 l2 xl2 offset-m2 offset-l2 offset-xl2 card btnMenu">
+                <div class="card-image btnMenu btnMenuImagen">
+                    <span class="card-title">Imágenes</span>
+                </div>
+                @*@Html.ActionLink("Subir Imagenes", "subirImagenes", "admin", new { @class = "btn blue waves waves-effect waves-darken buttonWidth" })*@
             </div>
-            <div class="col s12 m3 l2 xl2">
-                @Html.ActionLink("Editar Imagenes", "editarImagenes", "admin", new { @class = "btn blue darken-1 waves waves-effect waves-darken buttonWidth" })
+            <div class="col s12 m3 l2 xl2 offset-m1 offset-l1 offset-xl1 card btnMenu">
+                <div class="card-image btnMenu btnMenuImagen">
+                    <span class="card-title">Sesiones</span>
+                </div>
+                @*@Html.ActionLink("Editar Imagenes", "editarImagenes", "admin", new { @class = "btn blue darken-1 waves waves-effect waves-darken buttonWidth" })*@
             </div>
-            <div class="col s12 m3 l2 xl2">
-                @Html.ActionLink("Sesiones", "sesiones", "admin", new { @class = "btn purple waves waves-effect waves-darken buttonWidth" })
+            <div class="col s12 m3 l2 xl2  offset-m1 offset-l1 offset-xl1 card blue btnMenu">
+                <div class="card-image btnMenu btnMenuImagen">
+                    <span class="card-title">Participantes y trabajos</span>
+                </div>
+                @*@Html.ActionLink("Sesiones", "sesiones", "admin", new { @class = "btn purple waves waves-effect waves-darken buttonWidth" })*@
+            </div>
+            <div class="col s12 m3 l2 xl2  offset-m1 offset-l1 offset-xl1 card blue btnMenu">
+                <div class="card-image btnMenu btnMenuImagen">
+                    <span class="card-title">Comisiones</span>
+                </div>
+                @*@Html.ActionLink("Sesiones", "sesiones", "admin", new { @class = "btn purple waves waves-effect waves-darken buttonWidth" })*@
             </div>
         </div>
     </div>
 
-    <div class="parallax-container">
-        <div class="parallax"><img src="~/Content/parallax1.jpg"></div>
-    </div>
-    <div class="section white">
-        <div class="row container">
-            <h2 class="header">Parallax</h2>
-            <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
-        </div>
-    </div>
-    <div class="parallax-container">
-        <div class="parallax"><img src="images/parallax2.jpg"></div>
-    </div>
+
 </div>
 
 

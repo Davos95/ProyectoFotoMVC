@@ -11,7 +11,26 @@ main {
 .buttonWidth{
     width:100%;
 }
+.parallax-container .parallax {
+        position: static !important;
+}
 
-.parallax-container {
-    height: 100px !important;
+.btnMenu {
+    height: 100px;
+    padding: 0px !important;
+}
+
+.btnMenu:hover{
+    height:150px;
+}
+
+.btnMenuImagen {
+    background-image:url(./images/nikon-camera-wallpaper-4101.jpg);
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+}
+.card-title {
+    right:0 !important;
+    padding:12px !important;
+    left: auto !important;
 }
