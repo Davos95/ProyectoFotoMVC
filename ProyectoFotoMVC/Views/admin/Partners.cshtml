@@ -1,0 +1,111 @@
+﻿@using ProyectoFotoMVC.Models
+
+@model List<WORKER>
+
+@{
+    ViewBag.Title = "Partners";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section events {
+<script>
+    $(document).ready(function () {
+        $("tr").click(function () {
+            if ($(this).css("background-color") == "rgb(255, 0, 0)") {
+                $("tr").css("background-color", "white");
+                $("#name").val("");
+                $("#contact").val("");
+                $("#urlContact").val("");
+                $("#id").val("");
+            } else {
+                $("tr").css("background-color", "white");
+                $(this).css("background-color", "red");
+                $("#contact").val($(this).find("td")[1].textContent).focus();
+                $("#urlContact").val($(this).find("td")[2].textContent).focus();
+                $("#name").val($(this).find("td")[0].textContent).focus();
+                $("#id").val($(this).find("td")[3].textContent);
+            }
+        });
+
+
+        // Change the selector if needed
+        var $table = $('table.scroll'),
+            $bodyCells = $table.find('tbody tr:first').children(),
+            colWidth;
+
+        // Adjust the width of thead cells when window resizes
+        $(window).resize(function () {
+            // Get the tbody columns width array
+            colWidth = $bodyCells.map(function () {
+                return $(this).width();
+            }).get();
+
+            // Set the width of thead columns
+            $table.find('thead tr').children().each(function (i, v) {
+                $(v).width(colWidth[i]);
+            });
+        }).resize(); // Trigger resize handler
+
+    });
+</script>
+}
+
+<div class="row">
+    <div class="col s12 m4 l4 xl3">
+        <div class="card">
+            <div class="card-title center-align">Participante</div>
+            <form method="post">
+                <div class="card-content card-content-padding">
+                    <div class="input-field">
+                        <input type="text" name="name" id="name" />
+                        <label for="name">Nombre</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="contact" id="contact" />
+                        <label for="contact">Contacto</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="urlContact" id="urlContact" />
+                        <label for="urlContact">Url Contacto</label>
+                    </div>
+                    <input type="number" name="id" id="id" hidden />
+                    <button type="submit" class="btn green waves-effect waves-darken" name="option" value="1">Añadir</button>
+                    <button type="submit" class="btn orange waves-effect waves-darken" name="option" value="2">Mod</button>
+                    <button type="submit" class="btn red waves-effect waves-darken" name="option" value="3">Elim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col s12 m7 l7 xl7 offset-m1 offset-l1 offset-xl1">
+        <div class="card">
+            <div class="card-content">
+                <table class="responsive-table">
+                    <thead class="">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Contacto</th>
+                            <th>Enlace</th>
+                        </tr>
+                    </thead>
+                    <tbody class="">
+                        @if (Model != null)
+                        {
+                            foreach (WORKER w in Model)
+                            {
+                                <tr>
+                                    <td>@w.NAME</td>
+                                    <td>@w.CONTACT</td>
+                                    <td><a target="_blank" rel="" href="@w.URLCONTACT">@w.URLCONTACT</a></td>
+                                    <td hidden>@w.ID</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

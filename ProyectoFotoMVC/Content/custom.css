@@ -16,12 +16,8 @@ main {
 }
 
 .btnMenu {
-    height: 100px;
-    padding: 0px !important;
-}
-
-.btnMenu:hover{
-    height:150px;
+    height: 100%;
+    width:100%;
 }
 
 .btnMenuImagen {
@@ -33,4 +29,38 @@ main {
     right:0 !important;
     padding:12px !important;
     left: auto !important;
+}
+
+.card-content-padding {
+    padding: 0px 24px 24px 24px !important;
+}
+
+thead, tbody {
+    display: block;
+}
+
+tbody {
+    height: 300px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+}
+
+table {
+    width: 100%; 
+}
+
+tbody td, thead th {
+    width: 250px; 
+}
+
+@media only screen and (max-width: 992px) {
+    tbody td, thead th {
+        width: auto; 
+    }
+    tbody {
+        height:150px;
+    }
+    tr>td:last-child {
+        display:none;
+    }
 }

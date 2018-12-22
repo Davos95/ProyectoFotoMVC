@@ -4,47 +4,73 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@section parallax{
+@section events {
     <script>
-        
         $(document).ready(function () {
-            $('.parallax').parallax();
+            $('.modal').modal();
+            $("#btnImg").click(function () {
+                $("#modalImg").modal('open');
+            });
+            $("#btnSesion").click(function () {
+                $("#modalSesion").modal('open');
+            });
+            $("#btnParTar").click(function () {
+                $("#modalParTar").modal('open');
+            });
+            $("#btnComision").click(function () {
+                $("#modalComision").modal('open');
+            });
         });
     </script>
 }
-
 <div class="row">
     <div class="col s12">
+        <div class="row"></div>
         <div class="row">
-            <div class="col s12 m3 l2 xl2 offset-m2 offset-l2 offset-xl2 card btnMenu">
-                <div class="card-image btnMenu btnMenuImagen">
-                    <span class="card-title">Imágenes</span>
-                </div>
-                @*@Html.ActionLink("Subir Imagenes", "subirImagenes", "admin", new { @class = "btn blue waves waves-effect waves-darken buttonWidth" })*@
+            <div class="col s12 m4 l3 xl2 offset-m3 offset-l4 offset-xl3 ">
+                <a class="btn green waves-effect waves-darken btnMenu" id="btnImg"><h5>IMÁGENES</h5></a>
             </div>
-            <div class="col s12 m3 l2 xl2 offset-m1 offset-l1 offset-xl1 card btnMenu">
-                <div class="card-image btnMenu btnMenuImagen">
-                    <span class="card-title">Sesiones</span>
-                </div>
-                @*@Html.ActionLink("Editar Imagenes", "editarImagenes", "admin", new { @class = "btn blue darken-1 waves waves-effect waves-darken buttonWidth" })*@
+            <div class="col s12 m4 l3 xl2 offset-m2 offset-l2 offset-xl1 btnMenu">
+                <a class="btn blue waves-effect waves-darken btnMenu" id="btnSesion"><h5>Sesiones</h5></a>
             </div>
-            <div class="col s12 m3 l2 xl2  offset-m1 offset-l1 offset-xl1 card blue btnMenu">
-                <div class="card-image btnMenu btnMenuImagen">
-                    <span class="card-title">Participantes y trabajos</span>
-                </div>
-                @*@Html.ActionLink("Sesiones", "sesiones", "admin", new { @class = "btn purple waves waves-effect waves-darken buttonWidth" })*@
+        </div>
+        <div class="row">
+            <div class="col s12 m4 l3 xl2  offset-m3 offset-l3 offset-xl3 btnMenu">
+                <a class="btn brown waves-effect waves-darken btnMenu" id="btnParTar"><h5>Participantes y trabajos</h5></a>
             </div>
-            <div class="col s12 m3 l2 xl2  offset-m1 offset-l1 offset-xl1 card blue btnMenu">
-                <div class="card-image btnMenu btnMenuImagen">
-                    <span class="card-title">Comisiones</span>
-                </div>
-                @*@Html.ActionLink("Sesiones", "sesiones", "admin", new { @class = "btn purple waves waves-effect waves-darken buttonWidth" })*@
+            <div class="col s12 m4 l3 xl2  offset-m2 offset-l2 offset-xl1 btnMenu">
+                <a class="btn purple waves-effect waves-darken btnMenu" id="btnComsion"><h5>Comisiones</h5></a>
             </div>
         </div>
     </div>
-
-
 </div>
 
+<div id="modalImg" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12">
+                @Html.ActionLink("Subir Imagenes", "admin")
+            </div>
+        </div>
+    </div>
+</div>
 
+<div id="modalSesion" class="modal">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+    </div>
+</div>
+
+<div id="modalParTar" class="modal">
+    <div class="modal-content">
+        @Html.ActionLink("Participantes", "Partners", "admin")
+    </div>
+</div>
+
+<div id="modalComision" class="modal">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+    </div>
+</div>

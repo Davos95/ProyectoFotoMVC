@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="pictureManager" Class="contextPicturesManegerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-885Q0CE\SQLEXPRESS;Initial Catalog=pictureManager;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="pictureManagerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[WORK]" Member="WORKs">
+    <Type Name="WORK">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="WORK_SESION_WORKER" Member="SESION_WORKERs" ThisKey="ID" OtherKey="IDWORK" Type="SESION_WORKER" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WORKER" Member="WORKERs">
+    <Type Name="WORKER">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="CONTACT" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="URLCONTACT" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="WORKER_SESION_WORKER" Member="SESION_WORKERs" ThisKey="ID" OtherKey="IDWORKER" Type="SESION_WORKER" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SESION" Member="SESIONs">
+    <Type Name="SESION">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDPHOTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DATESESION" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="IDCOMISION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SESION_SESION_WORKER" Member="SESION_WORKERs" ThisKey="ID" OtherKey="IDSESION" Type="SESION_WORKER" />
+      <Association Name="SESION_PHOTO" Member="PHOTOs" ThisKey="ID" OtherKey="IDSESION" Type="PHOTO" />
+      <Association Name="PHOTO_SESION" Member="PHOTO" ThisKey="IDPHOTO" OtherKey="ID" Type="PHOTO" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="COMISION_SESION" Member="COMISION" ThisKey="IDCOMISION" OtherKey="ID" Type="COMISION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SESION_WORKER" Member="SESION_WORKERs">
+    <Type Name="SESION_WORKER">
+      <Column Name="IDSESION" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDWORKER" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDWORK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SESION_SESION_WORKER" Member="SESION" ThisKey="IDSESION" OtherKey="ID" Type="SESION" IsForeignKey="true" />
+      <Association Name="WORKER_SESION_WORKER" Member="WORKER" ThisKey="IDWORKER" OtherKey="ID" Type="WORKER" IsForeignKey="true" />
+      <Association Name="WORK_SESION_WORKER" Member="WORK" ThisKey="IDWORK" OtherKey="ID" Type="WORK" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHOTO" Member="PHOTOs">
+    <Type Name="PHOTO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="PICTURE" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDSESION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ORDERPHOTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PHOTO_SESION" Member="SESIONs" ThisKey="ID" OtherKey="IDPHOTO" Type="SESION" />
+      <Association Name="SESION_PHOTO" Member="SESION" ThisKey="IDSESION" OtherKey="ID" Type="SESION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.COMISION" Member="COMISIONs">
+    <Type Name="COMISION">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="PHOTO" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ORDERCOMISION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PRICE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="COMISION_SESION" Member="SESIONs" ThisKey="ID" OtherKey="IDCOMISION" Type="SESION" />
+    </Type>
+  </Table>
+</Database>

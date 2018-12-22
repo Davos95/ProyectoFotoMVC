@@ -23,6 +23,7 @@
                 </ul>
             </div>
         </nav>
+        <div class="row"></div>
         @RenderBody()
     </main>
 
@@ -38,9 +39,10 @@
     </footer>
 
     @Scripts.Render("~/bundle/materializeJS")
-    @if (IsSectionDefined("parallax"))
+
+    @if (IsSectionDefined("events"))
     {
-        @RenderSection("parallax")
+        @RenderSection("events")
     }
 
 
