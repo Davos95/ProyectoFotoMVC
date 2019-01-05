@@ -54,5 +54,22 @@ namespace ProyectoFotoMVC.Models
             worker.URLCONTACT = urlContact;
             c.SubmitChanges();
         }
+
+
+        //Works
+        public List<WORK> GetWorks()
+        {
+            var sql = from datos in c.WORKs
+                      select datos;
+            return sql.ToList();
+        }
+
+        public void InsertWork(String name)
+        {
+            WORK work = new WORK();
+            work.NAME = name;
+            c.WORKs.InsertOnSubmit(work);
+            c.SubmitChanges();
+        }
     }
 }

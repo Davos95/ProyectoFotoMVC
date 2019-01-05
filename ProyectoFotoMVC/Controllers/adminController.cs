@@ -64,5 +64,27 @@ namespace ProyectoFotoMVC.Controllers
             List<WORKER> p = helperPW.GetPartners();
             return View(p);
         }
+
+
+        public ActionResult Works()
+        {
+            List<WORK> works = helperPW.GetWorks();
+            return View(works);
+        }
+
+        [HttpPost]
+        public ActionResult Works(int option, String name)
+        {
+            if(option == 0)
+            {
+                helperPW.InsertWork(name);
+            } else if(option == 1)
+            {
+                
+            }
+
+            List<WORK> works = helperPW.GetWorks();
+            return View(works);
+        }
     }
 }
