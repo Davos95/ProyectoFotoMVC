@@ -73,11 +73,11 @@ namespace ProyectoFotoMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Works(int option, String name)
+        public ActionResult Works(String work, int option )
         {
             if(option == 0)
             {
-                helperPW.InsertWork(name);
+                helperPW.InsertWork(work);
             } else if(option == 1)
             {
                 

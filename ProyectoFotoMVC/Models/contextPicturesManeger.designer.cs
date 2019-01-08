@@ -51,7 +51,7 @@ namespace ProyectoFotoMVC.Models
     #endregion
 		
 		public contextPicturesManegerDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["pictureManagerConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["cadenaConexion"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

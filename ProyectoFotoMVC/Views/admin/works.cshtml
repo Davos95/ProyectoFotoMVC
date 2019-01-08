@@ -1,4 +1,5 @@
-﻿
+﻿@using ProyectoFotoMVC.Models
+@model List<WORK>
 @{
     ViewBag.Title = "Works";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,7 +8,7 @@
 <div class="row">
     <div class="card col s12 m4 l4 xl3 offset-m1 offset-l1 offset-xl1">      
         <div class="card-title center-align">Nuevo Trabajo</div>
-        <form>
+        <form method="post">
             <div class="input-field">
                 <input type="text" name="work" id="work"/>
                 <label for="work">Nombre del trabajo</label>
@@ -20,8 +21,18 @@
     </div>
     <div class="card col s12 m4 l4 xl3 offset-m2 offset-l2 offset-xl2">
         <div class="card-title center-align">Trabajos</div>
-        <ul>
-
-        </ul>
+        <div class="card-content">
+            <table>
+                <tbody>
+                    @foreach(WORK w in Model)
+                    {
+                        <tr>
+                            <td>@w.NAME</td>
+                            <td hidden>@w.ID</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

@@ -35,32 +35,33 @@ main {
     padding: 0px 24px 24px 24px !important;
 }
 
-thead, tbody {
+
+
+/* Tabla de Participantes  */
+.tbpar thead, .tbpar tbody {
     display: block;
 }
 
-tbody {
-    height: 300px; 
-    overflow-y: auto; 
-    overflow-x: hidden; 
+.tbpar tbody {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-table {
-    width: 100%; 
+.tbpar table {
+    width: 100%;
 }
 
-tbody td, thead th {
-    width: 250px; 
-}
 
+  
 @media only screen and (max-width: 992px) {
-    tbody td, thead th {
-        width: auto; 
+    .tbpar tbody td, thead th {
+        width: auto !important;
     }
-    tbody {
-        height:150px;
+    .tbpar tbody {
+        height: 150px;
     }
-    tr>td:last-child {
-        display:none;
+    .tbpar tr > td:last-child {
+        display: none !important;
     }
 }

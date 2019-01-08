@@ -27,24 +27,13 @@
             }
         });
 
+        var width = $("table").width() / 3;
+        $("thead th, tbody td").css("width", width);
 
-        // Change the selector if needed
-        var $table = $('table.scroll'),
-            $bodyCells = $table.find('tbody tr:first').children(),
-            colWidth;
-
-        // Adjust the width of thead cells when window resizes
         $(window).resize(function () {
-            // Get the tbody columns width array
-            colWidth = $bodyCells.map(function () {
-                return $(this).width();
-            }).get();
-
-            // Set the width of thead columns
-            $table.find('thead tr').children().each(function (i, v) {
-                $(v).width(colWidth[i]);
-            });
-        }).resize(); // Trigger resize handler
+            var width = $("table").width() / 3;
+            $("thead th, tbody td").css("width", width);
+        });
 
     });
 </script>
@@ -80,15 +69,15 @@
     <div class="col s12 m7 l7 xl7 offset-m1 offset-l1 offset-xl1">
         <div class="card">
             <div class="card-content">
-                <table class="responsive-table">
-                    <thead class="">
+                <table class="responsive-table tbpar">
+                    <thead class="tbpar">
                         <tr>
                             <th>Nombre</th>
                             <th>Contacto</th>
                             <th>Enlace</th>
                         </tr>
                     </thead>
-                    <tbody class="">
+                    <tbody class="tbpar">
                         @if (Model != null)
                         {
                             foreach (WORKER w in Model)
@@ -105,7 +94,6 @@
                 </table>
             </div>
         </div>
-        
     </div>
 </div>
 
