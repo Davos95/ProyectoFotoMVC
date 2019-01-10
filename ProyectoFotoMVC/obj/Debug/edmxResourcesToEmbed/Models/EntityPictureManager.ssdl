@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pictureManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="COMISION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="25" />
+    <Property Name="PHOTO" Type="image" />
+    <Property Name="DESCRIPTION" Type="text" />
+    <Property Name="ORDERCOMISION" Type="int" />
+    <Property Name="PRICE" Type="float" />
+  </EntityType>
+  <EntityType Name="PHOTO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="25" />
+    <Property Name="PICTURE" Type="image" />
+    <Property Name="IDSESION" Type="int" />
+    <Property Name="ORDERPHOTO" Type="int" />
+  </EntityType>
+  <EntityType Name="SESION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="250" />
+    <Property Name="DESCRIPTION" Type="text" />
+    <Property Name="IDPHOTO" Type="int" />
+    <Property Name="DATESESION" Type="date" />
+    <Property Name="IDCOMISION" Type="int" />
+  </EntityType>
+  <EntityType Name="SESION_WORKER">
+    <Key>
+      <PropertyRef Name="IDSESION" />
+      <PropertyRef Name="IDWORKER" />
+    </Key>
+    <Property Name="IDSESION" Type="int" Nullable="false" />
+    <Property Name="IDWORKER" Type="int" Nullable="false" />
+    <Property Name="IDWORK" Type="int" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NICK" Type="nvarchar" MaxLength="15" />
+    <Property Name="PWD" Type="nvarchar" MaxLength="255" />
+    <Property Name="NAME" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="WORK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="WORKER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="30" />
+    <Property Name="CONTACT" Type="nvarchar" MaxLength="30" />
+    <Property Name="URLCONTACT" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK__PHOTO__IDSESION__3E52440B">
+    <End Role="SESION" Type="Self.SESION" Multiplicity="0..1" />
+    <End Role="PHOTO" Type="Self.PHOTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SESION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PHOTO">
+        <PropertyRef Name="IDSESION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SESION__IDCOMISI__3B75D760">
+    <End Role="COMISION" Type="Self.COMISION" Multiplicity="0..1" />
+    <End Role="SESION" Type="Self.SESION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMISION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SESION">
+        <PropertyRef Name="IDCOMISION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SESION__IDPHOTO__3F466844">
+    <End Role="PHOTO" Type="Self.PHOTO" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SESION" Type="Self.SESION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHOTO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SESION">
+        <PropertyRef Name="IDPHOTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SESION_WO__IDSES__45F365D3">
+    <End Role="SESION" Type="Self.SESION" Multiplicity="1" />
+    <End Role="SESION_WORKER" Type="Self.SESION_WORKER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SESION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SESION_WORKER">
+        <PropertyRef Name="IDSESION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SESION_WO__IDWOR__46E78A0C">
+    <End Role="WORKER" Type="Self.WORKER" Multiplicity="1" />
+    <End Role="SESION_WORKER" Type="Self.SESION_WORKER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WORKER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SESION_WORKER">
+        <PropertyRef Name="IDWORKER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SESION_WO__IDWOR__47DBAE45">
+    <End Role="WORK" Type="Self.WORK" Multiplicity="0..1" />
+    <End Role="SESION_WORKER" Type="Self.SESION_WORKER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WORK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SESION_WORKER">
+        <PropertyRef Name="IDWORK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ADDPARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+    <Parameter Name="CONTACT" Type="nvarchar" Mode="In" />
+    <Parameter Name="URLCONTACT" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ADDTRABAJO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DELETEPARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DELETETRABAJO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="MOSTRARPARTICIPANTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="MOSTRARTRABAJOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UPDATEPARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+    <Parameter Name="CONTACT" Type="nvarchar" Mode="In" />
+    <Parameter Name="URLCONTACT" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="pictureManagerModelStoreContainer">
+    <EntitySet Name="COMISION" EntityType="Self.COMISION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHOTO" EntityType="Self.PHOTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SESION" EntityType="Self.SESION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SESION_WORKER" EntityType="Self.SESION_WORKER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WORK" EntityType="Self.WORK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WORKER" EntityType="Self.WORKER" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__PHOTO__IDSESION__3E52440B" Association="Self.FK__PHOTO__IDSESION__3E52440B">
+      <End Role="SESION" EntitySet="SESION" />
+      <End Role="PHOTO" EntitySet="PHOTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SESION__IDCOMISI__3B75D760" Association="Self.FK__SESION__IDCOMISI__3B75D760">
+      <End Role="COMISION" EntitySet="COMISION" />
+      <End Role="SESION" EntitySet="SESION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SESION__IDPHOTO__3F466844" Association="Self.FK__SESION__IDPHOTO__3F466844">
+      <End Role="PHOTO" EntitySet="PHOTO" />
+      <End Role="SESION" EntitySet="SESION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SESION_WO__IDSES__45F365D3" Association="Self.FK__SESION_WO__IDSES__45F365D3">
+      <End Role="SESION" EntitySet="SESION" />
+      <End Role="SESION_WORKER" EntitySet="SESION_WORKER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SESION_WO__IDWOR__46E78A0C" Association="Self.FK__SESION_WO__IDWOR__46E78A0C">
+      <End Role="WORKER" EntitySet="WORKER" />
+      <End Role="SESION_WORKER" EntitySet="SESION_WORKER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SESION_WO__IDWOR__47DBAE45" Association="Self.FK__SESION_WO__IDWOR__47DBAE45">
+      <End Role="WORK" EntitySet="WORK" />
+      <End Role="SESION_WORKER" EntitySet="SESION_WORKER" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

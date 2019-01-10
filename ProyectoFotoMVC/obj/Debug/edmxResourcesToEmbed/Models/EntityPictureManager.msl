@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pictureManagerModelStoreContainer" CdmEntityContainer="EntidadPicturesManager">
+    <EntitySetMapping Name="COMISION">
+      <EntityTypeMapping TypeName="pictureManagerModel.COMISION">
+        <MappingFragment StoreEntitySet="COMISION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="ORDERCOMISION" ColumnName="ORDERCOMISION" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHOTO">
+      <EntityTypeMapping TypeName="pictureManagerModel.PHOTO">
+        <MappingFragment StoreEntitySet="PHOTO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
+          <ScalarProperty Name="IDSESION" ColumnName="IDSESION" />
+          <ScalarProperty Name="ORDERPHOTO" ColumnName="ORDERPHOTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SESION">
+      <EntityTypeMapping TypeName="pictureManagerModel.SESION">
+        <MappingFragment StoreEntitySet="SESION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="IDPHOTO" ColumnName="IDPHOTO" />
+          <ScalarProperty Name="DATESESION" ColumnName="DATESESION" />
+          <ScalarProperty Name="IDCOMISION" ColumnName="IDCOMISION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SESION_WORKER">
+      <EntityTypeMapping TypeName="pictureManagerModel.SESION_WORKER">
+        <MappingFragment StoreEntitySet="SESION_WORKER">
+          <ScalarProperty Name="IDSESION" ColumnName="IDSESION" />
+          <ScalarProperty Name="IDWORKER" ColumnName="IDWORKER" />
+          <ScalarProperty Name="IDWORK" ColumnName="IDWORK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="pictureManagerModel.USERS">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NICK" ColumnName="NICK" />
+          <ScalarProperty Name="PWD" ColumnName="PWD" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WORK">
+      <EntityTypeMapping TypeName="pictureManagerModel.WORK">
+        <MappingFragment StoreEntitySet="WORK">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WORKER">
+      <EntityTypeMapping TypeName="pictureManagerModel.WORKER">
+        <MappingFragment StoreEntitySet="WORKER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+          <ScalarProperty Name="URLCONTACT" ColumnName="URLCONTACT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="MOSTRARPARTICIPANTES" FunctionName="pictureManagerModel.Store.MOSTRARPARTICIPANTES" />
+    <FunctionImportMapping FunctionImportName="MOSTRARTRABAJOS" FunctionName="pictureManagerModel.Store.MOSTRARTRABAJOS" />
+    <FunctionImportMapping FunctionImportName="ADDPARTICIPANTE" FunctionName="pictureManagerModel.Store.ADDPARTICIPANTE" />
+    <FunctionImportMapping FunctionImportName="DELETEPARTICIPANTE" FunctionName="pictureManagerModel.Store.DELETEPARTICIPANTE" />
+    <FunctionImportMapping FunctionImportName="UPDATEPARTICIPANTE" FunctionName="pictureManagerModel.Store.UPDATEPARTICIPANTE" />
+    <FunctionImportMapping FunctionImportName="ADDTRABAJO" FunctionName="pictureManagerModel.Store.ADDTRABAJO" />
+    <FunctionImportMapping FunctionImportName="DELETETRABAJO" FunctionName="pictureManagerModel.Store.DELETETRABAJO" />
+  </EntityContainerMapping>
+</Mapping>

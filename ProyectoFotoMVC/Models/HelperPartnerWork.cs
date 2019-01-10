@@ -3,73 +3,121 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+#region
+/*
+---------- PARTICIPANTES -----------------
+
+CREATE PROCEDURE MOSTRARPARTICIPANTES
+AS
+	SELECT * FROM WORKER;
+GO
+
+CREATE PROCEDURE ADDPARTICIPANTE
+(@NAME NVARCHAR(30), @CONTACT NVARCHAR(30), @URLCONTACT NVARCHAR(255))
+AS
+	INSERT INTO WORKER VALUES (@NAME, @CONTACT, @URLCONTACT)
+GO
+
+CREATE PROCEDURE DELETEPARTICIPANTE
+(@ID INT)
+AS
+	DELETE FROM WORKER WHERE ID = @ID
+GO
+
+CREATE PROCEDURE UPDATEPARTICIPANTE
+(@ID INT, @NAME NVARCHAR(30), @CONTACT NVARCHAR(30), @URLCONTACT NVARCHAR(30))
+AS
+	UPDATE WORKER
+	SET NAME = @NAME, CONTACT = @CONTACT, URLCONTACT = @URLCONTACT
+	WHERE ID = @ID
+GO
+
+----------- TRABAJOS -----------------
+
+CREATE PROCEDURE MOSTRARTRABAJOS
+AS
+	SELECT * FROM WORK;
+GO
+
+CREATE PROCEDURE ADDTRABAJO
+(@NAME NVARCHAR(100))
+AS
+	INSERT INTO WORK VALUES(@NAME)
+GO
+
+CREATE PROCEDURE DELETETRABAJO
+(@ID INT)
+AS
+	DELETE FROM WORK WHERE ID = @ID
+GO
+
+
+
+
+
+CREATE PROCEDURE MOSTRARSESIONES
+AS
+	SELECT * FROM SESION;
+GO
+
+
+
+
+*/
+#endregion
+
 namespace ProyectoFotoMVC.Models
 {
     public class HelperPartnerWork
     {
-        contextPicturesManegerDataContext c;
+        EntidadPicturesManager entity;
+
         public HelperPartnerWork()
         {
-            c = new contextPicturesManegerDataContext();
+            entity = new EntidadPicturesManager();
         }
+
+
+        //PARTNERS
 
         public List<WORKER> GetPartners()
         {
-            var sql = from datos in c.WORKERs
-                      select datos;
-            return sql.ToList();
+
+            List<WORKER> participantes = this.entity.MOSTRARPARTICIPANTES().ToList();
+            return participantes;
         }
 
         public void InsertPartner(String name, String contact, String urlContact)
         {
-            WORKER worker = new WORKER();
-            worker.NAME = name;
-            worker.CONTACT = contact;
-            worker.URLCONTACT = urlContact;
-            c.WORKERs.InsertOnSubmit(worker);
-            c.SubmitChanges();
+            this.entity.ADDPARTICIPANTE(name, contact, urlContact);
         }
 
         public void RemovePartner(int id)
         {
-            WORKER worker = GetPartnerById(id)[0];
-            c.WORKERs.DeleteOnSubmit(worker);
-            c.SubmitChanges();
-        }
-
-        private List<WORKER> GetPartnerById(int id)
-        {
-            var sql = from datos in c.WORKERs
-                      where datos.ID == id
-                      select datos;
-
-            return sql.ToList();
+            this.entity.DELETEPARTICIPANTE(id);
         }
 
         public void UpdatePartner(int id, String name, String contact, String urlContact)
         {
-            WORKER worker = GetPartnerById(id)[0];
-            worker.NAME = name;
-            worker.CONTACT = contact;
-            worker.URLCONTACT = urlContact;
-            c.SubmitChanges();
+            this.entity.UPDATEPARTICIPANTE(id, name, contact, urlContact);
         }
 
 
         //Works
         public List<WORK> GetWorks()
         {
-            var sql = from datos in c.WORKs
-                      select datos;
-            return sql.ToList();
+           List<WORK> works =  this.entity.MOSTRARTRABAJOS().ToList();
+           return works;
         }
 
         public void InsertWork(String name)
         {
-            WORK work = new WORK();
-            work.NAME = name;
-            c.WORKs.InsertOnSubmit(work);
-            c.SubmitChanges();
+            this.entity.ADDTRABAJO(name);
+        }
+
+        public void DeleteWork(int id)
+        {
+            this.entity.DELETETRABAJO(id);
         }
     }
 }

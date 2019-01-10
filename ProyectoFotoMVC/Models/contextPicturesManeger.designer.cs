@@ -50,10 +50,11 @@ namespace ProyectoFotoMVC.Models
     partial void DeleteCOMISION(COMISION instance);
     #endregion
 		
-		public contextPicturesManegerDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["cadenaConexion"].ConnectionString, mappingSource)
-		{
-			OnCreated();
+		public contextPicturesManegerDataContext() :
+                //base(global::System.Configuration.ConfigurationManager.ConnectionStrings["cadenaConexion"].ConnectionString, mappingSource)
+                base(global::System.Configuration.ConfigurationManager.ConnectionStrings["pictureManagerConnectionString"].ConnectionString, mappingSource)
+        {
+            OnCreated();
 		}
 		
 		public contextPicturesManegerDataContext(string connection) : 

@@ -48,11 +48,19 @@
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -111,6 +119,16 @@
     <Content Include="Content\images\windows.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\EntityPictureManager.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityPictureManager.Context.cs</LastGenOutput>
+      <DependentUpon>EntityPictureManager.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\EntityPictureManager.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityPictureManager.edmx</DependentUpon>
+      <LastGenOutput>EntityPictureManager.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\materialize.js" />
@@ -125,13 +143,50 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\contextPicturesManeger.designer.cs">
+    <Compile Include="Models\COMISION.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityPictureManager.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>contextPicturesManeger.dbml</DependentUpon>
+      <DependentUpon>EntityPictureManager.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityPictureManager.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityPictureManager.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityPictureManager.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\HelperLogin.cs" />
     <Compile Include="Models\HelperPartnerWork.cs" />
+    <Compile Include="Models\MOSTRARPARTICIPANTES_Result.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MOSTRARTRABAJOS_Result.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PHOTO.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SESION.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SESION_WORKER.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USERS.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WORK.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WORKER.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -144,14 +199,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Models\contextPicturesManeger.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>contextPicturesManeger.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+    <EntityDeploy Include="Models\EntityPictureManager.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EntityPictureManager.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EntityPictureManager.edmx.diagram">
+      <DependentUpon>EntityPictureManager.edmx</DependentUpon>
     </Content>
-    <None Include="Models\contextPicturesManeger.dbml.layout">
-      <DependentUpon>contextPicturesManeger.dbml</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -164,6 +218,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Views\admin\Works.cshtml" />
+    <Content Include="Views\admin\Sesion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -176,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
