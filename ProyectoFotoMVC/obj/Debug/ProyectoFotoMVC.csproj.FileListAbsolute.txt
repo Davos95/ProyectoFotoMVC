@@ -314,3 +314,7 @@ C:\Users\ProfesorMCSD\Desktop\ProyectoFotoMVC-master\ProyectoFotoMVC\obj\Debug\P
 C:\Users\ProfesorMCSD\Desktop\ProyectoFotoMVC-master\ProyectoFotoMVC\obj\Debug\ProyectoFotoMVC.csproj.CopyComplete
 C:\Users\ProfesorMCSD\Desktop\ProyectoFotoMVC-master\ProyectoFotoMVC\obj\Debug\ProyectoFotoMVC.dll
 C:\Users\ProfesorMCSD\Desktop\ProyectoFotoMVC-master\ProyectoFotoMVC\obj\Debug\ProyectoFotoMVC.pdb
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\EntityFramework.dll
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\EntityFramework.SqlServer.dll
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\EntityFramework.xml
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\EntityFramework.SqlServer.xml
