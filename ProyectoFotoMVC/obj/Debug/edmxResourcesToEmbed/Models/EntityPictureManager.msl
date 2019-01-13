@@ -80,5 +80,6 @@
     <FunctionImportMapping FunctionImportName="UPDATEPARTICIPANTE" FunctionName="pictureManagerModel.Store.UPDATEPARTICIPANTE" />
     <FunctionImportMapping FunctionImportName="ADDTRABAJO" FunctionName="pictureManagerModel.Store.ADDTRABAJO" />
     <FunctionImportMapping FunctionImportName="DELETETRABAJO" FunctionName="pictureManagerModel.Store.DELETETRABAJO" />
+    <FunctionImportMapping FunctionImportName="MOSTRARSESIONES" FunctionName="pictureManagerModel.Store.MOSTRARSESIONES" />
   </EntityContainerMapping>
 </Mapping>

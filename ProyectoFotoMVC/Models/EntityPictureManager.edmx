@@ -160,6 +160,7 @@
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
         <Function Name="MOSTRARPARTICIPANTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MOSTRARSESIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MOSTRARTRABAJOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="UPDATEPARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
@@ -408,8 +409,9 @@
           <Parameter Name="NAME" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DELETETRABAJO">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="MOSTRARSESIONES" EntitySet="SESION" ReturnType="Collection(pictureManagerModel.SESION)" />
         </EntityContainer>
         <ComplexType Name="MOSTRARPARTICIPANTES_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -420,6 +422,14 @@
         <ComplexType Name="MOSTRARTRABAJOS_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="NAME" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="MOSTRARSESIONES_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="IDPHOTO" Nullable="true" />
+          <Property Type="DateTime" Name="DATESESION" Nullable="true" />
+          <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -508,6 +518,8 @@
           <FunctionImportMapping FunctionImportName="UPDATEPARTICIPANTE" FunctionName="pictureManagerModel.Store.UPDATEPARTICIPANTE" />
           <FunctionImportMapping FunctionImportName="ADDTRABAJO" FunctionName="pictureManagerModel.Store.ADDTRABAJO" />
           <FunctionImportMapping FunctionImportName="DELETETRABAJO" FunctionName="pictureManagerModel.Store.DELETETRABAJO" />
+          <FunctionImportMapping FunctionImportName="MOSTRARSESIONES" FunctionName="pictureManagerModel.Store.MOSTRARSESIONES">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

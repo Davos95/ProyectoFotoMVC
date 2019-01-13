@@ -206,6 +206,7 @@
     <FunctionImport Name="DELETETRABAJO">
       <Parameter Name="ID" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="MOSTRARSESIONES" EntitySet="SESION" ReturnType="Collection(pictureManagerModel.SESION)" />
   </EntityContainer>
   <ComplexType Name="MOSTRARPARTICIPANTES_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -216,5 +217,13 @@
   <ComplexType Name="MOSTRARTRABAJOS_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="NAME" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="MOSTRARSESIONES_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="IDPHOTO" Nullable="true" />
+    <Property Type="DateTime" Name="DATESESION" Nullable="true" />
+    <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
   </ComplexType>
 </Schema>

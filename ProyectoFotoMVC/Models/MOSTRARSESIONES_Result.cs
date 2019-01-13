@@ -14,16 +14,20 @@ namespace ProyectoFotoMVC.Models
 
 using System;
     
-public partial class MOSTRARPARTICIPANTES_Result
+public partial class MOSTRARSESIONES_Result
 {
 
     public int ID { get; set; }
 
     public string NAME { get; set; }
 
-    public string CONTACT { get; set; }
+    public string DESCRIPTION { get; set; }
 
-    public string URLCONTACT { get; set; }
+    public Nullable<int> IDPHOTO { get; set; }
+
+    public Nullable<System.DateTime> DATESESION { get; set; }
+
+    public Nullable<int> IDCOMISION { get; set; }
 
 }
 

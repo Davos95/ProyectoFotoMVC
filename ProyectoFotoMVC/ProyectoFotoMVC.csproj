@@ -162,9 +162,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityPictureManager.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\HelperComision.cs" />
     <Compile Include="Models\HelperLogin.cs" />
     <Compile Include="Models\HelperPartnerWork.cs" />
+    <Compile Include="Models\HelperSesion.cs" />
     <Compile Include="Models\MOSTRARPARTICIPANTES_Result.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MOSTRARSESIONES_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MOSTRARTRABAJOS_Result.cs">
@@ -220,6 +225,7 @@
     </None>
     <Content Include="Views\admin\Works.cshtml" />
     <Content Include="Views\admin\Sesion.cshtml" />
+    <Content Include="Views\admin\Comision.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -16,8 +16,9 @@ namespace ProyectoFotoMVC.Models
         SqlDataReader reader;
         public HelperLogin()
         {
-            String cadena = ConfigurationManager.ConnectionStrings["cadenaConexion"].ConnectionString;
-            this.con = new SqlConnection(cadena);
+            //String cadena = ConfigurationManager.ConnectionStrings["cadenaConexion"].ConnectionString;
+            String a = "a";
+            this.con = new SqlConnection(a);
             this.com = new SqlCommand();
             this.com.Connection = this.con;
             this.com.CommandType = System.Data.CommandType.StoredProcedure;

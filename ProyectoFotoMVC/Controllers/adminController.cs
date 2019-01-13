@@ -13,7 +13,7 @@ namespace ProyectoFotoMVC.Controllers
         HelperPartnerWork helperPW;
         public adminController()
         {
-            helper = new HelperLogin();
+            //helper = new HelperLogin();
             helperPW = new HelperPartnerWork();
         }
 
@@ -65,7 +65,7 @@ namespace ProyectoFotoMVC.Controllers
             return View(p);
         }
 
-
+        /* ---- WORKS ---- */
         public ActionResult Works()
         {
             List<WORK> works = helperPW.GetWorks();
@@ -86,5 +86,12 @@ namespace ProyectoFotoMVC.Controllers
             List<WORK> works = helperPW.GetWorks();
             return View(works);
         }
+
+        /* ---- COMISION ---- */
+        public ActionResult Comision()
+        {
+            return View();
+        }
+
     }
 }
