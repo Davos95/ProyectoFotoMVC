@@ -318,3 +318,14 @@ G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\EntityFramework.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\EntityFramework.SqlServer.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\EntityFramework.xml
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\EntityFramework.SqlServer.xml
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\Autofac.dll
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\Autofac.Integration.Mvc.dll
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\RepositorioPictureManager.dll
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\Unity.Abstractions.dll
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\Unity.Container.dll
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\Unity.Mvc.dll
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\WebActivatorEx.dll
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\RepositorioPictureManager.pdb
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\RepositorioPictureManager.dll.config
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\Autofac.xml
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\Autofac.Integration.Mvc.xml

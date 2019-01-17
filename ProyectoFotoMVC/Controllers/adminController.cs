@@ -1,4 +1,5 @@
-﻿using ProyectoFotoMVC.Models;
+﻿using RepositorioPictureManager.Models;
+using RepositorioPictureManager.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,89 +10,102 @@ namespace ProyectoFotoMVC.Controllers
 {
     public class adminController : Controller
     {
-        HelperLogin helper;
-        HelperPartnerWork helperPW;
-        public adminController()
+        IRepositoryLogin repoLogin;
+        IRepositoryPartner repoPartner;
+        IRepositoryWork repoWork;
+        
+        public adminController(IRepositoryLogin repoL, IRepositoryPartner repoP, IRepositoryWork repoW)
         {
-            //helper = new HelperLogin();
-            helperPW = new HelperPartnerWork();
+            this.repoLogin = repoL;
+            this.repoPartner = repoP;
+            this.repoWork = repoW;
         }
 
-        // GET: admin
-
+        #region LOGIN
+        // GET: Login
         public ActionResult login()
         {
             return View();
         }
-        //POST: admin
+        //POST: Login
         [HttpPost]
         public ActionResult login(String nick, String pwd)
         {
-            if (helper.GetLogin(nick,pwd))
+            if (repoLogin.GetLogin(nick,pwd))
             {
                 return RedirectToAction("menu","admin");
             }
             return View();
         }
+        #endregion 
+
         public ActionResult menu()
         {
             return View();
         }
 
-        /* ---- PARTNERS ---- */
+        #region PARTNERS
+
         //GET: PARTNERS
         public ActionResult Partners()
         {
-            List<WORKER> p = helperPW.GetPartners();
+            List<WORKER> p = this.repoPartner.GetPartners();
             return View(p);
         }
+
         //POST: Partners
         [HttpPost]
         public ActionResult Partners(String name, String contact, String urlContact, int option, int? id)
         {
             if(option == 1)
             {
-                helperPW.InsertPartner(name, contact, urlContact);
+                this.repoPartner.InsertPartner(name, contact, urlContact);
             } else
             if(option == 2)
             {
-                helperPW.UpdatePartner(id.Value, name, contact, urlContact);
+                this.repoPartner.UpdatePartner(id.Value, name, contact, urlContact);
             } else
             if (option == 3)
             {
-                helperPW.RemovePartner(id.Value);
+                this.repoPartner.RemovePartner(id.Value);
             }
-            List<WORKER> p = helperPW.GetPartners();
+            List<WORKER> p = this.repoPartner.GetPartners();
             return View(p);
         }
+        #endregion
 
-        /* ---- WORKS ---- */
+        #region WORKS
+
+        //GET: WORKS
         public ActionResult Works()
         {
-            List<WORK> works = helperPW.GetWorks();
+            List<WORK> works = this.repoWork.GetWORKs();
             return View(works);
         }
 
+        //POST: WORKS
         [HttpPost]
         public ActionResult Works(String work, int option, int? id )
         {
             if(option == 0)
             {
-                helperPW.InsertWork(work);
+                this.repoWork.InsertWork(work);
             } else if(option == 1)
             {
-                helperPW.DeleteWork(id.Value);
+                this.repoWork.DeleteWork(id.Value);
             }
 
-            List<WORK> works = helperPW.GetWorks();
+            List<WORK> works = this.repoWork.GetWORKs();
             return View(works);
         }
+        #endregion
 
-        /* ---- COMISION ---- */
+        #region COMISION
         public ActionResult Comision()
         {
             return View();
         }
+        #endregion
 
     }
 }

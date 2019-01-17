@@ -1,4 +1,4 @@
-﻿@using ProyectoFotoMVC.Models
+﻿@using RepositorioPictureManager.Models
 
 @model List<WORKER>
 
@@ -8,35 +8,35 @@
 }
 
 @section events {
-<script>
-    $(document).ready(function () {
-        $("tr").click(function () {
-            if ($(this).css("background-color") == "rgb(255, 0, 0)") {
-                $("tr").css("background-color", "white");
-                $("#name").val("");
-                $("#contact").val("");
-                $("#urlContact").val("");
-                $("#id").val("");
-            } else {
-                $("tr").css("background-color", "white");
-                $(this).css("background-color", "red");
-                $("#contact").val($(this).find("td")[1].textContent).focus();
-                $("#urlContact").val($(this).find("td")[2].textContent).focus();
-                $("#name").val($(this).find("td")[0].textContent).focus();
-                $("#id").val($(this).find("td")[3].textContent);
-            }
-        });
+    <script>
+        $(document).ready(function () {
+            $("tr").click(function () {
+                if ($(this).css("background-color") == "rgb(255, 0, 0)") {
+                    $("tr").css("background-color", "white");
+                    $("#name").val("");
+                    $("#contact").val("");
+                    $("#urlContact").val("");
+                    $("#id").val("");
+                } else {
+                    $("tr").css("background-color", "white");
+                    $(this).css("background-color", "red");
+                    $("#contact").val($(this).find("td")[1].textContent).focus();
+                    $("#urlContact").val($(this).find("td")[2].textContent).focus();
+                    $("#name").val($(this).find("td")[0].textContent).focus();
+                    $("#id").val($(this).find("td")[3].textContent);
+                }
+            });
 
-        var width = $("table").width() / 3;
-        $("thead th, tbody td").css("width", width);
-
-        $(window).resize(function () {
             var width = $("table").width() / 3;
             $("thead th, tbody td").css("width", width);
-        });
 
-    });
-</script>
+            $(window).resize(function () {
+                var width = $("table").width() / 3;
+                $("thead th, tbody td").css("width", width);
+            });
+
+        });
+    </script>
 }
 
 <div class="row">

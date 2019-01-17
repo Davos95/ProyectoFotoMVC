@@ -16,6 +16,7 @@ namespace ProyectoFotoMVC
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            IoCConfigurationUnity.Configure();
         }
     }
 }
