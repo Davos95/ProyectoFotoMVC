@@ -193,6 +193,40 @@ public partial class EntidadPicturesManager : DbContext
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GETLOGIN", nICKParameter, pWDParameter);
     }
 
+
+    public virtual ObjectResult<USERS> GETUSER(string nICK, string pWD)
+    {
+
+        var nICKParameter = nICK != null ?
+            new ObjectParameter("NICK", nICK) :
+            new ObjectParameter("NICK", typeof(string));
+
+
+        var pWDParameter = pWD != null ?
+            new ObjectParameter("PWD", pWD) :
+            new ObjectParameter("PWD", typeof(string));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USERS>("GETUSER", nICKParameter, pWDParameter);
+    }
+
+
+    public virtual ObjectResult<USERS> GETUSER(string nICK, string pWD, MergeOption mergeOption)
+    {
+
+        var nICKParameter = nICK != null ?
+            new ObjectParameter("NICK", nICK) :
+            new ObjectParameter("NICK", typeof(string));
+
+
+        var pWDParameter = pWD != null ?
+            new ObjectParameter("PWD", pWD) :
+            new ObjectParameter("PWD", typeof(string));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USERS>("GETUSER", mergeOption, nICKParameter, pWDParameter);
+    }
+
 }
 
 }

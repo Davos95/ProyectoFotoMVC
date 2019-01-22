@@ -34,16 +34,10 @@ namespace RepositorioPictureManager.Repositories
             this.entity = entity;
         }
 
-        public bool GetLogin(string nick, string pwd)
+        public USERS GetUser(String nick, String pwd)
         {
-            String pass = createMD5Hash(pwd);
-            int exist = (int)this.entity.GETLOGIN(nick, pwd).FirstOrDefault();
-            if(exist == 1)
-            {
-                return true;
-            }
-
-            return false;
+            USERS user = this.entity.GETUSER(nick, pwd).FirstOrDefault();
+            return user;
         }
 
         private String createMD5Hash(String input)

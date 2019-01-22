@@ -142,6 +142,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\materialize.js" />
     <Content Include="Scripts\materialize.min.js" />
+    <Content Include="Scripts\menuDropdown.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -151,6 +152,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Atributes\AuthorizeUserAttribute.cs" />
     <Compile Include="Controllers\adminController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -182,6 +184,7 @@
     <Content Include="Views\admin\Works.cshtml" />
     <Content Include="Views\admin\Sesion.cshtml" />
     <Content Include="Views\admin\Comision.cshtml" />
+    <Content Include="Views\login\ErrorAcceso.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

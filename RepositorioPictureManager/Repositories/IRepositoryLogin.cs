@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RepositorioPictureManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace RepositorioPictureManager.Repositories
 {
     public interface IRepositoryLogin
     {
-        bool GetLogin(String nick, String pwd);
+        USERS GetUser(String nick, String pwd);
 
     }
 }

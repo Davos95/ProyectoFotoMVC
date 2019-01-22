@@ -50,10 +50,11 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NICK" Type="nvarchar" MaxLength="15" />
-          <Property Name="PWD" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NICK" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="PWD" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="NAME" Type="varchar" MaxLength="25" />
+          <Property Name="ROLE" Type="nvarchar" MaxLength="25" Nullable="false" />
         </EntityType>
         <EntityType Name="WORK">
           <Key>
@@ -163,6 +164,10 @@
           <Parameter Name="NICK" Type="nvarchar" Mode="In" />
           <Parameter Name="PWD" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GETUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NICK" Type="nvarchar" Mode="In" />
+          <Parameter Name="PWD" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="MOSTRARPARTICIPANTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MOSTRARSESIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MOSTRARTRABAJOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -264,10 +269,11 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NICK" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="PWD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="NICK" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PWD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ROLE" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="WORK">
           <Key>
@@ -420,6 +426,10 @@
             <Parameter Name="NICK" Mode="In" Type="String" />
             <Parameter Name="PWD" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GETUSER" EntitySet="USERS" ReturnType="Collection(pictureManagerModel.USERS)">
+            <Parameter Name="NICK" Mode="In" Type="String" />
+            <Parameter Name="PWD" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="MOSTRARPARTICIPANTES_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -438,6 +448,13 @@
           <Property Type="Int32" Name="IDPHOTO" Nullable="true" />
           <Property Type="DateTime" Name="DATESESION" Nullable="true" />
           <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GETUSER_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NICK" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="PWD" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="ROLE" Nullable="false" MaxLength="25" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -492,6 +509,7 @@
           <EntitySetMapping Name="USERS">
             <EntityTypeMapping TypeName="pictureManagerModel.USERS">
               <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="ROLE" ColumnName="ROLE" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NICK" ColumnName="NICK" />
                 <ScalarProperty Name="PWD" ColumnName="PWD" />
@@ -529,6 +547,8 @@
           <FunctionImportMapping FunctionImportName="MOSTRARSESIONES" FunctionName="pictureManagerModel.Store.MOSTRARSESIONES">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GETLOGIN" FunctionName="pictureManagerModel.Store.GETLOGIN" />
+          <FunctionImportMapping FunctionImportName="GETUSER" FunctionName="pictureManagerModel.Store.GETUSER">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

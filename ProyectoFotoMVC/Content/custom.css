@@ -35,7 +35,9 @@ main {
     padding: 0px 24px 24px 24px !important;
 }
 
-
+.dropdown-content {
+    top: 64px !important;
+}
 
 /* Tabla de Participantes  */
 .tbpar thead, .tbpar tbody {
@@ -53,7 +55,7 @@ main {
 }
 
 
-  
+
 @media only screen and (max-width: 992px) {
     .tbpar tbody td, thead th {
         width: auto !important;

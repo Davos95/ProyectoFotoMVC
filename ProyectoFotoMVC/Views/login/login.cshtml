@@ -1,6 +1,4 @@
-﻿@using RepositorioPictureManager.Models
-@model USERS
-
+﻿
 @{
     ViewBag.Title = "login";
 }
@@ -17,14 +15,12 @@
                     @using (Html.BeginForm())
                     {
                         <div class="input-field">
-                            @Html.EditorFor(model => model.NICK)
-                            @Html.LabelFor(model => model.NICK, "Nickname")
-                            @Html.ValidationMessageFor(model => model.NICK)
+                            <input type="text" name="nick" id="nick" />
+                            <label for="nick">Nickname</label>
                         </div>
                         <div class="input-field">
-                            @Html.PasswordFor(model => model.PWD)
-                            @Html.LabelFor(model => model.PWD, "Password")
-                            @Html.ValidationMessageFor(model => model.PWD)
+                            <input type="password" name="password" id="password" />
+                            <label for="password">Password</label>
                         </div>
                         <div class="input-field">
                             <button type="submit" class="btn blue waves waves-effect waves-darken">ENTRAR</button>

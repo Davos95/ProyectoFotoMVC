@@ -14,9 +14,8 @@ namespace RepositorioPictureManager.Models
 
 using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class WORKER
+    
+public partial class WORKER
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,11 +28,11 @@ using System;
 
 
     public int ID { get; set; }
-    [Required(ErrorMessage = "Campo obligatorio")]
+
     public string NAME { get; set; }
-    [Required(ErrorMessage = "Campo obligatorio")]
+
     public string CONTACT { get; set; }
-    [Required(ErrorMessage = "Campo obligatorio")]
+
     public string URLCONTACT { get; set; }
 
 

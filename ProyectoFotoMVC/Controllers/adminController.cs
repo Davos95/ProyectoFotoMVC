@@ -1,4 +1,5 @@
-﻿using RepositorioPictureManager.Models;
+﻿using ProyectoFotoMVC.Atributes;
+using RepositorioPictureManager.Models;
 using RepositorioPictureManager.Repositories;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ProyectoFotoMVC.Controllers
 {
+    [AuthorizeUser]
     public class adminController : Controller
     {
 
@@ -19,10 +21,6 @@ namespace ProyectoFotoMVC.Controllers
             this.repoPartner = repoP;
             this.repoWork = repoW;
         }
-
-        #region LOGIN
-
-        #endregion 
 
         public ActionResult menu()
         {

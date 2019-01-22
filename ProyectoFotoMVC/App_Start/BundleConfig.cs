@@ -12,7 +12,8 @@ namespace ProyectoFotoMVC.App_Start
         {
             bundles.Add(new ScriptBundle("~/bundle/materializeJS").Include(
                 "~/Scripts/jquery-3.3.1.min.js",
-                "~/Scripts/materialize.min.js"
+                "~/Scripts/materialize.min.js",
+                "~/Scripts/menuDropdown.js"
                 ));
 
             bundles.Add(new StyleBundle("~/bundle/materializeCSS").Include(

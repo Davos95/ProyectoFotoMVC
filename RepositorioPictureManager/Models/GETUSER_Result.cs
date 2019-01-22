@@ -13,29 +13,19 @@ namespace RepositorioPictureManager.Models
 {
 
 using System;
-    using System.Collections.Generic;
     
-public partial class WORK
+public partial class GETUSER_Result
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public WORK()
-    {
+    public string ID { get; set; }
 
-        this.SESION_WORKER = new HashSet<SESION_WORKER>();
+    public string NICK { get; set; }
 
-    }
-
-
-    public int ID { get; set; }
+    public string PWD { get; set; }
 
     public string NAME { get; set; }
 
-
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<SESION_WORKER> SESION_WORKER { get; set; }
+    public string ROLE { get; set; }
 
 }
 
