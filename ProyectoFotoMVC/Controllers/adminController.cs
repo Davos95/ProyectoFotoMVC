@@ -10,33 +10,18 @@ namespace ProyectoFotoMVC.Controllers
 {
     public class adminController : Controller
     {
-        IRepositoryLogin repoLogin;
+
         IRepositoryPartner repoPartner;
         IRepositoryWork repoWork;
         
-        public adminController(IRepositoryLogin repoL, IRepositoryPartner repoP, IRepositoryWork repoW)
+        public adminController( IRepositoryPartner repoP, IRepositoryWork repoW)
         {
-            this.repoLogin = repoL;
             this.repoPartner = repoP;
             this.repoWork = repoW;
         }
 
         #region LOGIN
-        // GET: Login
-        public ActionResult login()
-        {
-            return View();
-        }
-        //POST: Login
-        [HttpPost]
-        public ActionResult login(String nick, String pwd)
-        {
-            if (repoLogin.GetLogin(nick,pwd))
-            {
-                return RedirectToAction("menu","admin");
-            }
-            return View();
-        }
+
         #endregion 
 
         public ActionResult menu()

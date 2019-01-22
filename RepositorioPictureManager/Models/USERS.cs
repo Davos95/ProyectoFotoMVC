@@ -14,14 +14,15 @@ namespace RepositorioPictureManager.Models
 
 using System;
     using System.Collections.Generic;
-    
-public partial class USERS
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class USERS
 {
 
     public int ID { get; set; }
-
+    [Required(ErrorMessage = "Debe de escribir un usuario")]
     public string NICK { get; set; }
-
+    [Required(ErrorMessage = "Debe de escribir una contraseña")]
     public string PWD { get; set; }
 
     public string NAME { get; set; }
