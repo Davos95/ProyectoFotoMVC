@@ -35,9 +35,18 @@ main {
     padding: 0px 24px 24px 24px !important;
 }
 
+/* Nav Dropdown */
 .dropdown-content {
     top: 64px !important;
 }
+.dropdown-content>li>a{
+    color: white;
+}
+
+.dropdown-content>li:hover {
+    background-color:rebeccapurple;
+}
+
 
 /* Tabla de Participantes  */
 .tbpar thead, .tbpar tbody {

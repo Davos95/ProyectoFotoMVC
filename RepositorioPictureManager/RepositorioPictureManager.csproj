@@ -49,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -128,6 +129,7 @@
     <Compile Include="Repositories\IRepositoryComision.cs" />
     <Compile Include="Repositories\IRepositoryLogin.cs" />
     <Compile Include="Repositories\RepositoryComision.cs" />
+    <Compile Include="Repositories\ToolImage.cs" />
     <Compile Include="Repositories\RepositoryLogin.cs" />
     <Compile Include="Repositories\RepositoryPartner.cs" />
     <Compile Include="Repositories\IRepositoryPartner.cs" />

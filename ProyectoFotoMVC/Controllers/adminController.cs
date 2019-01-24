@@ -3,6 +3,7 @@ using RepositorioPictureManager.Models;
 using RepositorioPictureManager.Repositories;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -86,6 +87,17 @@ namespace ProyectoFotoMVC.Controllers
         #region COMISION
         public ActionResult Comision()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Comision(HttpPostedFileBase photo)
+        {
+            if (photo != null && photo.ContentLength > 0)
+            {
+                String ruta = Server.MapPath("~/images/Comision");
+                //ToolImage.UploadImage(photo, ruta);
+                ToolImage.RemoveImage(photo, ruta);
+            }
             return View();
         }
         #endregion
