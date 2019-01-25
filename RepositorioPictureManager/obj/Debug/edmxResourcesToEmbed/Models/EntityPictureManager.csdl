@@ -6,7 +6,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-    <Property Name="PHOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PHOTO" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
     <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ORDERCOMISION" Type="Int32" />
     <Property Name="PRICE" Type="Double" />
@@ -56,10 +56,10 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="NICK" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="PWD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NICK" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="PWD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="ROLE" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="ROLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="WORK">
     <Key>
@@ -215,6 +215,12 @@
     <FunctionImport Name="GETUSER" EntitySet="USERS" ReturnType="Collection(pictureManagerModel.USERS)">
       <Parameter Name="NICK" Mode="In" Type="String" />
       <Parameter Name="PWD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="INSERTCOMISION">
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="DESCRIPTION" Mode="In" Type="String" />
+      <Parameter Name="PATH" Mode="In" Type="String" />
+      <Parameter Name="PRICE" Mode="In" Type="Double" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="MOSTRARPARTICIPANTES_Result">

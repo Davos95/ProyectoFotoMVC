@@ -6,10 +6,10 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NAME" Type="nvarchar" MaxLength="25" />
-    <Property Name="PHOTO" Type="image" />
     <Property Name="DESCRIPTION" Type="text" />
     <Property Name="ORDERCOMISION" Type="int" />
     <Property Name="PRICE" Type="float" />
+    <Property Name="PHOTO" Type="text" />
   </EntityType>
   <EntityType Name="PHOTO">
     <Key>
@@ -46,10 +46,10 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="NICK" Type="nvarchar" MaxLength="15" Nullable="false" />
-    <Property Name="PWD" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NICK" Type="nvarchar" MaxLength="15" />
+    <Property Name="PWD" Type="nvarchar" MaxLength="255" />
     <Property Name="NAME" Type="varchar" MaxLength="25" />
-    <Property Name="ROLE" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="ROLE" Type="nvarchar" MaxLength="25" />
   </EntityType>
   <EntityType Name="WORK">
     <Key>
@@ -155,16 +155,17 @@
   <Function Name="DELETETRABAJO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="int" Mode="In" />
   </Function>
-  <Function Name="GETLOGIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="NICK" Type="nvarchar" Mode="In" />
-    <Parameter Name="PWD" Type="nvarchar" Mode="In" />
-  </Function>
   <Function Name="GETUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NICK" Type="nvarchar" Mode="In" />
     <Parameter Name="PWD" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="INSERTCOMISION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+    <Parameter Name="DESCRIPTION" Type="text" Mode="In" />
+    <Parameter Name="PATH" Type="text" Mode="In" />
+    <Parameter Name="PRICE" Type="float" Mode="In" />
+  </Function>
   <Function Name="MOSTRARPARTICIPANTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="MOSTRARSESIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="MOSTRARTRABAJOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="UPDATEPARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="int" Mode="In" />

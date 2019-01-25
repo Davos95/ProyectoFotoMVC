@@ -16,11 +16,13 @@ namespace ProyectoFotoMVC.Controllers
 
         IRepositoryPartner repoPartner;
         IRepositoryWork repoWork;
-        
-        public adminController( IRepositoryPartner repoP, IRepositoryWork repoW)
+        IRepositoryComision repoComision;
+
+        public adminController( IRepositoryPartner repoP, IRepositoryWork repoW, IRepositoryComision repoCom)
         {
             this.repoPartner = repoP;
             this.repoWork = repoW;
+            this.repoComision = repoCom;
         }
 
         public ActionResult menu()
@@ -84,23 +86,7 @@ namespace ProyectoFotoMVC.Controllers
         }
         #endregion
 
-        #region COMISION
-        public ActionResult Comision()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Comision(HttpPostedFileBase photo)
-        {
-            if (photo != null && photo.ContentLength > 0)
-            {
-                String ruta = Server.MapPath("~/images/Comision");
-                //ToolImage.UploadImage(photo, ruta);
-                ToolImage.RemoveImage(photo, ruta);
-            }
-            return View();
-        }
-        #endregion
+
 
     }
 }
