@@ -57,18 +57,46 @@
                     $("#" + destinoCaja + ">.card-title").text(origenTitulo);
                     $("#" + origenCaja + ">.card-title").text(destinoTitulo);
 
+                    //Intercambio de inputs
+                    //Price
+                    var priceOrigen = $("#" + origenCaja + ">input[name=price]").val();
+                    var priceDestino = $("#" + destinoCaja + ">input[name=price]").val();
+                    $("#" + origenCaja + ">input[name=price]").val(priceDestino);
+                    $("#" + destinoCaja + ">input[name=price]").val(priceOrigen);
 
+                    //Description
+                    var descriptionOrigen = $("#" + origenCaja + ">input[name=description]").val();
+                    var descriptionDestino = $("#" + destinoCaja + ">input[name=description]").val();
+                    $("#" + origenCaja + ">input[name=description]").val(descriptionDestino);
+                    $("#" + destinoCaja + ">input[name=description]").val(descriptionOrigen);
 
-                    /*
-                    var valorOrigen = $("#" + origenCaja + ">input[type=checkbox]").val();
-                    var valorDestino = $(".box:nth-child(" + ($(this).index() + 1) + ")>input[type=checkbox]").val();
+                    //Intercambio de IDs
+                    var idOrigen = origenCaja;
+                    var idDestino = destinoCaja;
 
-                    $("#" + origenCaja + ">input[type=checkbox]").val(valorDestino);
-                    $(".box:nth-child(" + ($(this).index() + 1) + ")>input[type=checkbox]").val(valorOrigen);
-                    */
+                    var aux = "abcdefg"; //Auxiliar para que no se acoplen los ID
+                    $("#" + origenCaja).attr("id", aux);
+                    $("#" + destinoCaja).attr("id", idOrigen);
+                    $("#" + aux).attr("id", idDestino);
 
                     flag = true;
+                }).click(function () {
+                    var id = $(this).attr("id"); 
+                    var price = $("#" + id + ">input[name=price]").val();
+                    var description = $("#" + id + ">input[name=description]").val();
+                    console.log(price);
+                    console.log(description);
 
+                    //Poner valores de las comisiones en el formulario
+                    $("#formComision input[name=name]").focus();
+                    $("#formComision input[name=name]").val($("#" + id + ">.card-title").text().trim());
+
+                    $("#formComision textarea[name=description]").val(description);
+
+                    $("#formComision input[name=price]").focus();
+                    $("#formComision input[name=price]").val(price);
+
+                    $("#formComision input[name=price]").blur();
                 });
 
         });
@@ -92,7 +120,7 @@
         <div class="card">
             <div class="card-title center-align" style="margin:0 !important; padding: 0 !important">Comisión</div>
             <div class="card-content" style="padding-top: 0 !important">
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data" id="formComision">
                     <div class="input-field">
                         <input type="text" name="name" id="name" />
                         <label for="name">Nombre</label>
@@ -132,13 +160,15 @@
                 {
                     foreach (COMISION comision in Model)
                     {
-                    <div class="card">
+                    <div class="card" style="height:150px; width: 80%; margin: auto; margin-bottom:20px;">
                         <div class="card-image" >
                             <div class="box" id="@comision.ID">
-                                <img src="@Url.Content(comision.PHOTO)" style="height:150px;" draggable="true" />
+                                <img src="@Url.Content(comision.PHOTO)" style="height:150px;"  draggable="true" />
                                 <div class="card-title">
                                     @comision.NAME
                                 </div>
+                                <input type="text" name="price" value="@comision.PRICE" hidden />
+                                <input type="text" name="description" value="@comision.DESCRIPTION" hidden />
                             </div>
                         </div>
     
