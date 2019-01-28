@@ -1,4 +1,6 @@
-﻿using RepositorioPictureManager.Repositories;
+﻿using ProyectoFotoMVC.Atributes;
+using RepositorioPictureManager.Models;
+using RepositorioPictureManager.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ProyectoFotoMVC.Controllers
 {
+    [AuthorizeUser]
     public class ComisionController : Controller
     {
         IRepositoryComision repo;
@@ -16,7 +19,9 @@ namespace ProyectoFotoMVC.Controllers
         }
         public ActionResult Comision()
         {
-            return View();
+            List<COMISION> comisions = this.repo.GetCOMISIONS();
+            System.Diagnostics.Debug.WriteLine(comisions);
+            return View(comisions);
         }
 
         [HttpPost]
@@ -26,9 +31,12 @@ namespace ProyectoFotoMVC.Controllers
             {
                 String ruta = Server.MapPath("~/images/Comision");
                 ToolImage.UploadImage(photo, ruta);
-                repo.InsertComision(name, description, ruta, photo, price);
+                repo.InsertComision(name, description, "~/images/Comision", photo, price);
             }
-            return View();
+
+            List<COMISION> comisions = this.repo.GetCOMISIONS();
+            System.Diagnostics.Debug.WriteLine(comisions);
+            return View(comisions);
         }
         
     }

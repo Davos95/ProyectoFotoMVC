@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RepositorioPictureManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,6 @@ namespace RepositorioPictureManager.Repositories
     public interface IRepositoryComision
     {
         void InsertComision(String name, String description, String folder, HttpPostedFileBase image, float price);
+        List<COMISION> GetCOMISIONS();
     }
 }

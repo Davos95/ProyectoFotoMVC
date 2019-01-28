@@ -189,5 +189,15 @@ namespace RepositorioPictureManager.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERTCOMISION", nAMEParameter, dESCRIPTIONParameter, pATHParameter, pRICEParameter);
         }
+    
+        public virtual ObjectResult<COMISION> GETCOMISIONS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<COMISION>("GETCOMISIONS");
+        }
+    
+        public virtual ObjectResult<COMISION> GETCOMISIONS(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<COMISION>("GETCOMISIONS", mergeOption);
+        }
     }
 }

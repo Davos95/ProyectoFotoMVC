@@ -178,14 +178,14 @@
     <Content Include="Views\login\login.cshtml" />
     <Content Include="Views\admin\menu.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
-    <Content Include="Views\admin\Partners.cshtml" />
+    <Content Include="Views\PartnerWork\Partners.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Views\admin\Works.cshtml" />
+    <Content Include="Views\PartnerWork\Works.cshtml" />
     <Content Include="Views\admin\Sesion.cshtml" />
-    <Content Include="Views\admin\Comision.cshtml" />
+    <Content Include="Views\Comision\Comision.cshtml" />
     <Content Include="Views\login\ErrorAcceso.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -198,8 +198,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="images\Comision\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Comision\" />
-    <Folder Include="Views\PartnerWork\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

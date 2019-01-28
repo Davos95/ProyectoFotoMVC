@@ -22,7 +22,11 @@ AS
 	INSERT INTO COMISION VALUES(@NAME,@DESCRIPTION, @ORDERCOMISION,@PRICE,@PATH)
 
 GO
-     
+
+CREATE PROCEDURE GETCOMISIONS
+AS
+	SELECT * FROM COMISION;
+GO 
 */
 #endregion
 
@@ -41,6 +45,11 @@ namespace RepositorioPictureManager.Repositories
             String path = Path.Combine(folder, Path.GetFileName(image.FileName));
             entity.INSERTCOMISION(name, description, path, price);
         } 
+        public List<COMISION> GetCOMISIONS()
+        {
+            var comisions = this.entity.GETCOMISIONS().ToList();
+            return comisions;
+        }
 
     }
 }

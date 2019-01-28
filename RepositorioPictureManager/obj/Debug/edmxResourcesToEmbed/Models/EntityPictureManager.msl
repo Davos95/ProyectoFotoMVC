@@ -83,5 +83,6 @@
     <FunctionImportMapping FunctionImportName="DELETETRABAJO" FunctionName="pictureManagerModel.Store.DELETETRABAJO" />
     <FunctionImportMapping FunctionImportName="GETUSER" FunctionName="pictureManagerModel.Store.GETUSER" />
     <FunctionImportMapping FunctionImportName="INSERTCOMISION" FunctionName="pictureManagerModel.Store.INSERTCOMISION" />
+    <FunctionImportMapping FunctionImportName="GETCOMISIONS" FunctionName="pictureManagerModel.Store.GETCOMISIONS" />
   </EntityContainerMapping>
 </Mapping>

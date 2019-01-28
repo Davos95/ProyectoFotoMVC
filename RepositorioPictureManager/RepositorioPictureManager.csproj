@@ -95,6 +95,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Models\GETCOMISIONS_Result.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GETUSER_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>

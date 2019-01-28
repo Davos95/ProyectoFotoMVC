@@ -1,0 +1,57 @@
+﻿@using RepositorioPictureManager.Models
+@model List<WORK>
+@{
+    ViewBag.Title = "Works";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section events {
+    <script>
+        $(document).ready(function () {
+            $("tr").click(function () {
+                if ($(this).css("background-color") == "rgb(255, 0, 0)") {
+                    $("tr").css("background-color", "white");
+                    $("#id").val(" ");
+                } else {
+                    $("tr").css("background-color", "white");
+                    $(this).css("background-color", "red");
+                    $("#id").val($(this).find("td")[1].textContent);
+                }
+            });
+        });
+    </script>
+}
+
+
+    <div class="row">
+        <div class="card col s12 m4 l4 xl3 offset-m1 offset-l1 offset-xl1">
+            <div class="card-title center-align">Nuevo Trabajo</div>
+            <form method="post">
+                <div class="input-field">
+                    <input type="text" name="work" id="work" />
+                    <label for="work">Nombre del trabajo</label>
+                </div>
+                <div class="input-field">
+                    <button type="submit" name="option" value="0" class="btn waves-effect waves-darken green">Añadir</button>
+                    <button type="submit" name="option" value="1" class="btn waves-effect waves-darken red">Eliminar</button>
+                </div>
+                <input type="number" name="id" id="id" hidden />
+            </form>
+        </div>
+        <div class="card col s12 m4 l4 xl3 offset-m2 offset-l2 offset-xl2">
+            <div class="card-title center-align">Trabajos</div>
+            <div class="card-content">
+                <table>
+                    <tbody>
+                        @foreach (WORK w in Model)
+                        {
+                            <tr>
+                                <td>@w.NAME</td>
+                                <td hidden>@w.ID</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

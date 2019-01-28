@@ -160,6 +160,7 @@
         <Function Name="DELETETRABAJO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="GETCOMISIONS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GETUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NICK" Type="nvarchar" Mode="In" />
           <Parameter Name="PWD" Type="nvarchar" Mode="In" />
@@ -437,6 +438,7 @@
             <Parameter Name="PATH" Mode="In" Type="String" />
             <Parameter Name="PRICE" Mode="In" Type="Double" />
           </FunctionImport>
+          <FunctionImport Name="GETCOMISIONS" EntitySet="COMISION" ReturnType="Collection(pictureManagerModel.COMISION)" />
         </EntityContainer>
         <ComplexType Name="MOSTRARPARTICIPANTES_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -462,6 +464,14 @@
           <Property Type="String" Name="PWD" Nullable="false" MaxLength="255" />
           <Property Type="String" Name="NAME" Nullable="true" MaxLength="25" />
           <Property Type="String" Name="ROLE" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="GETCOMISIONS_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="ORDERCOMISION" Nullable="true" />
+          <Property Type="Double" Name="PRICE" Nullable="true" />
+          <Property Type="String" Name="PHOTO" Nullable="true" MaxLength="Max" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -554,6 +564,8 @@
           <FunctionImportMapping FunctionImportName="GETUSER" FunctionName="pictureManagerModel.Store.GETUSER">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="INSERTCOMISION" FunctionName="pictureManagerModel.Store.INSERTCOMISION" />
+          <FunctionImportMapping FunctionImportName="GETCOMISIONS" FunctionName="pictureManagerModel.Store.GETCOMISIONS">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
