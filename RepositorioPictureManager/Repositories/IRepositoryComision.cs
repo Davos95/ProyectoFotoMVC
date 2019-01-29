@@ -10,7 +10,10 @@ namespace RepositorioPictureManager.Repositories
 {
     public interface IRepositoryComision
     {
-        void InsertComision(String name, String description, String folder, HttpPostedFileBase image, float price);
         List<COMISION> GetCOMISIONS();
+        void InsertComision(String name, String description, String folder, HttpPostedFileBase image, float price);
+        void DeleteComision(int id, String folder);
+
+
     }
 }

@@ -25,14 +25,26 @@ namespace ProyectoFotoMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Comision(String name, String description, HttpPostedFileBase photo, float price)
+        public ActionResult Comision(String name, String description, HttpPostedFileBase photo, float price, int? id, int option)
         {
-            if (photo != null && photo.ContentLength > 0)
+            String ruta = Server.MapPath("~/images/Comision");
+            if (option == 0)
             {
-                String ruta = Server.MapPath("~/images/Comision");
-                ToolImage.UploadImage(photo, ruta);
-                repo.InsertComision(name, description, "~/images/Comision", photo, price);
+                if (photo != null && photo.ContentLength > 0)
+                {
+                    
+                    ToolImage.UploadImage(photo, ruta);
+                    repo.InsertComision(name, description, "~/images/Comision", photo, price);
+                }
+            } else if(option == 1)
+            {
+
+            } else if (option == 2)
+            {
+                repo.DeleteComision(id.Value, ruta);
             }
+            
+            
 
             List<COMISION> comisions = this.repo.GetCOMISIONS();
             System.Diagnostics.Debug.WriteLine(comisions);

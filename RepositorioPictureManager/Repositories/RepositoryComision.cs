@@ -28,6 +28,12 @@ AS
 	SELECT * FROM COMISION;
 GO 
 
+CREATE PROCEDURE DELETECOMISION
+(@ID INT)
+AS
+	DELETE FROM COMISION
+	WHERE ID = @ID;
+GO
 
 */
 #endregion
@@ -53,5 +59,20 @@ namespace RepositorioPictureManager.Repositories
             return comisions;
         }
 
+        public void DeleteComision(int id, String folder)
+        {
+            COMISION comision = GetComisionByID(id);
+            String file = comision.PHOTO.Split('\\')[1];
+            File.Delete(folder+"\\"+file);
+            this.entity.DELETECOMISION(id);
+        }
+
+        private COMISION GetComisionByID(int id)
+        {
+            var comisions = GetCOMISIONS().Where(x => x.ID == id);
+            return comisions.FirstOrDefault();
+        }
+
+        
     }
 }

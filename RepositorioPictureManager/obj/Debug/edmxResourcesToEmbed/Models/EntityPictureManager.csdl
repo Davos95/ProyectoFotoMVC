@@ -223,6 +223,9 @@
       <Parameter Name="PRICE" Mode="In" Type="Double" />
     </FunctionImport>
     <FunctionImport Name="GETCOMISIONS" EntitySet="COMISION" ReturnType="Collection(pictureManagerModel.COMISION)" />
+    <FunctionImport Name="DELETECOMISION">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="MOSTRARPARTICIPANTES_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />

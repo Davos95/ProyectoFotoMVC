@@ -97,6 +97,9 @@
                     $("#formComision input[name=price]").val(price);
 
                     $("#formComision input[name=price]").blur();
+
+                    $("#formComision input[name=id]").val(id);
+
                 });
 
         });
@@ -143,6 +146,7 @@
                     <div class="input-field">
                         <input type="number" name="price" id="price" min="0" style="width: 150px" /> &nbsp; €
                         <label for="price">Precio</label>
+                        <input type="hidden" name="id" value="" />
                     </div>
                     <div class="input-field">
                         <button type="submit" name="option" value="0" class="btn waves-effect waves-darken green">Añadir</button>
@@ -171,9 +175,7 @@
                                 <input type="text" name="description" value="@comision.DESCRIPTION" hidden />
                             </div>
                         </div>
-    
                     </div>
-                        
                     }
                 }
 

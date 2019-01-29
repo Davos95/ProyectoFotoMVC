@@ -11,6 +11,17 @@ namespace ProyectoFotoMVC
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+
+            //routes.MapRoute(
+            //    name: "EliminarEnfermo",
+            //    url: "Enfermos/Delete/{inscripcion}/{}",
+            //    defaults: new {
+
+            //        controller = "Enfermos",
+            //        action = "EliminarEnfermo"
+            //    },
+            //    constraints: new { httpMethod = new HttpMethodConstraint("POST") });
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(

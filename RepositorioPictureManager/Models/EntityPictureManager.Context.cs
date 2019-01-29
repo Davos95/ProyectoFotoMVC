@@ -199,5 +199,14 @@ namespace RepositorioPictureManager.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<COMISION>("GETCOMISIONS", mergeOption);
         }
+    
+        public virtual int DELETECOMISION(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETECOMISION", iDParameter);
+        }
     }
 }
