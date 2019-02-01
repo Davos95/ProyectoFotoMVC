@@ -18,7 +18,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-    <Property Name="PICTURE" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PICTURE" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
     <Property Name="IDSESION" Type="Int32" />
     <Property Name="ORDERPHOTO" Type="Int32" />
     <NavigationProperty Name="SESION" Relationship="Self.FK__PHOTO__IDSESION__3E52440B" FromRole="PHOTO" ToRole="SESION" />
@@ -56,10 +56,10 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="NICK" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-    <Property Name="PWD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="ROLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="NICK" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PWD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ROLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
   <EntityType Name="WORK">
     <Key>
@@ -208,14 +208,6 @@
       <Parameter Name="ID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="MOSTRARSESIONES" EntitySet="SESION" ReturnType="Collection(pictureManagerModel.SESION)" />
-    <FunctionImport Name="GETLOGIN" ReturnType="Collection(Int32)">
-      <Parameter Name="NICK" Mode="In" Type="String" />
-      <Parameter Name="PWD" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="GETUSER" EntitySet="USERS" ReturnType="Collection(pictureManagerModel.USERS)">
-      <Parameter Name="NICK" Mode="In" Type="String" />
-      <Parameter Name="PWD" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="INSERTCOMISION">
       <Parameter Name="NAME" Mode="In" Type="String" />
       <Parameter Name="DESCRIPTION" Mode="In" Type="String" />
@@ -225,6 +217,17 @@
     <FunctionImport Name="GETCOMISIONS" EntitySet="COMISION" ReturnType="Collection(pictureManagerModel.COMISION)" />
     <FunctionImport Name="DELETECOMISION">
       <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="MODIFYSESSION">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="PHOTO" Mode="In" Type="String" />
+      <Parameter Name="DESCRIPTION" Mode="In" Type="String" />
+      <Parameter Name="PRICE" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="GETUSER" EntitySet="USERS" ReturnType="Collection(pictureManagerModel.USERS)">
+      <Parameter Name="NICK" Mode="In" Type="String" />
+      <Parameter Name="PWD" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="MOSTRARPARTICIPANTES_Result">
@@ -259,5 +262,12 @@
     <Property Type="Int32" Name="ORDERCOMISION" Nullable="true" />
     <Property Type="Double" Name="PRICE" Nullable="true" />
     <Property Type="String" Name="PHOTO" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="GETUSER_Result1">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="NICK" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="PWD" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="NAME" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="ROLE" Nullable="false" MaxLength="25" />
   </ComplexType>
 </Schema>

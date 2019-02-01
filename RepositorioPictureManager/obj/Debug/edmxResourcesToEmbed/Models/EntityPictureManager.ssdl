@@ -17,7 +17,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NAME" Type="nvarchar" MaxLength="25" />
-    <Property Name="PICTURE" Type="image" />
+    <Property Name="PICTURE" Type="text" />
     <Property Name="IDSESION" Type="int" />
     <Property Name="ORDERPHOTO" Type="int" />
   </EntityType>
@@ -46,10 +46,10 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="NICK" Type="nvarchar" MaxLength="15" />
-    <Property Name="PWD" Type="nvarchar" MaxLength="255" />
-    <Property Name="NAME" Type="varchar" MaxLength="25" />
-    <Property Name="ROLE" Type="nvarchar" MaxLength="25" />
+    <Property Name="NICK" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="PWD" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ROLE" Type="nvarchar" MaxLength="25" Nullable="false" />
   </EntityType>
   <EntityType Name="WORK">
     <Key>
@@ -67,7 +67,7 @@
     <Property Name="CONTACT" Type="nvarchar" MaxLength="30" />
     <Property Name="URLCONTACT" Type="nvarchar" MaxLength="255" />
   </EntityType>
-  <Association Name="FK__PHOTO__IDSESION__3E52440B">
+  <Association Name="FK__PHOTO__IDSESION__3F466844">
     <End Role="SESION" Type="Self.SESION" Multiplicity="0..1" />
     <End Role="PHOTO" Type="Self.PHOTO" Multiplicity="*" />
     <ReferentialConstraint>
@@ -79,7 +79,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SESION__IDCOMISI__3B75D760">
+  <Association Name="FK__SESION__IDCOMISI__3C69FB99">
     <End Role="COMISION" Type="Self.COMISION" Multiplicity="0..1" />
     <End Role="SESION" Type="Self.SESION" Multiplicity="*" />
     <ReferentialConstraint>
@@ -91,7 +91,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SESION__IDPHOTO__3F466844">
+  <Association Name="FK__SESION__IDPHOTO__403A8C7D">
     <End Role="PHOTO" Type="Self.PHOTO" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -105,7 +105,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SESION_WO__IDSES__45F365D3">
+  <Association Name="FK__SESION_WO__IDSES__46E78A0C">
     <End Role="SESION" Type="Self.SESION" Multiplicity="1" />
     <End Role="SESION_WORKER" Type="Self.SESION_WORKER" Multiplicity="*" />
     <ReferentialConstraint>
@@ -117,7 +117,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SESION_WO__IDWOR__46E78A0C">
+  <Association Name="FK__SESION_WO__IDWOR__47DBAE45">
     <End Role="WORKER" Type="Self.WORKER" Multiplicity="1" />
     <End Role="SESION_WORKER" Type="Self.SESION_WORKER" Multiplicity="*" />
     <ReferentialConstraint>
@@ -129,7 +129,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SESION_WO__IDWOR__47DBAE45">
+  <Association Name="FK__SESION_WO__IDWOR__48CFD27E">
     <End Role="WORK" Type="Self.WORK" Multiplicity="0..1" />
     <End Role="SESION_WORKER" Type="Self.SESION_WORKER" Multiplicity="*" />
     <ReferentialConstraint>
@@ -159,6 +159,10 @@
     <Parameter Name="ID" Type="int" Mode="In" />
   </Function>
   <Function Name="GETCOMISIONS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GETLOGIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NICK" Type="nvarchar" Mode="In" />
+    <Parameter Name="PWD" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="GETUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NICK" Type="nvarchar" Mode="In" />
     <Parameter Name="PWD" Type="nvarchar" Mode="In" />
@@ -167,6 +171,13 @@
     <Parameter Name="NAME" Type="nvarchar" Mode="In" />
     <Parameter Name="DESCRIPTION" Type="text" Mode="In" />
     <Parameter Name="PATH" Type="text" Mode="In" />
+    <Parameter Name="PRICE" Type="float" Mode="In" />
+  </Function>
+  <Function Name="MODIFYSESSION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+    <Parameter Name="PHOTO" Type="text" Mode="In" />
+    <Parameter Name="DESCRIPTION" Type="text" Mode="In" />
     <Parameter Name="PRICE" Type="float" Mode="In" />
   </Function>
   <Function Name="MOSTRARPARTICIPANTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -185,27 +196,27 @@
     <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WORK" EntityType="Self.WORK" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WORKER" EntityType="Self.WORKER" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__PHOTO__IDSESION__3E52440B" Association="Self.FK__PHOTO__IDSESION__3E52440B">
+    <AssociationSet Name="FK__PHOTO__IDSESION__3F466844" Association="Self.FK__PHOTO__IDSESION__3F466844">
       <End Role="SESION" EntitySet="SESION" />
       <End Role="PHOTO" EntitySet="PHOTO" />
     </AssociationSet>
-    <AssociationSet Name="FK__SESION__IDCOMISI__3B75D760" Association="Self.FK__SESION__IDCOMISI__3B75D760">
+    <AssociationSet Name="FK__SESION__IDCOMISI__3C69FB99" Association="Self.FK__SESION__IDCOMISI__3C69FB99">
       <End Role="COMISION" EntitySet="COMISION" />
       <End Role="SESION" EntitySet="SESION" />
     </AssociationSet>
-    <AssociationSet Name="FK__SESION__IDPHOTO__3F466844" Association="Self.FK__SESION__IDPHOTO__3F466844">
+    <AssociationSet Name="FK__SESION__IDPHOTO__403A8C7D" Association="Self.FK__SESION__IDPHOTO__403A8C7D">
       <End Role="PHOTO" EntitySet="PHOTO" />
       <End Role="SESION" EntitySet="SESION" />
     </AssociationSet>
-    <AssociationSet Name="FK__SESION_WO__IDSES__45F365D3" Association="Self.FK__SESION_WO__IDSES__45F365D3">
+    <AssociationSet Name="FK__SESION_WO__IDSES__46E78A0C" Association="Self.FK__SESION_WO__IDSES__46E78A0C">
       <End Role="SESION" EntitySet="SESION" />
       <End Role="SESION_WORKER" EntitySet="SESION_WORKER" />
     </AssociationSet>
-    <AssociationSet Name="FK__SESION_WO__IDWOR__46E78A0C" Association="Self.FK__SESION_WO__IDWOR__46E78A0C">
+    <AssociationSet Name="FK__SESION_WO__IDWOR__47DBAE45" Association="Self.FK__SESION_WO__IDWOR__47DBAE45">
       <End Role="WORKER" EntitySet="WORKER" />
       <End Role="SESION_WORKER" EntitySet="SESION_WORKER" />
     </AssociationSet>
-    <AssociationSet Name="FK__SESION_WO__IDWOR__47DBAE45" Association="Self.FK__SESION_WO__IDWOR__47DBAE45">
+    <AssociationSet Name="FK__SESION_WO__IDWOR__48CFD27E" Association="Self.FK__SESION_WO__IDWOR__48CFD27E">
       <End Role="WORK" EntitySet="WORK" />
       <End Role="SESION_WORKER" EntitySet="SESION_WORKER" />
     </AssociationSet>

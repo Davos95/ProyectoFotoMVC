@@ -130,45 +130,6 @@ namespace RepositorioPictureManager.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("MOSTRARSESIONES", mergeOption);
         }
     
-        public virtual ObjectResult<Nullable<int>> GETLOGIN(string nICK, string pWD)
-        {
-            var nICKParameter = nICK != null ?
-                new ObjectParameter("NICK", nICK) :
-                new ObjectParameter("NICK", typeof(string));
-    
-            var pWDParameter = pWD != null ?
-                new ObjectParameter("PWD", pWD) :
-                new ObjectParameter("PWD", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GETLOGIN", nICKParameter, pWDParameter);
-        }
-    
-        public virtual ObjectResult<USERS> GETUSER(string nICK, string pWD)
-        {
-            var nICKParameter = nICK != null ?
-                new ObjectParameter("NICK", nICK) :
-                new ObjectParameter("NICK", typeof(string));
-    
-            var pWDParameter = pWD != null ?
-                new ObjectParameter("PWD", pWD) :
-                new ObjectParameter("PWD", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USERS>("GETUSER", nICKParameter, pWDParameter);
-        }
-    
-        public virtual ObjectResult<USERS> GETUSER(string nICK, string pWD, MergeOption mergeOption)
-        {
-            var nICKParameter = nICK != null ?
-                new ObjectParameter("NICK", nICK) :
-                new ObjectParameter("NICK", typeof(string));
-    
-            var pWDParameter = pWD != null ?
-                new ObjectParameter("PWD", pWD) :
-                new ObjectParameter("PWD", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USERS>("GETUSER", mergeOption, nICKParameter, pWDParameter);
-        }
-    
         public virtual int INSERTCOMISION(string nAME, string dESCRIPTION, string pATH, Nullable<double> pRICE)
         {
             var nAMEParameter = nAME != null ?
@@ -207,6 +168,57 @@ namespace RepositorioPictureManager.Models
                 new ObjectParameter("ID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETECOMISION", iDParameter);
+        }
+    
+        public virtual int MODIFYSESSION(Nullable<int> iD, string nAME, string pHOTO, string dESCRIPTION, Nullable<double> pRICE)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var nAMEParameter = nAME != null ?
+                new ObjectParameter("NAME", nAME) :
+                new ObjectParameter("NAME", typeof(string));
+    
+            var pHOTOParameter = pHOTO != null ?
+                new ObjectParameter("PHOTO", pHOTO) :
+                new ObjectParameter("PHOTO", typeof(string));
+    
+            var dESCRIPTIONParameter = dESCRIPTION != null ?
+                new ObjectParameter("DESCRIPTION", dESCRIPTION) :
+                new ObjectParameter("DESCRIPTION", typeof(string));
+    
+            var pRICEParameter = pRICE.HasValue ?
+                new ObjectParameter("PRICE", pRICE) :
+                new ObjectParameter("PRICE", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFYSESSION", iDParameter, nAMEParameter, pHOTOParameter, dESCRIPTIONParameter, pRICEParameter);
+        }
+    
+        public virtual ObjectResult<USERS> GETUSER(string nICK, string pWD)
+        {
+            var nICKParameter = nICK != null ?
+                new ObjectParameter("NICK", nICK) :
+                new ObjectParameter("NICK", typeof(string));
+    
+            var pWDParameter = pWD != null ?
+                new ObjectParameter("PWD", pWD) :
+                new ObjectParameter("PWD", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USERS>("GETUSER", nICKParameter, pWDParameter);
+        }
+    
+        public virtual ObjectResult<USERS> GETUSER(string nICK, string pWD, MergeOption mergeOption)
+        {
+            var nICKParameter = nICK != null ?
+                new ObjectParameter("NICK", nICK) :
+                new ObjectParameter("NICK", typeof(string));
+    
+            var pWDParameter = pWD != null ?
+                new ObjectParameter("PWD", pWD) :
+                new ObjectParameter("PWD", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USERS>("GETUSER", mergeOption, nICKParameter, pWDParameter);
         }
     }
 }

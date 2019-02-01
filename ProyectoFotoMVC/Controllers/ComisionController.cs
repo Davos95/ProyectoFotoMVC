@@ -38,7 +38,7 @@ namespace ProyectoFotoMVC.Controllers
                 }
             } else if(option == 1)
             {
-
+                repo.ModifyComision(id.Value, name, description, ruta, photo, price);
             } else if (option == 2)
             {
                 repo.DeleteComision(id.Value, ruta);

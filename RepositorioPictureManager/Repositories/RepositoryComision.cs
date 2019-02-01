@@ -35,6 +35,28 @@ AS
 	WHERE ID = @ID;
 GO
 
+    CREATE PROCEDURE MODIFYSESSION
+(@ID INT, @NAME nvarchar(25), @PHOTO text, @DESCRIPTION TEXT, @PRICE float)
+AS
+	IF(@PHOTO IS NULL)
+	BEGIN
+		UPDATE COMISION
+		SET NAME = @NAME,
+		DESCRIPTION = @DESCRIPTION,
+		PRICE = @PRICE
+		WHERE ID = @ID;
+	END
+	ELSE
+	BEGIN
+		UPDATE COMISION
+			SET NAME = @NAME,
+			PHOTO = @PHOTO,
+			DESCRIPTION = @DESCRIPTION,
+			PRICE = @PRICE
+			WHERE ID = @ID;
+	END
+GO
+
 */
 #endregion
 
@@ -73,6 +95,18 @@ namespace RepositorioPictureManager.Repositories
             return comisions.FirstOrDefault();
         }
 
-        
+        public void ModifyComision(int id, String name, String description, String folder, HttpPostedFileBase image, float price)
+        {
+            String img;
+            if(image == null)
+            {
+                img = null;
+                
+            } else
+            {
+                img = image.FileName;
+            }
+            this.entity.MODIFYSESSION(id, name, img, description, price);
+        }
     }
 }

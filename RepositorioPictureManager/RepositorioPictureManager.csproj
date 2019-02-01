@@ -101,6 +101,9 @@
     <Compile Include="Models\GETUSER_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GETUSER_Result1.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MOSTRARPARTICIPANTES_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>

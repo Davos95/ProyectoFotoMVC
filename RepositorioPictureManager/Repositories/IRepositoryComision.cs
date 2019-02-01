@@ -13,7 +13,7 @@ namespace RepositorioPictureManager.Repositories
         List<COMISION> GetCOMISIONS();
         void InsertComision(String name, String description, String folder, HttpPostedFileBase image, float price);
         void DeleteComision(int id, String folder);
-
+        void ModifyComision(int id, String name, String description, String folder, HttpPostedFileBase image, float price);
 
     }
 }

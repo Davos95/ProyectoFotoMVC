@@ -81,9 +81,10 @@
     <FunctionImportMapping FunctionImportName="UPDATEPARTICIPANTE" FunctionName="pictureManagerModel.Store.UPDATEPARTICIPANTE" />
     <FunctionImportMapping FunctionImportName="ADDTRABAJO" FunctionName="pictureManagerModel.Store.ADDTRABAJO" />
     <FunctionImportMapping FunctionImportName="DELETETRABAJO" FunctionName="pictureManagerModel.Store.DELETETRABAJO" />
-    <FunctionImportMapping FunctionImportName="GETUSER" FunctionName="pictureManagerModel.Store.GETUSER" />
     <FunctionImportMapping FunctionImportName="INSERTCOMISION" FunctionName="pictureManagerModel.Store.INSERTCOMISION" />
     <FunctionImportMapping FunctionImportName="GETCOMISIONS" FunctionName="pictureManagerModel.Store.GETCOMISIONS" />
     <FunctionImportMapping FunctionImportName="DELETECOMISION" FunctionName="pictureManagerModel.Store.DELETECOMISION" />
+    <FunctionImportMapping FunctionImportName="MODIFYSESSION" FunctionName="pictureManagerModel.Store.MODIFYSESSION" />
+    <FunctionImportMapping FunctionImportName="GETUSER" FunctionName="pictureManagerModel.Store.GETUSER" />
   </EntityContainerMapping>
 </Mapping>

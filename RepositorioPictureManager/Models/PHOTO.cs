@@ -22,7 +22,7 @@ namespace RepositorioPictureManager.Models
     
         public int ID { get; set; }
         public string NAME { get; set; }
-        public byte[] PICTURE { get; set; }
+        public string PICTURE { get; set; }
         public Nullable<int> IDSESION { get; set; }
         public Nullable<int> ORDERPHOTO { get; set; }
     

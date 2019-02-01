@@ -71,10 +71,10 @@ namespace ProyectoFotoMVC.Controllers
             {
                 this.repoW.InsertWork(work);
             }
-            //else if (option == 1)
-            //{
-            //    this.repoW.DeleteWork(id.Value);
-            //}
+            else if (option == 1)
+            {
+                this.repoW.DeleteWork(id.Value);
+            }
 
             List<WORK> works = this.repoW.GetWORKs();
             return View(works);
