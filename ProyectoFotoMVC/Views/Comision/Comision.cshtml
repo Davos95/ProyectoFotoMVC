@@ -101,8 +101,19 @@
 
             $("#btnOrdenar").click(function () {
                 var arrayId = $(".box");
+                var arrayId = [];
                 $.each($(".box"), function (index, value) {
-                    console.log(value);
+                    arrayId.push($(value).attr('id'));
+                });
+                console.log(arrayId);
+                var json = { order: arrayId };
+                $.ajax({
+                    method: "POST",
+                    url: "/Comision/OrderComision",
+                    data: json,
+                    success: function (data) {
+                        M.toast({ html: '¡Se han ordenado correctamente!' })
+                    }
                 });
             });
         });
@@ -181,10 +192,9 @@
                     </div>
                     }
                 }
-
             </div>
         </div>
-        <button id="btnOrdenar" type="button">Ordenar</button>
+        <button id="btnOrdenar" type="button" class="btn waves-effect waves-darken green">Ordenar</button>
     </div>
 </div>
 

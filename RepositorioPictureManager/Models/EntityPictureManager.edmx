@@ -178,6 +178,10 @@
           <Parameter Name="PATH" Type="text" Mode="In" />
           <Parameter Name="PRICE" Type="float" Mode="In" />
         </Function>
+        <Function Name="MODIFYORDERCOMISION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="ORDER" Type="int" Mode="In" />
+        </Function>
         <Function Name="MODIFYSESSION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
           <Parameter Name="NAME" Type="nvarchar" Mode="In" />
@@ -459,6 +463,10 @@
             <Parameter Name="NICK" Mode="In" Type="String" />
             <Parameter Name="PWD" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="MODIFYORDERCOMISION">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="ORDER" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="MOSTRARPARTICIPANTES_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -595,6 +603,7 @@
           <FunctionImportMapping FunctionImportName="MODIFYSESSION" FunctionName="pictureManagerModel.Store.MODIFYSESSION" />
           <FunctionImportMapping FunctionImportName="GETUSER" FunctionName="pictureManagerModel.Store.GETUSER">
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MODIFYORDERCOMISION" FunctionName="pictureManagerModel.Store.MODIFYORDERCOMISION" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

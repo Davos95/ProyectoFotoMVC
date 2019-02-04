@@ -38,18 +38,21 @@ namespace ProyectoFotoMVC.Controllers
                 }
             } else if(option == 1)
             {
-                repo.ModifyComision(id.Value, name, description, ruta, photo, price);
+                repo.ModifyComision(id.Value, name, description, ruta , "~/images/Comision", photo, price);
             } else if (option == 2)
             {
                 repo.DeleteComision(id.Value, ruta);
             }
             
-            
-
             List<COMISION> comisions = this.repo.GetCOMISIONS();
             System.Diagnostics.Debug.WriteLine(comisions);
             return View(comisions);
         }
         
+        
+        public void OrderComision(String[] order)
+        {
+            this.repo.OrderComision(order);
+        }
     }
 }

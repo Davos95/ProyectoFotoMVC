@@ -15,9 +15,9 @@ namespace RepositorioPictureManager.Repositories
             String path = Path.Combine(folder, Path.GetFileName(image.FileName));
             image.SaveAs(path);
         }
-        public static void RemoveImage(HttpPostedFileBase image, String folder)
+        public static void RemoveImage(String image, String folder)
         {
-            String path = Path.Combine(folder, Path.GetFileName(image.FileName));
+            String path = Path.Combine(folder, Path.GetFileName(image));
             File.Delete(path);
         }
     }

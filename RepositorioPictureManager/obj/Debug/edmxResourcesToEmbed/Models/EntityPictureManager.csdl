@@ -229,6 +229,10 @@
       <Parameter Name="NICK" Mode="In" Type="String" />
       <Parameter Name="PWD" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="MODIFYORDERCOMISION">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="ORDER" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="MOSTRARPARTICIPANTES_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />

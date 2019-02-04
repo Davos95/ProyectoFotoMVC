@@ -173,6 +173,10 @@
     <Parameter Name="PATH" Type="text" Mode="In" />
     <Parameter Name="PRICE" Type="float" Mode="In" />
   </Function>
+  <Function Name="MODIFYORDERCOMISION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ORDER" Type="int" Mode="In" />
+  </Function>
   <Function Name="MODIFYSESSION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="int" Mode="In" />
     <Parameter Name="NAME" Type="nvarchar" Mode="In" />

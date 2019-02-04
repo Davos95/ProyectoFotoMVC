@@ -25,7 +25,9 @@ GO
 
 CREATE PROCEDURE GETCOMISIONS
 AS
-	SELECT * FROM COMISION;
+	SELECT * 
+	FROM COMISION
+	order by ORDERCOMISION;
 GO 
 
 CREATE PROCEDURE DELETECOMISION
@@ -55,6 +57,14 @@ AS
 			PRICE = @PRICE
 			WHERE ID = @ID;
 	END
+GO
+
+CREATE PROCEDURE MODIFYORDERCOMISION
+(@ID INT, @ORDER INT)
+AS
+	UPDATE COMISION 
+	SET ORDERCOMISION = @ORDER 
+	WHERE ID = @ID;
 GO
 
 */
@@ -89,13 +99,13 @@ namespace RepositorioPictureManager.Repositories
             this.entity.DELETECOMISION(id);
         }
 
-        private COMISION GetComisionByID(int id)
+        public COMISION GetComisionByID(int id)
         {
             var comisions = GetCOMISIONS().Where(x => x.ID == id);
             return comisions.FirstOrDefault();
         }
 
-        public void ModifyComision(int id, String name, String description, String folder, HttpPostedFileBase image, float price)
+        public void ModifyComision(int id, String name, String description, String route, String folder, HttpPostedFileBase image, float price)
         {
             String img;
             if(image == null)
@@ -104,9 +114,24 @@ namespace RepositorioPictureManager.Repositories
                 
             } else
             {
-                img = image.FileName;
+                COMISION comision = GetComisionByID(id);
+                String photoRemove = comision.PHOTO.Split('\\')[1];
+                ToolImage.RemoveImage(photoRemove, route);
+                ToolImage.UploadImage(image, route);
+
+                img = folder + "\\" + image.FileName;
             }
             this.entity.MODIFYSESSION(id, name, img, description, price);
+        }
+
+        public void OrderComision(String [] order)
+        {
+            int numOrder = 0;
+            foreach (String value in order)
+            {
+                this.entity.MODIFYORDERCOMISION(int.Parse(value), numOrder);
+                numOrder++;
+            }
         }
     }
 }

@@ -220,5 +220,18 @@ namespace RepositorioPictureManager.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USERS>("GETUSER", mergeOption, nICKParameter, pWDParameter);
         }
+    
+        public virtual int MODIFYORDERCOMISION(Nullable<int> iD, Nullable<int> oRDER)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var oRDERParameter = oRDER.HasValue ?
+                new ObjectParameter("ORDER", oRDER) :
+                new ObjectParameter("ORDER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFYORDERCOMISION", iDParameter, oRDERParameter);
+        }
     }
 }
