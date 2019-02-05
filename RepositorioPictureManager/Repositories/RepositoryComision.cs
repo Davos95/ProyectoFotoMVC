@@ -80,15 +80,24 @@ namespace RepositorioPictureManager.Repositories
             this.entity = entity;
         }
 
-        public void InsertComision(String name, String description, String folder, HttpPostedFileBase image, float price)
-        {
-            String path = Path.Combine(folder, Path.GetFileName(image.FileName));
-            entity.INSERTCOMISION(name, description, path, price);
-        } 
         public List<COMISION> GetCOMISIONS()
         {
             var comisions = this.entity.GETCOMISIONS().ToList();
             return comisions;
+        }
+
+        public COMISION GetComisionByID(int id)
+        {
+            var comisions = GetCOMISIONS().Where(x => x.ID == id);
+            return comisions.FirstOrDefault();
+        }
+
+        public void InsertComision(String name, String description, String folder, HttpPostedFileBase image, float price)
+        {
+            String type = image.ContentType.Split('/')[1];
+            String path = Path.Combine(folder, name + "." + type);
+            System.Diagnostics.Debug.WriteLine(path);
+            entity.INSERTCOMISION(name, description, path, price);
         }
 
         public void DeleteComision(int id, String folder)
@@ -99,29 +108,13 @@ namespace RepositorioPictureManager.Repositories
             this.entity.DELETECOMISION(id);
         }
 
-        public COMISION GetComisionByID(int id)
+        public void ModifyComision(int id, String name, String description, String folder, String image, float price)
         {
-            var comisions = GetCOMISIONS().Where(x => x.ID == id);
-            return comisions.FirstOrDefault();
-        }
-
-        public void ModifyComision(int id, String name, String description, String route, String folder, HttpPostedFileBase image, float price)
-        {
-            String img;
-            if(image == null)
+            if (image != null)
             {
-                img = null;
-                
-            } else
-            {
-                COMISION comision = GetComisionByID(id);
-                String photoRemove = comision.PHOTO.Split('\\')[1];
-                ToolImage.RemoveImage(photoRemove, route);
-                ToolImage.UploadImage(image, route);
-
-                img = folder + "\\" + image.FileName;
+                image = folder + image;
             }
-            this.entity.MODIFYSESSION(id, name, img, description, price);
+            this.entity.MODIFYSESSION(id, name, image, description, price);
         }
 
         public void OrderComision(String [] order)

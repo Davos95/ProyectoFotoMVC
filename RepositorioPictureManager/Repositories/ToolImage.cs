@@ -10,14 +10,16 @@ namespace RepositorioPictureManager.Repositories
 {
     public class ToolImage
     {
-        public static void UploadImage(HttpPostedFileBase image, String folder)
+        public static void UploadImage(HttpPostedFileBase image, String folder, String name)
         {
-            String path = Path.Combine(folder, Path.GetFileName(image.FileName));
+            String type = image.ContentType.Split('/')[1];
+
+            String path = Path.Combine(folder, name + "."+type);
             image.SaveAs(path);
         }
         public static void RemoveImage(String image, String folder)
         {
-            String path = Path.Combine(folder, Path.GetFileName(image));
+            String path = Path.Combine(folder, image);
             File.Delete(path);
         }
     }

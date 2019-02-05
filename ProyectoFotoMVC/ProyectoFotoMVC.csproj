@@ -157,6 +157,7 @@
     <Compile Include="Controllers\ComisionController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\PartnerWorkController.cs" />
+    <Compile Include="Controllers\SesionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,9 +185,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Views\PartnerWork\Works.cshtml" />
-    <Content Include="Views\admin\Sesion.cshtml" />
     <Content Include="Views\Comision\Comision.cshtml" />
     <Content Include="Views\login\ErrorAcceso.cshtml" />
+    <Content Include="Views\Sesion\CreateSesion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

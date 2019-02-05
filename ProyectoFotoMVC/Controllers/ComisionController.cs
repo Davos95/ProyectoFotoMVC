@@ -20,33 +20,49 @@ namespace ProyectoFotoMVC.Controllers
         public ActionResult Comision()
         {
             List<COMISION> comisions = this.repo.GetCOMISIONS();
-            System.Diagnostics.Debug.WriteLine(comisions);
             return View(comisions);
         }
 
         [HttpPost]
-        public ActionResult Comision(String name, String description, HttpPostedFileBase photo, float price, int? id, int option)
+        public ActionResult Comision(String name, String description, HttpPostedFileBase photo, float price, int? id, String option)
         {
             String ruta = Server.MapPath("~/images/Comision");
-            if (option == 0)
+            if (option == "ADD")
             {
                 if (photo != null && photo.ContentLength > 0)
                 {
-                    
-                    ToolImage.UploadImage(photo, ruta);
+                    ToolImage.UploadImage(photo, ruta, name);
                     repo.InsertComision(name, description, "~/images/Comision", photo, price);
                 }
-            } else if(option == 1)
+            } else if(option == "UPDATE")
             {
-                repo.ModifyComision(id.Value, name, description, ruta , "~/images/Comision", photo, price);
-            } else if (option == 2)
+                COMISION comision = this.repo.GetComisionByID(id.Value);
+                if (comision != null) 
+                {
+                    String image = null;
+                    if (photo != null)
+                    {
+                        String photoRemove = comision.PHOTO.Split('\\')[1];
+                        ToolImage.RemoveImage(photoRemove, ruta);
+                        ToolImage.UploadImage(photo, ruta, name);
+
+                        String type = photo.ContentType.Split('/')[1];
+                        image = name + "." + type;
+                    }
+
+                    repo.ModifyComision(id.Value, name, description, "~/images/Comision\\", image, price);
+                }
+                
+            } else if (option == "DELETE")
             {
-                repo.DeleteComision(id.Value, ruta);
+                COMISION comision = this.repo.GetComisionByID(id.Value);
+                if (comision != null)
+                {
+                    repo.DeleteComision(id.Value, ruta);
+                }
             }
             
-            List<COMISION> comisions = this.repo.GetCOMISIONS();
-            System.Diagnostics.Debug.WriteLine(comisions);
-            return View(comisions);
+            return RedirectToAction("Comision");
         }
         
         
