@@ -233,6 +233,13 @@
       <Parameter Name="ID" Mode="In" Type="Int32" />
       <Parameter Name="ORDER" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="INSERTSESION">
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="DESCRIPTION" Mode="In" Type="String" />
+      <Parameter Name="DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="IDCOMISION" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GETSESION" EntitySet="SESION" ReturnType="Collection(pictureManagerModel.SESION)" />
   </EntityContainer>
   <ComplexType Name="MOSTRARPARTICIPANTES_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -273,5 +280,13 @@
     <Property Type="String" Name="PWD" Nullable="false" MaxLength="255" />
     <Property Type="String" Name="NAME" Nullable="false" MaxLength="25" />
     <Property Type="String" Name="ROLE" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="GETSESION_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="IDPHOTO" Nullable="true" />
+    <Property Type="DateTime" Name="DATESESION" Nullable="true" />
+    <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
   </ComplexType>
 </Schema>

@@ -87,5 +87,7 @@
     <FunctionImportMapping FunctionImportName="MODIFYSESSION" FunctionName="pictureManagerModel.Store.MODIFYSESSION" />
     <FunctionImportMapping FunctionImportName="GETUSER" FunctionName="pictureManagerModel.Store.GETUSER" />
     <FunctionImportMapping FunctionImportName="MODIFYORDERCOMISION" FunctionName="pictureManagerModel.Store.MODIFYORDERCOMISION" />
+    <FunctionImportMapping FunctionImportName="INSERTSESION" FunctionName="pictureManagerModel.Store.INSERTSESION" />
+    <FunctionImportMapping FunctionImportName="GETSESION" FunctionName="pictureManagerModel.Store.GETSESION" />
   </EntityContainerMapping>
 </Mapping>

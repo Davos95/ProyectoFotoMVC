@@ -233,5 +233,36 @@ namespace RepositorioPictureManager.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFYORDERCOMISION", iDParameter, oRDERParameter);
         }
+    
+        public virtual int INSERTSESION(string nAME, string dESCRIPTION, Nullable<System.DateTime> dATE, Nullable<int> iDCOMISION)
+        {
+            var nAMEParameter = nAME != null ?
+                new ObjectParameter("NAME", nAME) :
+                new ObjectParameter("NAME", typeof(string));
+    
+            var dESCRIPTIONParameter = dESCRIPTION != null ?
+                new ObjectParameter("DESCRIPTION", dESCRIPTION) :
+                new ObjectParameter("DESCRIPTION", typeof(string));
+    
+            var dATEParameter = dATE.HasValue ?
+                new ObjectParameter("DATE", dATE) :
+                new ObjectParameter("DATE", typeof(System.DateTime));
+    
+            var iDCOMISIONParameter = iDCOMISION.HasValue ?
+                new ObjectParameter("IDCOMISION", iDCOMISION) :
+                new ObjectParameter("IDCOMISION", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERTSESION", nAMEParameter, dESCRIPTIONParameter, dATEParameter, iDCOMISIONParameter);
+        }
+    
+        public virtual ObjectResult<SESION> GETSESION()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESION");
+        }
+    
+        public virtual ObjectResult<SESION> GETSESION(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESION", mergeOption);
+        }
     }
 }

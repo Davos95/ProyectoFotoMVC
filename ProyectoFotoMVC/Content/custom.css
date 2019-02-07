@@ -36,7 +36,7 @@ main {
 }
 
 /* Nav Dropdown */
-.dropdown-content {
+li>.dropdown-content {
     top: 64px !important;
 }
 .dropdown-content>li>a{

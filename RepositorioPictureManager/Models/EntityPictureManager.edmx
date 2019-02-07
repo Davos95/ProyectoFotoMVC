@@ -168,6 +168,7 @@
           <Parameter Name="NICK" Type="nvarchar" Mode="In" />
           <Parameter Name="PWD" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GETSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GETUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NICK" Type="nvarchar" Mode="In" />
           <Parameter Name="PWD" Type="nvarchar" Mode="In" />
@@ -177,6 +178,12 @@
           <Parameter Name="DESCRIPTION" Type="text" Mode="In" />
           <Parameter Name="PATH" Type="text" Mode="In" />
           <Parameter Name="PRICE" Type="float" Mode="In" />
+        </Function>
+        <Function Name="INSERTSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="DESCRIPTION" Type="text" Mode="In" />
+          <Parameter Name="DATE" Type="date" Mode="In" />
+          <Parameter Name="IDCOMISION" Type="int" Mode="In" />
         </Function>
         <Function Name="MODIFYORDERCOMISION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
@@ -467,6 +474,13 @@
             <Parameter Name="ID" Mode="In" Type="Int32" />
             <Parameter Name="ORDER" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="INSERTSESION">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="DESCRIPTION" Mode="In" Type="String" />
+            <Parameter Name="DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="IDCOMISION" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GETSESION" EntitySet="SESION" ReturnType="Collection(pictureManagerModel.SESION)" />
         </EntityContainer>
         <ComplexType Name="MOSTRARPARTICIPANTES_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -507,6 +521,14 @@
           <Property Type="String" Name="PWD" Nullable="false" MaxLength="255" />
           <Property Type="String" Name="NAME" Nullable="false" MaxLength="25" />
           <Property Type="String" Name="ROLE" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="GETSESION_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="IDPHOTO" Nullable="true" />
+          <Property Type="DateTime" Name="DATESESION" Nullable="true" />
+          <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -604,6 +626,9 @@
           <FunctionImportMapping FunctionImportName="GETUSER" FunctionName="pictureManagerModel.Store.GETUSER">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="MODIFYORDERCOMISION" FunctionName="pictureManagerModel.Store.MODIFYORDERCOMISION" />
+          <FunctionImportMapping FunctionImportName="INSERTSESION" FunctionName="pictureManagerModel.Store.INSERTSESION" />
+          <FunctionImportMapping FunctionImportName="GETSESION" FunctionName="pictureManagerModel.Store.GETSESION">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

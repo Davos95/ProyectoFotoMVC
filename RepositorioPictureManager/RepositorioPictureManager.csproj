@@ -98,6 +98,9 @@
     <Compile Include="Models\GETCOMISIONS_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GETSESION_Result.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GETUSER_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
@@ -134,7 +137,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepositoryComision.cs" />
     <Compile Include="Repositories\IRepositoryLogin.cs" />
+    <Compile Include="Repositories\IRepositorySesion.cs" />
     <Compile Include="Repositories\RepositoryComision.cs" />
+    <Compile Include="Repositories\RepositorySesion.cs" />
     <Compile Include="Repositories\ToolImage.cs" />
     <Compile Include="Repositories\RepositoryLogin.cs" />
     <Compile Include="Repositories\RepositoryPartner.cs" />

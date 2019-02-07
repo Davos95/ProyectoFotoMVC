@@ -163,6 +163,7 @@
     <Parameter Name="NICK" Type="nvarchar" Mode="In" />
     <Parameter Name="PWD" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="GETSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GETUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NICK" Type="nvarchar" Mode="In" />
     <Parameter Name="PWD" Type="nvarchar" Mode="In" />
@@ -172,6 +173,12 @@
     <Parameter Name="DESCRIPTION" Type="text" Mode="In" />
     <Parameter Name="PATH" Type="text" Mode="In" />
     <Parameter Name="PRICE" Type="float" Mode="In" />
+  </Function>
+  <Function Name="INSERTSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+    <Parameter Name="DESCRIPTION" Type="text" Mode="In" />
+    <Parameter Name="DATE" Type="date" Mode="In" />
+    <Parameter Name="IDCOMISION" Type="int" Mode="In" />
   </Function>
   <Function Name="MODIFYORDERCOMISION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="int" Mode="In" />
