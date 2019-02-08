@@ -22,5 +22,18 @@ namespace RepositorioPictureManager.Repositories
             String path = Path.Combine(folder, image);
             File.Delete(path);
         }
+
+        public static void CreateFolder(String path, String name)
+        {
+            String routeFolder = Path.Combine(path + "/"+ name);
+            Directory.CreateDirectory(routeFolder);
+        }
+
+        public static void DeleteFolder(String path, String name)
+        {
+            String routeFolder = Path.Combine(path + "/" + name);
+            Directory.Delete(routeFolder);
+        }
+        
     }
 }

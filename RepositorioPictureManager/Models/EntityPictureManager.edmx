@@ -160,6 +160,9 @@
         <Function Name="DELETEPARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="DELETESESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="DELETETRABAJO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
@@ -481,6 +484,9 @@
             <Parameter Name="IDCOMISION" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GETSESION" EntitySet="SESION" ReturnType="Collection(pictureManagerModel.SESION)" />
+          <FunctionImport Name="DELETESESION">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="MOSTRARPARTICIPANTES_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -629,6 +635,7 @@
           <FunctionImportMapping FunctionImportName="INSERTSESION" FunctionName="pictureManagerModel.Store.INSERTSESION" />
           <FunctionImportMapping FunctionImportName="GETSESION" FunctionName="pictureManagerModel.Store.GETSESION">
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DELETESESION" FunctionName="pictureManagerModel.Store.DELETESESION" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

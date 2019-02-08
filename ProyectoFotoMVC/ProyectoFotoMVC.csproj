@@ -199,6 +199,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\Comision\" />
+    <Folder Include="images\Sesion\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

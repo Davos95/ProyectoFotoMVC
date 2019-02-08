@@ -18,6 +18,11 @@ AS
 SELECT * FROM SESION;
 GO
 
+CREATE PROCEDURE DELETESESION
+(@ID INT)
+AS
+DELETE FROM SESION WHERE ID = @ID;
+GO
 */
 #endregion
 namespace RepositorioPictureManager.Repositories
@@ -41,5 +46,9 @@ namespace RepositorioPictureManager.Repositories
             this.entity.INSERTSESION(name, description, date, comision);
         }
 
+        public void DeleteSesion(int id)
+        {
+            this.entity.DELETESESION(id);
+        }
     }
 }

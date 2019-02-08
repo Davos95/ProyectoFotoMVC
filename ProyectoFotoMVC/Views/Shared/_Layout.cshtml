@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/bundle/materializeCSS")
-    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
     <main class="grey lighten-4">
@@ -23,8 +24,9 @@
             <li>@Html.ActionLink("Resultados", "Comision", "Comision")</li>
         </ul>
         <ul id="dropdownSesion" class="dropdown-content grey darken-4">
+            <li>@Html.ActionLink("Ver Sesiones", "Sesion", "Sesion")</li>
             <li>@Html.ActionLink("Crear Sesion", "CreateSesion", "Sesion")</li>
-            <li>@Html.ActionLink("Gestionar Sesiones", "ManageSesion", "Sesion")</li>
+
         </ul>
         <nav class="grey darken-4">
             <div class="nav-wrapper">

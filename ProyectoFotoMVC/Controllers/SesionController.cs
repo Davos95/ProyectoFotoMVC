@@ -34,8 +34,19 @@ namespace ProyectoFotoMVC.Controllers
 
         [HttpPost]
         public ActionResult CreateSesion(String name, String description, DateTime date, int comision) {
+            String path = Server.MapPath("~/images/Sesion");
+            ToolImage.CreateFolder(path,name);
             this.repoSesion.InsertSesion(name, description, date, comision);
-            return View();
+            return RedirectToAction("Sesion");
+        }
+
+        public ActionResult DeleteSesion(int id, String name)
+        {
+            String path = Server.MapPath("~/images/Sesion");
+            ToolImage.DeleteFolder(path, name);
+            this.repoSesion.DeleteSesion(id);
+
+            return RedirectToAction("Sesion");
         }
     }
 }

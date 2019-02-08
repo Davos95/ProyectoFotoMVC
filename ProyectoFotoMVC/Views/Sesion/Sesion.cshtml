@@ -5,9 +5,17 @@
     ViewBag.Title = "Sesion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section events{
+    <script>
+        $(document).ready( function() {
+            M.AutoInit();
+        });
+    </script>
+
+}
 
 <div class="row">
-    <div class="col s12 m8 l8 xl8 offset-m1 offset-l1 offset-xl1">
+    <div class="col s12 m10 l10 xl10 offset-m1 offset-l1 offset-xl1">
         <div class="card">
             <div class="card-content">
                 @if (Model != null)
@@ -15,11 +23,16 @@
                     <div class="row">
                         @foreach (SESION s in Model)
                         {
-                            <div class="col s2">
+                            <div class="col s12 m8 l6 xl4">
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="card-image">
-                                            <div class="card-title">@s.NAME</div>
+
+                                        </div>
+                                        <div class="card-title" style="color:black">@s.NAME</div>
+                                        <div class="card-action">
+                                            <a href="@Url.Action("DeleteSesion","Sesion",new { id = s.ID, name = s.NAME  })" style="float: right"><i class="material-icons" style="color:red">delete</i></a>
+                                            <a href="@Url.Action("ModifySesion","Sesion",new { id = s.ID })" style="float: right"><i class="material-icons" style="color: black;">edit</i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -28,7 +41,14 @@
                     </div>
                 }
             </div>
+
         </div>
     </div>
+</div>
+
+<div class="fixed-action-btn" style="margin-bottom:100px">
+    <a href="@Url.Action("CreateSesion","Sesion")" class="btn-floating btn-large green">
+        <i class="large material-icons">add_circle</i>
+    </a>
 </div>
 

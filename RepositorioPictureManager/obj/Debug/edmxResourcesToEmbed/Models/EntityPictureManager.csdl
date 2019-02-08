@@ -240,6 +240,9 @@
       <Parameter Name="IDCOMISION" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="GETSESION" EntitySet="SESION" ReturnType="Collection(pictureManagerModel.SESION)" />
+    <FunctionImport Name="DELETESESION">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="MOSTRARPARTICIPANTES_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />

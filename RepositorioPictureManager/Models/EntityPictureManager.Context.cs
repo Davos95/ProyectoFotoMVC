@@ -264,5 +264,14 @@ namespace RepositorioPictureManager.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESION", mergeOption);
         }
+    
+        public virtual int DELETESESION(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETESESION", iDParameter);
+        }
     }
 }
