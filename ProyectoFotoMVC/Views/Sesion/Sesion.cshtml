@@ -32,7 +32,7 @@
                                         <div class="card-title" style="color:black">@s.NAME</div>
                                         <div class="card-action">
                                             <a href="@Url.Action("DeleteSesion","Sesion",new { id = s.ID, name = s.NAME  })" style="float: right"><i class="material-icons" style="color:red">delete</i></a>
-                                            <a href="@Url.Action("ModifySesion","Sesion",new { id = s.ID })" style="float: right"><i class="material-icons" style="color: black;">edit</i></a>
+                                            <a href="@Url.Action("EditSesion","Sesion",new { id = s.ID })" style="float: right"><i class="material-icons" style="color: black;">edit</i></a>
                                         </div>
                                     </div>
                                 </div>

@@ -30,7 +30,7 @@
             <div class="col s12 m4 l3 xl2 offset-m3 offset-l3 offset-xl3 ">
                 <div class="card">
                     <div class="card-image">
-                        <i class="material-icons center" style="font-size:170px; margin:0 auto;">insert_photo</i>
+                        <div style=" margin:0 auto;"> <i class="material-icons center" style="font-size:170px;">insert_photo</i></div>
                         @*<img src="~/Content/images/iconoSubirImagen.png"/>*@
                     </div>
                     <div class="card-content">
@@ -45,7 +45,7 @@
                         <i class="material-icons" style="font-size:170px; margin:0 auto;">photo_camera</i>
                     </div>
                     <div class="card-content">
-                        <a class="center-align" id="btnSesion"><h5>Sesiones</h5></a>
+                        <h5>@Html.ActionLink("Sesiones", "Sesion", "Sesion")</h5>
                     </div>
                 </div>
             </div>

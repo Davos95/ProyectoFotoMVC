@@ -243,6 +243,17 @@
     <FunctionImport Name="DELETESESION">
       <Parameter Name="ID" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="GETSESIONID" EntitySet="SESION" ReturnType="Collection(pictureManagerModel.SESION)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ADDPARTNERWORKINTOSESION">
+      <Parameter Name="IDSESION" Mode="In" Type="Int32" />
+      <Parameter Name="IDPARTER" Mode="In" Type="Int32" />
+      <Parameter Name="IDWORK" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GETPARTNERWORKBYSESION" ReturnType="Collection(pictureManagerModel.GETPARTNERWORKBYSESION_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="MOSTRARPARTICIPANTES_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -291,5 +302,17 @@
     <Property Type="Int32" Name="IDPHOTO" Nullable="true" />
     <Property Type="DateTime" Name="DATESESION" Nullable="true" />
     <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GETSESIONID_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="IDPHOTO" Nullable="true" />
+    <Property Type="DateTime" Name="DATESESION" Nullable="true" />
+    <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GETPARTNERWORKBYSESION_Result">
+    <Property Type="String" Name="PARTICIPANT" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="WORK" Nullable="true" MaxLength="100" />
   </ComplexType>
 </Schema>

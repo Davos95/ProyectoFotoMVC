@@ -98,6 +98,12 @@
     <Compile Include="Models\GETCOMISIONS_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GETPARTNERWORKBYSESION_Result.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GETSESIONID_Result.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GETSESION_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>

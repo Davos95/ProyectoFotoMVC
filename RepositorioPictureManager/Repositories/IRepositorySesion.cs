@@ -12,5 +12,6 @@ namespace RepositorioPictureManager.Repositories
         List<SESION> GetSesions();
         void InsertSesion(String name, String description, DateTime date, int comision);
         void DeleteSesion(int id);
+        SESION GetSESIONID(int id);
     }
 }

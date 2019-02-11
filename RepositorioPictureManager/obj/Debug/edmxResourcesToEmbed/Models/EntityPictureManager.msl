@@ -90,5 +90,15 @@
     <FunctionImportMapping FunctionImportName="INSERTSESION" FunctionName="pictureManagerModel.Store.INSERTSESION" />
     <FunctionImportMapping FunctionImportName="GETSESION" FunctionName="pictureManagerModel.Store.GETSESION" />
     <FunctionImportMapping FunctionImportName="DELETESESION" FunctionName="pictureManagerModel.Store.DELETESESION" />
+    <FunctionImportMapping FunctionImportName="GETSESIONID" FunctionName="pictureManagerModel.Store.GETSESIONID" />
+    <FunctionImportMapping FunctionImportName="ADDPARTNERWORKINTOSESION" FunctionName="pictureManagerModel.Store.ADDPARTNERWORKINTOSESION" />
+    <FunctionImportMapping FunctionImportName="GETPARTNERWORKBYSESION" FunctionName="pictureManagerModel.Store.GETPARTNERWORKBYSESION">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="pictureManagerModel.GETPARTNERWORKBYSESION_Result">
+          <ScalarProperty Name="PARTICIPANT" ColumnName="PARTICIPANT" />
+          <ScalarProperty Name="WORK" ColumnName="WORK" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

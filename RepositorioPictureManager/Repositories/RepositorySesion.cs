@@ -23,6 +23,35 @@ CREATE PROCEDURE DELETESESION
 AS
 DELETE FROM SESION WHERE ID = @ID;
 GO
+
+CREATE PROCEDURE GETSESIONID
+(@ID INT)
+AS
+SELECT * FROM SESION WHERE ID = @ID;
+GO
+
+CREATE PROCEDURE GETPARTNERWORKBYSESION
+(@ID INT)
+AS
+	SELECT p.NAME as PARTICIPANT, w.NAME as WORK
+FROM SESION_WORKER sw
+INNER JOIN SESION s
+on s.ID =  sw.IDSESION
+INNER JOIN WORK w
+on w.ID = sw.IDWORK
+INNER JOIN WORKER p
+ON sw.IDWORKER = p.ID
+WHERE s.ID = @ID;
+
+GO
+
+CREATE PROCEDURE ADDPARTNERWORKINTOSESION
+(@IDSESION INT, @IDPARTER INT, @IDWORK INT)
+AS
+	INSERT INTO SESION_WORKER VALUES (@IDSESION,@IDPARTER,@IDWORK)
+	
+GO
+
 */
 #endregion
 namespace RepositorioPictureManager.Repositories
@@ -49,6 +78,12 @@ namespace RepositorioPictureManager.Repositories
         public void DeleteSesion(int id)
         {
             this.entity.DELETESESION(id);
+        }
+
+        public SESION GetSESIONID(int id)
+        {
+            SESION sesion = this.entity.GETSESIONID(id).FirstOrDefault();
+            return sesion;
         }
     }
 }

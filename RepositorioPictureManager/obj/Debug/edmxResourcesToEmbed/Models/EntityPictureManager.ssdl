@@ -146,6 +146,11 @@
     <Parameter Name="CONTACT" Type="nvarchar" Mode="In" />
     <Parameter Name="URLCONTACT" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="ADDPARTNERWORKINTOSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDSESION" Type="int" Mode="In" />
+    <Parameter Name="IDPARTER" Type="int" Mode="In" />
+    <Parameter Name="IDWORK" Type="int" Mode="In" />
+  </Function>
   <Function Name="ADDTRABAJO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NAME" Type="nvarchar" Mode="In" />
   </Function>
@@ -166,7 +171,13 @@
     <Parameter Name="NICK" Type="nvarchar" Mode="In" />
     <Parameter Name="PWD" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="GETPARTNERWORKBYSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
   <Function Name="GETSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GETSESIONID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
   <Function Name="GETUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NICK" Type="nvarchar" Mode="In" />
     <Parameter Name="PWD" Type="nvarchar" Mode="In" />

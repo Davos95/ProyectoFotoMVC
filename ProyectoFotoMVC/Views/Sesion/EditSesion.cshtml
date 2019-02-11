@@ -1,0 +1,132 @@
+﻿@using RepositorioPictureManager.Models
+@model SESION
+
+@{
+    ViewBag.Title = "Editar Sesion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section events{
+    <script>
+        $(document).ready( function() {
+            M.AutoInit();
+            $("#Partner>.collection-item").click(function () {
+                if ($(this).css("background-color") == "rgb(255, 0, 0)") {
+                    $("#Partner>.collection-item").css("background-color", "white");
+                    $("#idPartner").val("");
+                } else {
+                    $("#Partner>.collection-item").css("background-color", "white");
+                    $(this).css("background-color", "red");
+
+                    console.log($(this).data("valuePartner"));
+                    $("#idPartner").val($(this).data("valuePartner"));
+                }
+            });
+            $("#Work>.collection-item").click(function () {
+                if ($(this).css("background-color") == "rgb(255, 0, 0)") {
+                    $("#Work>.collection-item").css("background-color", "white");
+
+                } else {
+                    $("#Work>.collection-item").css("background-color", "white");
+                    $(this).css("background-color", "red");
+                }
+            });
+        });
+    </script>
+
+}
+
+<div class="row">
+    <div class="col s12 m3 l3 xl3">
+        <div class="card">
+            <div class="card-content">
+                <form method="post">
+                    <div class="input-field">
+                        <input type="text" name="name" id="name" value="@Model.NAME" />
+                        <label for="name">Nombre de la sesión</label>
+                    </div>
+                    <div class="input-field">
+                        <textarea name="description" placeholder="Descripcion">@Model.DESCRIPTION</textarea>
+                    </div>
+                    <div class="input-field">
+                        <input type="date" name="date" id="date" value="@ViewBag.Date"/>
+                        <label for="date">Fecha de la sesión</label>
+                    </div>
+                    <div class="input-field">
+                        <select name="comision" id="comision">
+                            @foreach (COMISION c in ViewBag.Comision)
+                            {
+                                if (c.ID == Model.IDCOMISION)
+                                {
+                                    <option value="@c.ID" selected>@c.NAME</option>
+                                }
+                                else
+                                {
+                                    <option value="@c.ID">@c.NAME</option>
+                                }
+                            }
+                        </select>
+                        <label for="comision">Selecciona una Comision</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="hidden" name="idSesion" value="@Model.ID" />
+                        <button type="submit" class="btn waves-effect waves-darken amber accent-3" value="EDITAR">Modificar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 m9 l9 xl9">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col m5">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Trabajo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col m1">
+                        <div>
+                            <form method="post">
+                                <input type="hidden" name="idSesion" value="@Model.ID" />
+                                <input type="hidden" name="idPartner" id="idPartner" />
+                                <input type="hidden" name="idWork" id="idWork" />
+                                <button type="submit" value="ADD" name="option" class="btn waves-effect">Añadir</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col m3">
+                        <div class="collection with-header" id="Partner">
+                            <div class="collection-header"><b>Participantes</b></div>
+                            @foreach (WORKER p in ViewBag.Partner)
+                            {
+                                <div class="collection-item" data-valueWork="@p.ID">@p.NAME</div>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="col m3">
+                        <div class="collection with-header" id="Work">
+                            <div class="collection-header"><b>Trabajos</b></div>
+                            @foreach (WORK w in ViewBag.Work)
+                            {
+                                <div class="collection-item" data-valuePartner="@w.ID">@w.NAME</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

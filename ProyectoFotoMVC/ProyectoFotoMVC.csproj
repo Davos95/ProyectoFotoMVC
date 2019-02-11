@@ -189,6 +189,7 @@
     <Content Include="Views\login\ErrorAcceso.cshtml" />
     <Content Include="Views\Sesion\CreateSesion.cshtml" />
     <Content Include="Views\Sesion\Sesion.cshtml" />
+    <Content Include="Views\Sesion\EditSesion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -273,5 +273,49 @@ namespace RepositorioPictureManager.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETESESION", iDParameter);
         }
+    
+        public virtual ObjectResult<SESION> GETSESIONID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESIONID", iDParameter);
+        }
+    
+        public virtual ObjectResult<SESION> GETSESIONID(Nullable<int> iD, MergeOption mergeOption)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESIONID", mergeOption, iDParameter);
+        }
+    
+        public virtual int ADDPARTNERWORKINTOSESION(Nullable<int> iDSESION, Nullable<int> iDPARTER, Nullable<int> iDWORK)
+        {
+            var iDSESIONParameter = iDSESION.HasValue ?
+                new ObjectParameter("IDSESION", iDSESION) :
+                new ObjectParameter("IDSESION", typeof(int));
+    
+            var iDPARTERParameter = iDPARTER.HasValue ?
+                new ObjectParameter("IDPARTER", iDPARTER) :
+                new ObjectParameter("IDPARTER", typeof(int));
+    
+            var iDWORKParameter = iDWORK.HasValue ?
+                new ObjectParameter("IDWORK", iDWORK) :
+                new ObjectParameter("IDWORK", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ADDPARTNERWORKINTOSESION", iDSESIONParameter, iDPARTERParameter, iDWORKParameter);
+        }
+    
+        public virtual ObjectResult<GETPARTNERWORKBYSESION_Result> GETPARTNERWORKBYSESION(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GETPARTNERWORKBYSESION_Result>("GETPARTNERWORKBYSESION", iDParameter);
+        }
     }
 }

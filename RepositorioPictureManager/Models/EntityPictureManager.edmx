@@ -151,6 +151,11 @@
           <Parameter Name="CONTACT" Type="nvarchar" Mode="In" />
           <Parameter Name="URLCONTACT" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="ADDPARTNERWORKINTOSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDSESION" Type="int" Mode="In" />
+          <Parameter Name="IDPARTER" Type="int" Mode="In" />
+          <Parameter Name="IDWORK" Type="int" Mode="In" />
+        </Function>
         <Function Name="ADDTRABAJO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NAME" Type="nvarchar" Mode="In" />
         </Function>
@@ -171,7 +176,13 @@
           <Parameter Name="NICK" Type="nvarchar" Mode="In" />
           <Parameter Name="PWD" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GETPARTNERWORKBYSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="GETSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GETSESIONID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="GETUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NICK" Type="nvarchar" Mode="In" />
           <Parameter Name="PWD" Type="nvarchar" Mode="In" />
@@ -485,6 +496,17 @@
           </FunctionImport>
           <FunctionImport Name="GETSESION" EntitySet="SESION" ReturnType="Collection(pictureManagerModel.SESION)" />
           <FunctionImport Name="DELETESESION">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GETSESIONID" EntitySet="SESION" ReturnType="Collection(pictureManagerModel.SESION)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ADDPARTNERWORKINTOSESION">
+            <Parameter Name="IDSESION" Mode="In" Type="Int32" />
+            <Parameter Name="IDPARTER" Mode="In" Type="Int32" />
+            <Parameter Name="IDWORK" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GETPARTNERWORKBYSESION" ReturnType="Collection(pictureManagerModel.GETPARTNERWORKBYSESION_Result)">
             <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
@@ -535,6 +557,18 @@
           <Property Type="Int32" Name="IDPHOTO" Nullable="true" />
           <Property Type="DateTime" Name="DATESESION" Nullable="true" />
           <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GETSESIONID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="IDPHOTO" Nullable="true" />
+          <Property Type="DateTime" Name="DATESESION" Nullable="true" />
+          <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GETPARTNERWORKBYSESION_Result">
+          <Property Type="String" Name="PARTICIPANT" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="WORK" Nullable="true" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -636,6 +670,17 @@
           <FunctionImportMapping FunctionImportName="GETSESION" FunctionName="pictureManagerModel.Store.GETSESION">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DELETESESION" FunctionName="pictureManagerModel.Store.DELETESESION" />
+          <FunctionImportMapping FunctionImportName="GETSESIONID" FunctionName="pictureManagerModel.Store.GETSESIONID">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ADDPARTNERWORKINTOSESION" FunctionName="pictureManagerModel.Store.ADDPARTNERWORKINTOSESION" />
+          <FunctionImportMapping FunctionImportName="GETPARTNERWORKBYSESION" FunctionName="pictureManagerModel.Store.GETPARTNERWORKBYSESION">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="pictureManagerModel.GETPARTNERWORKBYSESION_Result">
+                <ScalarProperty Name="PARTICIPANT" ColumnName="PARTICIPANT" />
+                <ScalarProperty Name="WORK" ColumnName="WORK" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
