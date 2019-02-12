@@ -33,7 +33,7 @@ GO
 CREATE PROCEDURE GETPARTNERWORKBYSESION
 (@ID INT)
 AS
-	SELECT p.NAME as PARTICIPANT, w.NAME as WORK
+	SELECT sw.IDWORKER as IDPARTNER, p.NAME as PARTNER, sw.IDWORK as IDWORK, w.NAME as WORK
 FROM SESION_WORKER sw
 INNER JOIN SESION s
 on s.ID =  sw.IDSESION
@@ -50,6 +50,12 @@ CREATE PROCEDURE ADDPARTNERWORKINTOSESION
 AS
 	INSERT INTO SESION_WORKER VALUES (@IDSESION,@IDPARTER,@IDWORK)
 	
+GO
+
+CREATE PROCEDURE DELETEPARTERWORKFROMSESION
+(@ID INT, @IDPARTNER INT, @IDWORK INT)
+AS
+DELETE FROM SESION_WORKER WHERE IDSESION = @ID AND IDWORKER = @IDPARTNER AND IDWORK = @IDWORK;
 GO
 
 */
@@ -85,5 +91,29 @@ namespace RepositorioPictureManager.Repositories
             SESION sesion = this.entity.GETSESIONID(id).FirstOrDefault();
             return sesion;
         }
+
+
+        #region EDIT SESION
+        public void AddPartnerWorkIntoSesion(int idSesion, int idPartner, int idWork)
+        {
+            this.entity.ADDPARTNERWORKINTOSESION(idSesion, idPartner, idWork);
+        }
+
+        public List<GETPARTNERWORKBYSESION_Result> GetPartnerWorkBySesion(int idSesion)
+        {
+            return this.entity.GETPARTNERWORKBYSESION(idSesion).ToList();
+        }
+
+        public void DeletePartnerWorkFromSesion(int idSesion, int idPartner, int idWork)
+        {
+            this.entity.DELETEPARTERWORKFROMSESION(idSesion, idPartner, idWork);
+        }
+
+        public void ModifySesion(int idSesion, String name, String desciption, DateTime date, int idComision)
+        {
+            this.entity.MODIFYSESION(idSesion, name, desciption, date, idComision);
+        }
+
+        #endregion
     }
 }

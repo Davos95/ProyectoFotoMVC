@@ -111,7 +111,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SESION_WO__IDSES__46E78A0C">
-          <End Role="SESION" Type="Self.SESION" Multiplicity="1" />
+          <End Role="SESION" Type="Self.SESION" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="SESION_WORKER" Type="Self.SESION_WORKER" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SESION">
@@ -123,7 +125,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SESION_WO__IDWOR__47DBAE45">
-          <End Role="WORKER" Type="Self.WORKER" Multiplicity="1" />
+          <End Role="WORKER" Type="Self.WORKER" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="SESION_WORKER" Type="Self.SESION_WORKER" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WORKER">
@@ -135,7 +139,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SESION_WO__IDWOR__48CFD27E">
-          <End Role="WORK" Type="Self.WORK" Multiplicity="0..1" />
+          <End Role="WORK" Type="Self.WORK" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="SESION_WORKER" Type="Self.SESION_WORKER" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WORK">
@@ -161,6 +167,11 @@
         </Function>
         <Function Name="DELETECOMISION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DELETEPARTERWORKFROMSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="IDPARTNER" Type="int" Mode="In" />
+          <Parameter Name="IDWORK" Type="int" Mode="In" />
         </Function>
         <Function Name="DELETEPARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
@@ -202,6 +213,13 @@
         <Function Name="MODIFYORDERCOMISION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
           <Parameter Name="ORDER" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MODIFYSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="DESCRIPTION" Type="text" Mode="In" />
+          <Parameter Name="DATESESION" Type="date" Mode="In" />
+          <Parameter Name="IDCOMISION" Type="int" Mode="In" />
         </Function>
         <Function Name="MODIFYSESSION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
@@ -473,7 +491,7 @@
           <FunctionImport Name="DELETECOMISION">
           <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="MODIFYSESSION">
+          <FunctionImport Name="MODIFYCOMISION">
             <Parameter Name="ID" Mode="In" Type="Int32" />
             <Parameter Name="NAME" Mode="In" Type="String" />
             <Parameter Name="PHOTO" Mode="In" Type="String" />
@@ -507,7 +525,19 @@
             <Parameter Name="IDWORK" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GETPARTNERWORKBYSESION" ReturnType="Collection(pictureManagerModel.GETPARTNERWORKBYSESION_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DELETEPARTERWORKFROMSESION">
             <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="IDPARTNER" Mode="In" Type="Int32" />
+            <Parameter Name="IDWORK" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MODIFYSESION">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="DESCRIPTION" Mode="In" Type="String" />
+            <Parameter Name="DATESESION" Mode="In" Type="DateTime" />
+            <Parameter Name="IDCOMISION" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="MOSTRARPARTICIPANTES_Result">
@@ -567,7 +597,9 @@
           <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GETPARTNERWORKBYSESION_Result">
-          <Property Type="String" Name="PARTICIPANT" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="IDPARTNER" Nullable="false" />
+          <Property Type="String" Name="PARTNER" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="IDWORK" Nullable="true" />
           <Property Type="String" Name="WORK" Nullable="true" MaxLength="100" />
         </ComplexType>
       </Schema>
@@ -662,7 +694,7 @@
           <FunctionImportMapping FunctionImportName="GETCOMISIONS" FunctionName="pictureManagerModel.Store.GETCOMISIONS">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DELETECOMISION" FunctionName="pictureManagerModel.Store.DELETECOMISION" />
-          <FunctionImportMapping FunctionImportName="MODIFYSESSION" FunctionName="pictureManagerModel.Store.MODIFYSESSION" />
+          <FunctionImportMapping FunctionImportName="MODIFYCOMISION" FunctionName="pictureManagerModel.Store.MODIFYSESSION" />
           <FunctionImportMapping FunctionImportName="GETUSER" FunctionName="pictureManagerModel.Store.GETUSER">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="MODIFYORDERCOMISION" FunctionName="pictureManagerModel.Store.MODIFYORDERCOMISION" />
@@ -676,11 +708,15 @@
           <FunctionImportMapping FunctionImportName="GETPARTNERWORKBYSESION" FunctionName="pictureManagerModel.Store.GETPARTNERWORKBYSESION">
             <ResultMapping>
               <ComplexTypeMapping TypeName="pictureManagerModel.GETPARTNERWORKBYSESION_Result">
-                <ScalarProperty Name="PARTICIPANT" ColumnName="PARTICIPANT" />
+                <ScalarProperty Name="IDPARTNER" ColumnName="IDPARTNER" />
+                <ScalarProperty Name="PARTNER" ColumnName="PARTNER" />
+                <ScalarProperty Name="IDWORK" ColumnName="IDWORK" />
                 <ScalarProperty Name="WORK" ColumnName="WORK" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DELETEPARTERWORKFROMSESION" FunctionName="pictureManagerModel.Store.DELETEPARTERWORKFROMSESION" />
+          <FunctionImportMapping FunctionImportName="MODIFYSESION" FunctionName="pictureManagerModel.Store.MODIFYSESION" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

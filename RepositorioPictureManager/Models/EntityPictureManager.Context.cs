@@ -170,7 +170,7 @@ namespace RepositorioPictureManager.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETECOMISION", iDParameter);
         }
     
-        public virtual int MODIFYSESSION(Nullable<int> iD, string nAME, string pHOTO, string dESCRIPTION, Nullable<double> pRICE)
+        public virtual int MODIFYCOMISION(Nullable<int> iD, string nAME, string pHOTO, string dESCRIPTION, Nullable<double> pRICE)
         {
             var iDParameter = iD.HasValue ?
                 new ObjectParameter("ID", iD) :
@@ -192,7 +192,7 @@ namespace RepositorioPictureManager.Models
                 new ObjectParameter("PRICE", pRICE) :
                 new ObjectParameter("PRICE", typeof(double));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFYSESSION", iDParameter, nAMEParameter, pHOTOParameter, dESCRIPTIONParameter, pRICEParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFYCOMISION", iDParameter, nAMEParameter, pHOTOParameter, dESCRIPTIONParameter, pRICEParameter);
         }
     
         public virtual ObjectResult<USERS> GETUSER(string nICK, string pWD)
@@ -316,6 +316,48 @@ namespace RepositorioPictureManager.Models
                 new ObjectParameter("ID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GETPARTNERWORKBYSESION_Result>("GETPARTNERWORKBYSESION", iDParameter);
+        }
+    
+        public virtual int DELETEPARTERWORKFROMSESION(Nullable<int> iD, Nullable<int> iDPARTNER, Nullable<int> iDWORK)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var iDPARTNERParameter = iDPARTNER.HasValue ?
+                new ObjectParameter("IDPARTNER", iDPARTNER) :
+                new ObjectParameter("IDPARTNER", typeof(int));
+    
+            var iDWORKParameter = iDWORK.HasValue ?
+                new ObjectParameter("IDWORK", iDWORK) :
+                new ObjectParameter("IDWORK", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETEPARTERWORKFROMSESION", iDParameter, iDPARTNERParameter, iDWORKParameter);
+        }
+    
+        public virtual int MODIFYSESION(Nullable<int> iD, string nAME, string dESCRIPTION, Nullable<System.DateTime> dATESESION, Nullable<int> iDCOMISION)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var nAMEParameter = nAME != null ?
+                new ObjectParameter("NAME", nAME) :
+                new ObjectParameter("NAME", typeof(string));
+    
+            var dESCRIPTIONParameter = dESCRIPTION != null ?
+                new ObjectParameter("DESCRIPTION", dESCRIPTION) :
+                new ObjectParameter("DESCRIPTION", typeof(string));
+    
+            var dATESESIONParameter = dATESESION.HasValue ?
+                new ObjectParameter("DATESESION", dATESESION) :
+                new ObjectParameter("DATESESION", typeof(System.DateTime));
+    
+            var iDCOMISIONParameter = iDCOMISION.HasValue ?
+                new ObjectParameter("IDCOMISION", iDCOMISION) :
+                new ObjectParameter("IDCOMISION", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFYSESION", iDParameter, nAMEParameter, dESCRIPTIONParameter, dATESESIONParameter, iDCOMISIONParameter);
         }
     }
 }

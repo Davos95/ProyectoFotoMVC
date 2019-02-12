@@ -106,7 +106,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__SESION_WO__IDSES__46E78A0C">
-    <End Role="SESION" Type="Self.SESION" Multiplicity="1" />
+    <End Role="SESION" Type="Self.SESION" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="SESION_WORKER" Type="Self.SESION_WORKER" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SESION">
@@ -118,7 +120,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__SESION_WO__IDWOR__47DBAE45">
-    <End Role="WORKER" Type="Self.WORKER" Multiplicity="1" />
+    <End Role="WORKER" Type="Self.WORKER" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="SESION_WORKER" Type="Self.SESION_WORKER" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="WORKER">
@@ -130,7 +134,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__SESION_WO__IDWOR__48CFD27E">
-    <End Role="WORK" Type="Self.WORK" Multiplicity="0..1" />
+    <End Role="WORK" Type="Self.WORK" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="SESION_WORKER" Type="Self.SESION_WORKER" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="WORK">
@@ -156,6 +162,11 @@
   </Function>
   <Function Name="DELETECOMISION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DELETEPARTERWORKFROMSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="IDPARTNER" Type="int" Mode="In" />
+    <Parameter Name="IDWORK" Type="int" Mode="In" />
   </Function>
   <Function Name="DELETEPARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="int" Mode="In" />
@@ -197,6 +208,13 @@
   <Function Name="MODIFYORDERCOMISION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="int" Mode="In" />
     <Parameter Name="ORDER" Type="int" Mode="In" />
+  </Function>
+  <Function Name="MODIFYSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+    <Parameter Name="DESCRIPTION" Type="text" Mode="In" />
+    <Parameter Name="DATESESION" Type="date" Mode="In" />
+    <Parameter Name="IDCOMISION" Type="int" Mode="In" />
   </Function>
   <Function Name="MODIFYSESSION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="int" Mode="In" />

@@ -17,18 +17,20 @@
                 } else {
                     $("#Partner>.collection-item").css("background-color", "white");
                     $(this).css("background-color", "red");
-
-                    console.log($(this).data("valuePartner"));
-                    $("#idPartner").val($(this).data("valuePartner"));
+  
+                    $("#idPartner").val($(this).data("partner"));
                 }
             });
             $("#Work>.collection-item").click(function () {
                 if ($(this).css("background-color") == "rgb(255, 0, 0)") {
                     $("#Work>.collection-item").css("background-color", "white");
 
+                    $("#idWork").val();
                 } else {
                     $("#Work>.collection-item").css("background-color", "white");
                     $(this).css("background-color", "red");
+
+                    $("#idWork").val($(this).data("work"));
                 }
             });
         });
@@ -70,7 +72,7 @@
                     </div>
                     <div class="input-field">
                         <input type="hidden" name="idSesion" value="@Model.ID" />
-                        <button type="submit" class="btn waves-effect waves-darken amber accent-3" value="EDITAR">Modificar</button>
+                        <button type="submit" name="option" value="MODIFY" class="btn waves-effect waves-darken amber accent-3" >Modificar</button>
                     </div>
                 </form>
             </div>
@@ -87,10 +89,21 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Trabajo</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                @if (ViewBag.Workers != null)
+                                {
+                                    foreach (GETPARTNERWORKBYSESION_Result w in ViewBag.Workers)
+                                    {
+                                        <tr>
+                                            <td>@w.PARTNER</td>
+                                            <td>@w.WORK</td>
+                                            <td><a href="@Url.Action("DeletePartnerWorkFromSesion","Sesion",new { idSesion = Model.ID, idPartner = w.IDPARTNER, idWork = w.IDWORK })" style="float: right"><i class="material-icons" style="color: red;">backspace</i></a></td>
+                                        </tr>
+                                    }
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -100,7 +113,7 @@
                                 <input type="hidden" name="idSesion" value="@Model.ID" />
                                 <input type="hidden" name="idPartner" id="idPartner" />
                                 <input type="hidden" name="idWork" id="idWork" />
-                                <button type="submit" value="ADD" name="option" class="btn waves-effect">Añadir</button>
+                                <button type="submit" name="option" value="ADD"  class="btn waves-effect">Añadir</button>
                             </form>
                         </div>
                     </div>
@@ -109,7 +122,7 @@
                             <div class="collection-header"><b>Participantes</b></div>
                             @foreach (WORKER p in ViewBag.Partner)
                             {
-                                <div class="collection-item" data-valueWork="@p.ID">@p.NAME</div>
+                                <div class="collection-item" data-partner="@p.ID" >@p.NAME</div>
                             }
 
                         </div>
@@ -119,7 +132,7 @@
                             <div class="collection-header"><b>Trabajos</b></div>
                             @foreach (WORK w in ViewBag.Work)
                             {
-                                <div class="collection-item" data-valuePartner="@w.ID">@w.NAME</div>
+                                <div class="collection-item" data-work="@w.ID">@w.NAME</div>
                             }
                         </div>
                     </div>

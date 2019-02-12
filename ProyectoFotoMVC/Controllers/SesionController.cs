@@ -24,12 +24,24 @@ namespace ProyectoFotoMVC.Controllers
             this.repoWork = repoW;
         }
 
+
+
         public ActionResult Sesion()
         {
             List<SESION> sesions = this.repoSesion.GetSesions().ToList();
             return View(sesions);
         }
 
+        public ActionResult DeleteSesion(int id, String name)
+        {
+            String path = Server.MapPath("~/images/Sesion");
+            ToolImage.DeleteFolder(path, name);
+            this.repoSesion.DeleteSesion(id);
+
+            return RedirectToAction("Sesion");
+        }
+
+        #region Create Sesion
         // GET: CreateSesion
         public ActionResult CreateSesion()
         {
@@ -43,25 +55,48 @@ namespace ProyectoFotoMVC.Controllers
             this.repoSesion.InsertSesion(name, description, date, comision);
             return RedirectToAction("Sesion");
         }
+        #endregion
 
-        public ActionResult DeleteSesion(int id, String name)
-        {
-            String path = Server.MapPath("~/images/Sesion");
-            ToolImage.DeleteFolder(path, name);
-            this.repoSesion.DeleteSesion(id);
 
-            return RedirectToAction("Sesion");
-        }
+
         public ActionResult EditSesion(int id)
         {
             SESION sesion = this.repoSesion.GetSESIONID(id);
 
-            //sesion.DATESESION = sesion.DATESESION.ToString("dd/mm/yyyy");
             ViewBag.Date = sesion.DATESESION.Value.ToString("yyyy-MM-dd");
             ViewBag.Comision = this.repoComision.GetCOMISIONS().ToList();
             ViewBag.Partner = this.repoPartner.GetPartners().ToList();
             ViewBag.Work = this.repoWork.GetWORKs().ToList();
+            ViewBag.Workers = this.repoSesion.GetPartnerWorkBySesion(id);
             return View(sesion);
+        }
+
+        [HttpPost]
+        public ActionResult EditSesion(String option, int idSesion, int? idPartner, int? idWork, String name, String description, DateTime? date, int? comision)
+        {
+            if (option == "ADD")
+            {
+                this.repoSesion.AddPartnerWorkIntoSesion(idSesion, idPartner.Value, idWork.Value);
+            } else if(option == "MODIFY")
+            {
+                this.repoSesion.ModifySesion(idSesion, name, description, date.Value, comision.Value);
+            }
+
+
+            SESION sesion = this.repoSesion.GetSESIONID(idSesion);
+            ViewBag.Date = sesion.DATESESION.Value.ToString("yyyy-MM-dd");
+            ViewBag.Comision = this.repoComision.GetCOMISIONS().ToList();
+            ViewBag.Partner = this.repoPartner.GetPartners().ToList();
+            ViewBag.Work = this.repoWork.GetWORKs().ToList();
+            ViewBag.Workers = this.repoSesion.GetPartnerWorkBySesion(idSesion);
+            return View(sesion);
+        }
+
+        public ActionResult DeletePartnerWorkFromSesion(int idSesion, int idPartner, int idWork)
+        {
+            this.repoSesion.DeletePartnerWorkFromSesion(idSesion, idPartner, idWork);
+
+            return RedirectToAction("EditSesion","Sesion",new { id = idSesion });
         }
     }
 }

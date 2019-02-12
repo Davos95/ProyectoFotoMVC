@@ -13,7 +13,9 @@ namespace RepositorioPictureManager.Models
     
     public partial class GETPARTNERWORKBYSESION_Result
     {
-        public string PARTICIPANT { get; set; }
+        public int IDPARTNER { get; set; }
+        public string PARTNER { get; set; }
+        public Nullable<int> IDWORK { get; set; }
         public string WORK { get; set; }
     }
 }

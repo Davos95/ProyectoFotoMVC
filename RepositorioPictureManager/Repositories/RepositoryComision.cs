@@ -114,7 +114,7 @@ namespace RepositorioPictureManager.Repositories
             {
                 image = folder + image;
             }
-            this.entity.MODIFYSESSION(id, name, image, description, price);
+            this.entity.MODIFYCOMISION(id, name, image, description, price);
         }
 
         public void OrderComision(String [] order)
