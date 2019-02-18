@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "UploadImages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section events {
+    <script>
+
+    </script>
+}
+<h2>UploadImages</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="files" multiple />
+    <button type="submit">Enviar</button>
+</form>
