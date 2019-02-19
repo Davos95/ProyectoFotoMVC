@@ -17,7 +17,6 @@
       <EntityTypeMapping TypeName="pictureManagerModel.PHOTO">
         <MappingFragment StoreEntitySet="PHOTO">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
           <ScalarProperty Name="IDSESION" ColumnName="IDSESION" />
           <ScalarProperty Name="ORDERPHOTO" ColumnName="ORDERPHOTO" />
@@ -83,8 +82,6 @@
     <FunctionImportMapping FunctionImportName="DELETETRABAJO" FunctionName="pictureManagerModel.Store.DELETETRABAJO" />
     <FunctionImportMapping FunctionImportName="INSERTCOMISION" FunctionName="pictureManagerModel.Store.INSERTCOMISION" />
     <FunctionImportMapping FunctionImportName="GETCOMISIONS" FunctionName="pictureManagerModel.Store.GETCOMISIONS" />
-    <FunctionImportMapping FunctionImportName="DELETECOMISION" FunctionName="pictureManagerModel.Store.DELETECOMISION" />
-    <FunctionImportMapping FunctionImportName="MODIFYCOMISION" FunctionName="pictureManagerModel.Store.MODIFYSESSION" />
     <FunctionImportMapping FunctionImportName="GETUSER" FunctionName="pictureManagerModel.Store.GETUSER" />
     <FunctionImportMapping FunctionImportName="MODIFYORDERCOMISION" FunctionName="pictureManagerModel.Store.MODIFYORDERCOMISION" />
     <FunctionImportMapping FunctionImportName="INSERTSESION" FunctionName="pictureManagerModel.Store.INSERTSESION" />
@@ -104,5 +101,17 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="DELETEPARTERWORKFROMSESION" FunctionName="pictureManagerModel.Store.DELETEPARTERWORKFROMSESION" />
     <FunctionImportMapping FunctionImportName="MODIFYSESION" FunctionName="pictureManagerModel.Store.MODIFYSESION" />
+    <FunctionImportMapping FunctionImportName="MOSTRARSESIONES1" FunctionName="pictureManagerModel.Store.MOSTRARSESIONES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="pictureManagerModel.MOSTRARSESIONES1_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="IDPHOTO" ColumnName="IDPHOTO" />
+          <ScalarProperty Name="DATESESION" ColumnName="DATESESION" />
+          <ScalarProperty Name="IDCOMISION" ColumnName="IDCOMISION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

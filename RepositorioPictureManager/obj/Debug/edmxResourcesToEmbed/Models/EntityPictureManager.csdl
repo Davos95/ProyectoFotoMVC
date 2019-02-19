@@ -17,8 +17,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-    <Property Name="PICTURE" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="PICTURE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="IDSESION" Type="Int32" />
     <Property Name="ORDERPHOTO" Type="Int32" />
     <NavigationProperty Name="SESION" Relationship="Self.FK__PHOTO__IDSESION__3E52440B" FromRole="PHOTO" ToRole="SESION" />
@@ -58,7 +57,7 @@
     <Property Name="ID" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="NICK" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PWD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="ROLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
   <EntityType Name="WORK">
@@ -266,6 +265,7 @@
       <Parameter Name="DATESESION" Mode="In" Type="DateTime" />
       <Parameter Name="IDCOMISION" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="MOSTRARSESIONES1" ReturnType="Collection(pictureManagerModel.MOSTRARSESIONES1_Result)" />
   </EntityContainer>
   <ComplexType Name="MOSTRARPARTICIPANTES_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -328,5 +328,13 @@
     <Property Type="String" Name="PARTNER" Nullable="true" MaxLength="30" />
     <Property Type="Int32" Name="IDWORK" Nullable="true" />
     <Property Type="String" Name="WORK" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="MOSTRARSESIONES1_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="IDPHOTO" Nullable="true" />
+    <Property Type="DateTime" Name="DATESESION" Nullable="true" />
+    <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
   </ComplexType>
 </Schema>

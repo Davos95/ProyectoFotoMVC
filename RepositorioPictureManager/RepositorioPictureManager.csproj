@@ -116,6 +116,9 @@
     <Compile Include="Models\MOSTRARPARTICIPANTES_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MOSTRARSESIONES1_Result.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MOSTRARSESIONES_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
