@@ -4,13 +4,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section events {
-    <script>
-
-    </script>
+    <script src="~/Scripts/scriptUploadImages.js"></script>
+    <link href="~/Content/styleUploadImages.css" rel="stylesheet" />
 }
-<h2>UploadImages</h2>
 
 <form method="post" enctype="multipart/form-data">
-    <input type="file" name="files" multiple />
-    <button type="submit">Enviar</button>
+    <div id="wrapper">
+        <div id="drop-area">
+            <h3 class="drop-text">Arrastra las imagenes aqui</h3>
+            <h4>Tambien puedes dar <label style="color: blue">click<input type="file" multiple hidden /></label> para abrir el explorador de archivos</h4>
+        </div>
+    </div>
+    <div>
+        <button type="submit">Enviar</button>
+    </div>
 </form>
+

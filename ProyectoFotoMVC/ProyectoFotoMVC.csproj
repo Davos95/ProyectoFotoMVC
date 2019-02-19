@@ -136,6 +136,7 @@
     <Content Include="Content\custom.css" />
     <Content Include="Content\images\parallax1.jpg" />
     <Content Include="Content\images\windows.jpg" />
+    <Content Include="Content\styleUploadImages.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
@@ -144,6 +145,7 @@
     <Content Include="Scripts\materialize.min.js" />
     <Content Include="Scripts\menuDropdown.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\scriptUploadImages.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -20,7 +20,7 @@ namespace ProyectoFotoMVC.Controllers
         // GET: Images
         public ActionResult UploadImages()
         {
-            return View();
+            return View(this.repoSesion.GetSesions());
         }
 
         [HttpPost]

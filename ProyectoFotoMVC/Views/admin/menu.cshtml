@@ -8,9 +8,6 @@
     <script>
         $(document).ready(function () {
             $('.modal').modal();
-            $("#btnImg").click(function () {
-                $("#modalImg").modal('open');
-            });
             $("#btnSesion").click(function () {
                 $("#modalSesion").modal('open');
             });
@@ -34,7 +31,7 @@
                         @*<img src="~/Content/images/iconoSubirImagen.png"/>*@
                     </div>
                     <div class="card-content">
-                        <a class="center-align" id="btnImg"><h5>Imágenes</h5></a>
+                        <h5>@Html.ActionLink("Subir Fotos", "UploadImages","Images")</h5>
                     </div>
                 </div>
                 
@@ -57,7 +54,7 @@
                         <i class="material-icons" style="font-size:170px; margin:0 auto;">portrait</i>
                     </div>
                     <div class="card-content">
-                        <a class="center-align" id="btnParTar"><h5>Participantes y trabajos</h5></a>
+                        <h5>@Html.ActionLink("Crear Sesión", "CreateSesion", "Sesion")</h5>
                     </div>
                 </div>
                 
@@ -77,19 +74,9 @@
     </div>
 </div>
 
-<div id="modalImg" class="modal">
-    <div class="modal-content">
-        <div class="row">
-            <div class="col s12">
-                @Html.ActionLink("Subir Imagenes", "admin")
-            </div>
-        </div>
-    </div>
-</div>
-
 <div id="modalSesion" class="modal">
     <div class="modal-content">
-        @Html.ActionLink("Crear Sesión", "CreateSesion", "Sesion")
+        
     </div>
 </div>
 
