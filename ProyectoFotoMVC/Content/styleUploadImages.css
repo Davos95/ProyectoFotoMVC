@@ -21,3 +21,16 @@
  font-weight:bold;
  text-align:center;
 }
+
+.text {
+    text-align: center;
+    color: grey;
+}
+
+.card-content {
+    padding: 10px !important;
+}
+
+.btn {
+    width:100%;
+}

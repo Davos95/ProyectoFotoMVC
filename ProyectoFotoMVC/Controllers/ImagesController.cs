@@ -1,4 +1,5 @@
-﻿using RepositorioPictureManager.Repositories;
+﻿using ProyectoFotoMVC.Atributes;
+using RepositorioPictureManager.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace ProyectoFotoMVC.Controllers
 {
+    [AuthorizeUser]
     public class ImagesController : Controller
     {
         IRepositorySesion repoSesion;

@@ -1,25 +1,60 @@
-﻿
+﻿@using RepositorioPictureManager.Models
+@model List<SESION>
+
 @{
     ViewBag.Title = "UploadImages";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@section events {
-    <script src="~/Scripts/scriptUploadImages.js"></script>
+@section styles {
     <link href="~/Content/styleUploadImages.css" rel="stylesheet" />
 }
+
+@section events {
+    <script>
+        $(document).ready(function () {
+            M.AutoInit();
+        });
+    </script>
+
+    <script src="~/Scripts/scriptUploadImages.js"></script>
+}
 <div class="row">
-    <div class="col s12 m10 l8 xl5 offset-m2 offset-l3 offset-xl3 ">
+    <div class="col s12 m10 l8 xl5 offset-m1 offset-l2 offset-xl3 ">
         <form method="post" enctype="multipart/form-data">
-            <div id="wrapper">
-                <div id="drop-area">
-                    <h3 class="drop-text">Arrastra las imagenes aqui</h3>
-                    <h5>Tambien puedes dar <label style="color: blue;font-size:20px;">click<input type="file" multiple hidden /></label> para abrir el explorador de archivos</h5>
+            <div class="card">
+                <div class="card-content">
+                    <div id="wrapper">
+                        <div id="drop-area">
+                            <h3 class="drop-text">Arrastra las imagenes aqui</h3>
+                            <h5 class="text">Tambien puedes dar <label style="color: blue;font-size:20px;">click<input type="file" id="files" multiple hidden /></label> para abrir el explorador de archivos</h5>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div>
-                <button type="submit">Enviar</button>
+            <div class="card">
+                <div class="card-content">
+                    <div class="input-field">
+                        <select name="sesion" id="sesion">
+                            <option value="null" selected disabled>Selecciona una opción</option>
+                            @if (Model != null)
+                            {
+                                foreach (SESION s in Model)
+                                {
+                                    <option value="@s.ID">@s.NAME</option>
+                                }
+                            }
+                        </select>
+                        <label for="sesion">Selecciona una Sesion</label>
+                    </div>
+                    <button id="send" class="btn waves-effect waves-darken green" >Enviar</button>
+                </div>
+                <div>
+
+                </div>
             </div>
+
         </form>
+        <div id="div"></div>
     </div>
 </div>
 
