@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace ProyectoFotoMVC.Controllers
@@ -26,28 +27,20 @@ namespace ProyectoFotoMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> UploadImages(HttpPostedFileBase[] files)
+        public async Task<JsonResult> Upload()
         {
-            if (ModelState.IsValid)
+            int idSesion = int.Parse(Request.Form["idSesion"].ToString());
+            String sessionName = this.repoSesion.GetSESIONID(idSesion).NAME;
+
+            foreach (string file in Request.Files)
             {
-                foreach (HttpPostedFileBase file in files)
-                {
-                    //Checking file is available to save.  
-                    if (file != null)
-                    {
-                        var InputFileName = Path.GetFileName(file.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/images/") + InputFileName);
-                        //Save file to server folder  
-                        file.SaveAs(ServerSavePath);
-                        //assigning file uploaded status to ViewBag for showing message to user.  
-                        ViewBag.UploadStatus = files.Count().ToString() + " files uploaded successfully.";
-                    }
-
-                }
+                HttpPostedFileBase fileContent = Request.Files[file];
+                String rootpath = Server.MapPath("~/images");
+                String path = Path.Combine(rootpath + "\\Sesion\\" + sessionName);
+                ToolImage.UploadImage(fileContent, path, null);
             }
-            return View();
+            
+            return Json(true);
         }
-
-
     }
 }

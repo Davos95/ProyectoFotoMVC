@@ -103,9 +103,7 @@ G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.Diagnostics.FileV
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.Diagnostics.Process.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.Diagnostics.StackTrace.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.IO.Compression.dll
-G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.IO.FileSystem.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
-G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.IO.FileSystem.Primitives.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.IO.Pipes.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.Reflection.Metadata.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.Security.AccessControl.dll
@@ -117,7 +115,6 @@ G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.Security.Cryptogr
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.Security.Principal.Windows.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.Text.Encoding.CodePages.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.Threading.Thread.dll
-G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.ValueTuple.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.Xml.ReaderWriter.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.Xml.XmlDocument.dll
 G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.Xml.XPath.dll
@@ -422,3 +419,6 @@ C:\Users\AlumnoMCSD\source\Github\ProyectoFotoMVC\ProyectoFotoMVC\obj\Debug\Proy
 C:\Users\AlumnoMCSD\source\Github\ProyectoFotoMVC\ProyectoFotoMVC\obj\Debug\ProyectoFotoMVC.csproj.CopyComplete
 C:\Users\AlumnoMCSD\source\Github\ProyectoFotoMVC\ProyectoFotoMVC\obj\Debug\ProyectoFotoMVC.dll
 C:\Users\AlumnoMCSD\source\Github\ProyectoFotoMVC\ProyectoFotoMVC\obj\Debug\ProyectoFotoMVC.pdb
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.IO.FileSystem.dll
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+G:\Proyectos\ProyectoFotoMVC\ProyectoFotoMVC\bin\roslyn\System.ValueTuple.dll

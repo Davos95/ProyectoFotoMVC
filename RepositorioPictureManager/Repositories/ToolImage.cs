@@ -12,9 +12,18 @@ namespace RepositorioPictureManager.Repositories
     {
         public static void UploadImage(HttpPostedFileBase image, String folder, String name)
         {
-            String type = image.ContentType.Split('/')[1];
 
-            String path = Path.Combine(folder, name + "."+type);
+            String path = "";
+            if(name != null)
+            {
+                String type = image.ContentType.Split('/')[1];
+                path = Path.Combine(folder, name + "." + type);
+            }
+            else
+            {
+                path = Path.Combine(folder, image.FileName);
+            }
+            
             image.SaveAs(path);
         }
         public static void RemoveImage(String image, String folder)

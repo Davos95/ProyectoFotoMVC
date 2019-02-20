@@ -21,16 +21,16 @@ $(document).ready(function () {
         arrayImages = e.originalEvent.dataTransfer.files;
         console.log(arrayImages);
         
-        for (var i = 0; i < arrayImages.length; i++) {
+        //for (var i = 0; i < arrayImages.length; i++) {
             
-            var image = arrayImages[i];
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var pic = e.target;
-                $("#div").append("<img src='" + pic.result + "' style='width: 150px; height: 150px'>");
-            }
-            reader.readAsDataURL(image);
-        }
+        //    var image = arrayImages[i];
+        //    var reader = new FileReader();
+        //    reader.onload = function (e) {
+        //        var pic = e.target;
+        //        $("#div").append("<img src='" + pic.result + "' style='width: 150px; height: 150px'>");
+        //    }
+        //    reader.readAsDataURL(image);
+        //}
         
     });
 
@@ -41,6 +41,7 @@ $(document).ready(function () {
 
     $("#send").click(function () {
         var sesion = $("#sesion").val();
+        console.log(sesion);
         uploadData(arrayImages, sesion);
         
     });
@@ -49,16 +50,23 @@ $(document).ready(function () {
 
 
 function uploadData(arrayImages, sesion) {
-    var values = {"images": arrayImages, "sesion": sesion}
+
+    var formData = new FormData();
+    for (var i = 0; i < arrayImages.length; i++) {
+        formData.append("File"+i, arrayImages[i]);
+    }
+
+    formData.append("idSesion", sesion);
+    
     $.ajax({
         type: "POST",
-        url: "upload_image.php",
-        data: values,
-        contentType:false,
-        cache: false,
+        url: "/Images/Upload",
+        data: formData,
+        contentType: false,
         processData: false,
         success: function(data){
-            $('#drop-area').html(data);
+            console.log(data);
         }
     });
+
 }
