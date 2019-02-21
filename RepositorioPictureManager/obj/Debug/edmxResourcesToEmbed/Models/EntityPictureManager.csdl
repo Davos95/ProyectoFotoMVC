@@ -17,7 +17,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PICTURE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PICTURE" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
     <Property Name="IDSESION" Type="Int32" />
     <Property Name="ORDERPHOTO" Type="Int32" />
     <NavigationProperty Name="SESION" Relationship="Self.FK__PHOTO__IDSESION__3E52440B" FromRole="PHOTO" ToRole="SESION" />
@@ -57,7 +57,7 @@
     <Property Name="ID" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="NICK" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PWD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ROLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
   <EntityType Name="WORK">
@@ -266,6 +266,23 @@
       <Parameter Name="IDCOMISION" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="MOSTRARSESIONES1" ReturnType="Collection(pictureManagerModel.MOSTRARSESIONES1_Result)" />
+    <FunctionImport Name="DELETECOMISION1">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="MODIFYSESSION">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="PHOTO" Mode="In" Type="String" />
+      <Parameter Name="DESCRIPTION" Mode="In" Type="String" />
+      <Parameter Name="PRICE" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="GETPHOTOS" EntitySet="PHOTO" ReturnType="Collection(pictureManagerModel.PHOTO)">
+      <Parameter Name="IDSESION" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="INSERTPHOTO">
+      <Parameter Name="NAMEPHOTO" Mode="In" Type="String" />
+      <Parameter Name="IDSESION" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="MOSTRARPARTICIPANTES_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -336,5 +353,11 @@
     <Property Type="Int32" Name="IDPHOTO" Nullable="true" />
     <Property Type="DateTime" Name="DATESESION" Nullable="true" />
     <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GETPHOTOS_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="PICTURE" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="IDSESION" Nullable="true" />
+    <Property Type="Int32" Name="ORDERPHOTO" Nullable="true" />
   </ComplexType>
 </Schema>

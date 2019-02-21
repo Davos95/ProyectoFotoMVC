@@ -64,8 +64,16 @@ function uploadData(arrayImages, sesion) {
         data: formData,
         contentType: false,
         processData: false,
+        beforeSend: function () {
+            $("#loading").fadeIn(100);
+        },
         success: function(data){
             console.log(data);
+            setTimeout(function () {
+                $("#loading").fadeOut(100);
+                M.toast({ html: 'Se han subido las fotos correctamente!' });
+            },1000);
+            
         }
     });
 

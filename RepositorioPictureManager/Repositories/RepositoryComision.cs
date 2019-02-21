@@ -105,7 +105,7 @@ namespace RepositorioPictureManager.Repositories
             COMISION comision = GetComisionByID(id);
             String file = comision.PHOTO.Split('\\')[1];
             File.Delete(folder+"\\"+file);
-            this.entity.DELETECOMISION(id);
+            this.entity.DELETECOMISION1(id);
         }
 
         public void ModifyComision(int id, String name, String description, String folder, String image, float price)

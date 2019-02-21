@@ -101,6 +101,9 @@
     <Compile Include="Models\GETPARTNERWORKBYSESION_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GETPHOTOS_Result.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GETSESIONID_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
@@ -146,8 +149,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepositoryComision.cs" />
     <Compile Include="Repositories\IRepositoryLogin.cs" />
+    <Compile Include="Repositories\IRepositoryPhoto.cs" />
     <Compile Include="Repositories\IRepositorySesion.cs" />
     <Compile Include="Repositories\RepositoryComision.cs" />
+    <Compile Include="Repositories\RepositoryPhoto.cs" />
     <Compile Include="Repositories\RepositorySesion.cs" />
     <Compile Include="Repositories\ToolImage.cs" />
     <Compile Include="Repositories\RepositoryLogin.cs" />

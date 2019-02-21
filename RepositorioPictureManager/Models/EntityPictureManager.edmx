@@ -21,8 +21,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PICTURE" Type="text" />
           <Property Name="IDSESION" Type="int" />
-          <Property Name="PICTURE" Type="nvarchar" MaxLength="50" />
           <Property Name="ORDERPHOTO" Type="int" />
         </EntityType>
         <EntityType Name="SESION">
@@ -52,7 +52,7 @@
           <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NICK" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="PWD" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="NAME" Type="varchar" MaxLength="25" />
+          <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ROLE" Type="nvarchar" MaxLength="25" Nullable="false" />
         </EntityType>
         <EntityType Name="WORK">
@@ -71,7 +71,7 @@
           <Property Name="CONTACT" Type="nvarchar" MaxLength="30" />
           <Property Name="URLCONTACT" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <Association Name="FK__PHOTO__IDSESION__3E52440B">
+        <Association Name="FK__PHOTO__IDSESION__3F466844">
           <End Role="SESION" Type="Self.SESION" Multiplicity="0..1" />
           <End Role="PHOTO" Type="Self.PHOTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -83,7 +83,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SESION__IDCOMISI__3B75D760">
+        <Association Name="FK__SESION__IDCOMISI__3C69FB99">
           <End Role="COMISION" Type="Self.COMISION" Multiplicity="0..1" />
           <End Role="SESION" Type="Self.SESION" Multiplicity="*" />
           <ReferentialConstraint>
@@ -95,7 +95,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SESION__IDPHOTO__3F466844">
+        <Association Name="FK__SESION__IDPHOTO__403A8C7D">
           <End Role="PHOTO" Type="Self.PHOTO" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -109,7 +109,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SESION_WO__IDSES__45F365D3">
+        <Association Name="FK__SESION_WO__IDSES__46E78A0C">
           <End Role="SESION" Type="Self.SESION" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -123,7 +123,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SESION_WO__IDWOR__46E78A0C">
+        <Association Name="FK__SESION_WO__IDWOR__47DBAE45">
           <End Role="WORKER" Type="Self.WORKER" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -137,7 +137,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SESION_WO__IDWOR__47DBAE45">
+        <Association Name="FK__SESION_WO__IDWOR__48CFD27E">
           <End Role="WORK" Type="Self.WORK" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -164,6 +164,9 @@
         <Function Name="ADDTRABAJO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NAME" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="DELETECOMISION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="DELETEPARTERWORKFROMSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
           <Parameter Name="IDPARTNER" Type="int" Mode="In" />
@@ -186,6 +189,9 @@
         <Function Name="GETPARTNERWORKBYSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="GETPHOTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDSESION" Type="int" Mode="In" />
+        </Function>
         <Function Name="GETSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GETSESIONID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
@@ -199,6 +205,10 @@
           <Parameter Name="DESCRIPTION" Type="text" Mode="In" />
           <Parameter Name="PATH" Type="text" Mode="In" />
           <Parameter Name="PRICE" Type="float" Mode="In" />
+        </Function>
+        <Function Name="INSERTPHOTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NAMEPHOTO" Type="text" Mode="In" />
+          <Parameter Name="IDSESION" Type="int" Mode="In" />
         </Function>
         <Function Name="INSERTSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NAME" Type="nvarchar" Mode="In" />
@@ -217,8 +227,14 @@
           <Parameter Name="DATESESION" Type="date" Mode="In" />
           <Parameter Name="IDCOMISION" Type="int" Mode="In" />
         </Function>
+        <Function Name="MODIFYSESSION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="PHOTO" Type="text" Mode="In" />
+          <Parameter Name="DESCRIPTION" Type="text" Mode="In" />
+          <Parameter Name="PRICE" Type="float" Mode="In" />
+        </Function>
         <Function Name="MOSTRARPARTICIPANTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="MOSTRARSESIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MOSTRARTRABAJOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="UPDATEPARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
@@ -234,27 +250,27 @@
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WORK" EntityType="Self.WORK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WORKER" EntityType="Self.WORKER" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__PHOTO__IDSESION__3E52440B" Association="Self.FK__PHOTO__IDSESION__3E52440B">
+          <AssociationSet Name="FK__PHOTO__IDSESION__3F466844" Association="Self.FK__PHOTO__IDSESION__3F466844">
             <End Role="SESION" EntitySet="SESION" />
             <End Role="PHOTO" EntitySet="PHOTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__SESION__IDCOMISI__3B75D760" Association="Self.FK__SESION__IDCOMISI__3B75D760">
+          <AssociationSet Name="FK__SESION__IDCOMISI__3C69FB99" Association="Self.FK__SESION__IDCOMISI__3C69FB99">
             <End Role="COMISION" EntitySet="COMISION" />
             <End Role="SESION" EntitySet="SESION" />
           </AssociationSet>
-          <AssociationSet Name="FK__SESION__IDPHOTO__3F466844" Association="Self.FK__SESION__IDPHOTO__3F466844">
+          <AssociationSet Name="FK__SESION__IDPHOTO__403A8C7D" Association="Self.FK__SESION__IDPHOTO__403A8C7D">
             <End Role="PHOTO" EntitySet="PHOTO" />
             <End Role="SESION" EntitySet="SESION" />
           </AssociationSet>
-          <AssociationSet Name="FK__SESION_WO__IDSES__45F365D3" Association="Self.FK__SESION_WO__IDSES__45F365D3">
+          <AssociationSet Name="FK__SESION_WO__IDSES__46E78A0C" Association="Self.FK__SESION_WO__IDSES__46E78A0C">
             <End Role="SESION" EntitySet="SESION" />
             <End Role="SESION_WORKER" EntitySet="SESION_WORKER" />
           </AssociationSet>
-          <AssociationSet Name="FK__SESION_WO__IDWOR__46E78A0C" Association="Self.FK__SESION_WO__IDWOR__46E78A0C">
+          <AssociationSet Name="FK__SESION_WO__IDWOR__47DBAE45" Association="Self.FK__SESION_WO__IDWOR__47DBAE45">
             <End Role="WORKER" EntitySet="WORKER" />
             <End Role="SESION_WORKER" EntitySet="SESION_WORKER" />
           </AssociationSet>
-          <AssociationSet Name="FK__SESION_WO__IDWOR__47DBAE45" Association="Self.FK__SESION_WO__IDWOR__47DBAE45">
+          <AssociationSet Name="FK__SESION_WO__IDWOR__48CFD27E" Association="Self.FK__SESION_WO__IDWOR__48CFD27E">
             <End Role="WORK" EntitySet="WORK" />
             <End Role="SESION_WORKER" EntitySet="SESION_WORKER" />
           </AssociationSet>
@@ -280,7 +296,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PICTURE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PICTURE" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="IDSESION" Type="Int32" />
           <Property Name="ORDERPHOTO" Type="Int32" />
           <NavigationProperty Name="SESION" Relationship="Self.FK__PHOTO__IDSESION__3E52440B" FromRole="PHOTO" ToRole="SESION" />
@@ -320,7 +336,7 @@
           <Property Name="ID" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="NICK" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PWD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ROLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="WORK">
@@ -529,6 +545,23 @@
             <Parameter Name="IDCOMISION" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="MOSTRARSESIONES1" ReturnType="Collection(pictureManagerModel.MOSTRARSESIONES1_Result)" />
+          <FunctionImport Name="DELETECOMISION1">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MODIFYSESSION">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="PHOTO" Mode="In" Type="String" />
+            <Parameter Name="DESCRIPTION" Mode="In" Type="String" />
+            <Parameter Name="PRICE" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="GETPHOTOS" EntitySet="PHOTO" ReturnType="Collection(pictureManagerModel.PHOTO)">
+            <Parameter Name="IDSESION" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTPHOTO">
+            <Parameter Name="NAMEPHOTO" Mode="In" Type="String" />
+            <Parameter Name="IDSESION" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="MOSTRARPARTICIPANTES_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -599,6 +632,12 @@
           <Property Type="Int32" Name="IDPHOTO" Nullable="true" />
           <Property Type="DateTime" Name="DATESESION" Nullable="true" />
           <Property Type="Int32" Name="IDCOMISION" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GETPHOTOS_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="PICTURE" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="IDSESION" Nullable="true" />
+          <Property Type="Int32" Name="ORDERPHOTO" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -712,18 +751,11 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DELETEPARTERWORKFROMSESION" FunctionName="pictureManagerModel.Store.DELETEPARTERWORKFROMSESION" />
           <FunctionImportMapping FunctionImportName="MODIFYSESION" FunctionName="pictureManagerModel.Store.MODIFYSESION" />
-          <FunctionImportMapping FunctionImportName="MOSTRARSESIONES1" FunctionName="pictureManagerModel.Store.MOSTRARSESIONES">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="pictureManagerModel.MOSTRARSESIONES1_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-                <ScalarProperty Name="IDPHOTO" ColumnName="IDPHOTO" />
-                <ScalarProperty Name="DATESESION" ColumnName="DATESESION" />
-                <ScalarProperty Name="IDCOMISION" ColumnName="IDCOMISION" />
-              </ComplexTypeMapping>
-            </ResultMapping>
+          <FunctionImportMapping FunctionImportName="DELETECOMISION1" FunctionName="pictureManagerModel.Store.DELETECOMISION" />
+          <FunctionImportMapping FunctionImportName="MODIFYSESSION" FunctionName="pictureManagerModel.Store.MODIFYSESSION" />
+          <FunctionImportMapping FunctionImportName="GETPHOTOS" FunctionName="pictureManagerModel.Store.GETPHOTOS">
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="INSERTPHOTO" FunctionName="pictureManagerModel.Store.INSERTPHOTO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

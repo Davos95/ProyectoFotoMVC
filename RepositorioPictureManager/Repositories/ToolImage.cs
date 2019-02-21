@@ -41,7 +41,7 @@ namespace RepositorioPictureManager.Repositories
         public static void DeleteFolder(String path, String name)
         {
             String routeFolder = Path.Combine(path + "/" + name);
-            Directory.Delete(routeFolder);
+            Directory.Delete(routeFolder,true);
         }
         
     }

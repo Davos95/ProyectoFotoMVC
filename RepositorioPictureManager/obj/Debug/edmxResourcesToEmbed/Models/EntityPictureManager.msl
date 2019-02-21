@@ -101,17 +101,9 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="DELETEPARTERWORKFROMSESION" FunctionName="pictureManagerModel.Store.DELETEPARTERWORKFROMSESION" />
     <FunctionImportMapping FunctionImportName="MODIFYSESION" FunctionName="pictureManagerModel.Store.MODIFYSESION" />
-    <FunctionImportMapping FunctionImportName="MOSTRARSESIONES1" FunctionName="pictureManagerModel.Store.MOSTRARSESIONES">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="pictureManagerModel.MOSTRARSESIONES1_Result">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
-          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-          <ScalarProperty Name="IDPHOTO" ColumnName="IDPHOTO" />
-          <ScalarProperty Name="DATESESION" ColumnName="DATESESION" />
-          <ScalarProperty Name="IDCOMISION" ColumnName="IDCOMISION" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DELETECOMISION1" FunctionName="pictureManagerModel.Store.DELETECOMISION" />
+    <FunctionImportMapping FunctionImportName="MODIFYSESSION" FunctionName="pictureManagerModel.Store.MODIFYSESSION" />
+    <FunctionImportMapping FunctionImportName="GETPHOTOS" FunctionName="pictureManagerModel.Store.GETPHOTOS" />
+    <FunctionImportMapping FunctionImportName="INSERTPHOTO" FunctionName="pictureManagerModel.Store.INSERTPHOTO" />
   </EntityContainerMapping>
 </Mapping>

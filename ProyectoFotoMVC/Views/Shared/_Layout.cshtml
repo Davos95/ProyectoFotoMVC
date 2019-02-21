@@ -12,10 +12,6 @@
 </head>
 <body>
     <main class="grey lighten-4">
-        <ul id="dropdownPicture" class="dropdown-content grey darken-4">
-            <li>@Html.ActionLink("Subir fotos", "Partners", "photos")</li>
-            <li>@Html.ActionLink("Gestionar fotos", "Works", "photos")</li>
-        </ul>
         <ul id="dropdownPT" class="dropdown-content grey darken-4">
             <li>@Html.ActionLink("Participantes", "Partners", "PartnerWork")</li>
             <li>@Html.ActionLink("Trabajos", "Works", "PartnerWork")</li>
@@ -33,7 +29,7 @@
             <div class="nav-wrapper">
                 @Html.ActionLink("Picture Manager", "menu", "admin", new { }, new { @class = "brand-logo" })
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdownPicture">Fotos<i class="material-icons right"></i></a></li>
+                    <li>@Html.ActionLink("Subir Fotos", "UploadImages", "Images")</li>
                     <li><a a class="dropdown-trigger" href="#!" data-target="dropdownSesion">Sesiones</a></li>
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdownPT">Participantes y Trabajos<i class="material-icons right"></i></a></li>
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdownComision">Comisiones<i class="material-icons right"></i></a></li>

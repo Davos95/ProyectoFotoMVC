@@ -32,6 +32,7 @@ namespace ProyectoFotoMVC.App_Start
             container.RegisterType<IRepositoryWork, RepositoryWork>();
             container.RegisterType<IRepositoryComision, RepositoryComision>();
             container.RegisterType<IRepositorySesion, RepositorySesion>();
+            container.RegisterType<IRepositoryPhoto, RepositoryPhoto>();
         }
     }
 }

@@ -15,9 +15,11 @@ namespace ProyectoFotoMVC.Controllers
     public class ImagesController : Controller
     {
         IRepositorySesion repoSesion;
-        public ImagesController(IRepositorySesion repoS)
+        IRepositoryPhoto repoPhoto;
+        public ImagesController(IRepositorySesion repoS, IRepositoryPhoto repoP)
         {
             this.repoSesion = repoS;
+            this.repoPhoto = repoP;
         }
 
         // GET: Images
@@ -27,17 +29,18 @@ namespace ProyectoFotoMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Upload()
+        public async Task<ActionResult> Upload()
         {
             int idSesion = int.Parse(Request.Form["idSesion"].ToString());
             String sessionName = this.repoSesion.GetSESIONID(idSesion).NAME;
-
+            
             foreach (string file in Request.Files)
             {
                 HttpPostedFileBase fileContent = Request.Files[file];
                 String rootpath = Server.MapPath("~/images");
                 String path = Path.Combine(rootpath + "\\Sesion\\" + sessionName);
                 ToolImage.UploadImage(fileContent, path, null);
+                this.repoPhoto.InsertPhoto(fileContent.FileName, idSesion);
             }
             
             return Json(true);

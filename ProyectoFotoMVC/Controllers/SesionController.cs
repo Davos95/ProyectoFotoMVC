@@ -16,12 +16,14 @@ namespace ProyectoFotoMVC.Controllers
         IRepositorySesion repoSesion;
         IRepositoryPartner repoPartner;
         IRepositoryWork repoWork;
-        public SesionController(IRepositoryComision repoC,IRepositorySesion repoS, IRepositoryPartner repoP, IRepositoryWork repoW)
+        IRepositoryPhoto repoPhoto;
+        public SesionController(IRepositoryComision repoC,IRepositorySesion repoS, IRepositoryPartner repoP, IRepositoryWork repoW, IRepositoryPhoto repoPh)
         {
             this.repoComision = repoC;
             this.repoSesion = repoS;
             this.repoPartner = repoP;
             this.repoWork = repoW;
+            this.repoPhoto = repoPh;
         }
 
 
@@ -97,6 +99,11 @@ namespace ProyectoFotoMVC.Controllers
             this.repoSesion.DeletePartnerWorkFromSesion(idSesion, idPartner, idWork);
 
             return RedirectToAction("EditSesion","Sesion",new { id = idSesion });
+        }
+
+        public ActionResult ManagePhotos(int idSesion)
+        {
+            return View(this.repoPhoto.GetPhotos(idSesion));
         }
     }
 }
