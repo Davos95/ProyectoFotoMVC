@@ -1,0 +1,57 @@
+﻿@using RepositorioPictureManager.Models
+@model List<PHOTO>
+
+@{
+    ViewBag.Title = "ManagePhotos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section events{
+    <script>
+        $(document).ready(function() {
+            M.AutoInit();
+        });
+    </script>
+}
+<div class="row">
+    <div class="col s12 m5 l4 xl3">
+        <div class="card" style="height:100%">
+            <div class="card-content">
+                <div class="input-field">
+                    <span class="card-title">Mover Fotos</span> 
+                        <select id="sessions">
+                            <option value="null" disabled selected>Selecciona una sessión</option>
+                        </select>
+                        <button type="button" id="move" class="btn waves-effect waves-darken green">Mover</button> 
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m7 l8 xl9">
+        <div class="row">
+            @if (Model.Count() > 0)
+            {
+                foreach (PHOTO p in Model)
+                {
+                    <div class="col s3">
+                        <div id="div_@p.ID" class="box">
+                            <input type="checkbox" id="check_@p.ID" /><label for="check_@p.ID"><img src="~/images/Sesion/@ViewBag.SessionName/@p.PICTURE" draggable="true" id="@p.ID" style="width:150px; height:150px;" /></label>
+                            <span>@p.PICTURE</span>
+                        </div>
+                    </div>    
+                }
+
+            }
+            else
+            {
+                <h1>¡No hay fotos actualmente!</h1>
+                <h1>¡Intenta subir unas cuantas!</h1>
+            }
+
+        </div>
+    </div>
+</div>
+

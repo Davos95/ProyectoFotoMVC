@@ -17,6 +17,7 @@ namespace ProyectoFotoMVC.Controllers
         IRepositoryPartner repoPartner;
         IRepositoryWork repoWork;
         IRepositoryPhoto repoPhoto;
+
         public SesionController(IRepositoryComision repoC,IRepositorySesion repoS, IRepositoryPartner repoP, IRepositoryWork repoW, IRepositoryPhoto repoPh)
         {
             this.repoComision = repoC;
@@ -25,8 +26,6 @@ namespace ProyectoFotoMVC.Controllers
             this.repoWork = repoW;
             this.repoPhoto = repoPh;
         }
-
-
 
         public ActionResult Sesion()
         {
@@ -59,8 +58,7 @@ namespace ProyectoFotoMVC.Controllers
         }
         #endregion
 
-
-
+        #region Edit Sesion
         public ActionResult EditSesion(int id)
         {
             SESION sesion = this.repoSesion.GetSESIONID(id);
@@ -81,6 +79,10 @@ namespace ProyectoFotoMVC.Controllers
                 this.repoSesion.AddPartnerWorkIntoSesion(idSesion, idPartner.Value, idWork.Value);
             } else if(option == "MODIFY")
             {
+                String sessionName = this.repoSesion.GetSESIONID(idSesion).NAME;
+                String path = Server.MapPath("~/images/Sesion");
+
+                ToolImage.RenameFolder(path, sessionName, name);
                 this.repoSesion.ModifySesion(idSesion, name, description, date.Value, comision.Value);
             }
 
@@ -93,6 +95,7 @@ namespace ProyectoFotoMVC.Controllers
             ViewBag.Workers = this.repoSesion.GetPartnerWorkBySesion(idSesion);
             return View(sesion);
         }
+        
 
         public ActionResult DeletePartnerWorkFromSesion(int idSesion, int idPartner, int idWork)
         {
@@ -100,9 +103,11 @@ namespace ProyectoFotoMVC.Controllers
 
             return RedirectToAction("EditSesion","Sesion",new { id = idSesion });
         }
+        #endregion
 
         public ActionResult ManagePhotos(int idSesion)
         {
+            ViewBag.SessionName = this.repoSesion.GetSESIONID(idSesion).NAME;
             return View(this.repoPhoto.GetPhotos(idSesion));
         }
     }

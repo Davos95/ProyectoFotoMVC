@@ -43,6 +43,14 @@ namespace RepositorioPictureManager.Repositories
             String routeFolder = Path.Combine(path + "/" + name);
             Directory.Delete(routeFolder,true);
         }
+
+        public static void RenameFolder(String path, String oldName, String newName)
+        {
+            String pathOldSession = Path.Combine(path + "\\" + oldName);
+            String pathNewSession = Path.Combine(path + "\\" + newName);
+   
+            Directory.Move(pathOldSession, pathNewSession);
+        }
         
     }
 }

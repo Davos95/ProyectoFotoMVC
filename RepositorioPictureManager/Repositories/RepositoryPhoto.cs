@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RepositorioPictureManager.Models;
+
 #region PROCEDURES
 /*
  CREATE PROCEDURE GETPHOTOS
@@ -24,6 +25,7 @@ GO
 
 */
 #endregion
+
 namespace RepositorioPictureManager.Repositories
 {
     public class RepositoryPhoto : IRepositoryPhoto

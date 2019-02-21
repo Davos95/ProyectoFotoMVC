@@ -194,6 +194,7 @@
     <Content Include="Views\Sesion\Sesion.cshtml" />
     <Content Include="Views\Sesion\EditSesion.cshtml" />
     <Content Include="Views\Images\UploadImages.cshtml" />
+    <Content Include="Views\Sesion\ManagePhotos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
