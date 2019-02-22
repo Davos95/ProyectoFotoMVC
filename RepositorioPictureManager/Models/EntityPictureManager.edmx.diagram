@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="8744b28d5c8d45878e750560a20bd669" Name="Diagram1">
         <EntityTypeShape EntityType="pictureManagerModel.COMISION" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="pictureManagerModel.PHOTO" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pictureManagerModel.PHOTO" Width="1.5" PointX="7.375" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pictureManagerModel.SESION" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="pictureManagerModel.SESION_WORKER" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pictureManagerModel.USERS" Width="1.5" PointX="6.5" PointY="7.25" IsExpanded="true" />

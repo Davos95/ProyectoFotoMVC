@@ -108,6 +108,7 @@ namespace ProyectoFotoMVC.Controllers
         public ActionResult ManagePhotos(int idSesion)
         {
             ViewBag.SessionName = this.repoSesion.GetSESIONID(idSesion).NAME;
+            ViewBag.Sessions = this.repoSesion.GetSesions().Where(x => x.ID != idSesion).ToList();
             return View(this.repoPhoto.GetPhotos(idSesion));
         }
     }

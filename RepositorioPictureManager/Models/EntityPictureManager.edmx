@@ -95,20 +95,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SESION__IDPHOTO__403A8C7D">
-          <End Role="PHOTO" Type="Self.PHOTO" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="SESION" Type="Self.SESION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PHOTO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SESION">
-              <PropertyRef Name="IDPHOTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SESION_WO__IDSES__46E78A0C">
           <End Role="SESION" Type="Self.SESION" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -256,10 +242,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__SESION__IDCOMISI__3C69FB99" Association="Self.FK__SESION__IDCOMISI__3C69FB99">
             <End Role="COMISION" EntitySet="COMISION" />
-            <End Role="SESION" EntitySet="SESION" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SESION__IDPHOTO__403A8C7D" Association="Self.FK__SESION__IDPHOTO__403A8C7D">
-            <End Role="PHOTO" EntitySet="PHOTO" />
             <End Role="SESION" EntitySet="SESION" />
           </AssociationSet>
           <AssociationSet Name="FK__SESION_WO__IDSES__46E78A0C" Association="Self.FK__SESION_WO__IDSES__46E78A0C">
@@ -556,7 +538,7 @@
             <Parameter Name="PRICE" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="GETPHOTOS" EntitySet="PHOTO" ReturnType="Collection(pictureManagerModel.PHOTO)">
-            <Parameter Name="IDSESION" Mode="In" Type="Int32" />
+          <Parameter Name="IDSESION" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="INSERTPHOTO">
             <Parameter Name="NAMEPHOTO" Mode="In" Type="String" />

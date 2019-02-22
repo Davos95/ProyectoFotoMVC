@@ -5,53 +5,118 @@
     ViewBag.Title = "ManagePhotos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section styles{
+    <style>
+        .btn {
+            width: 100%;
+            margin: 1.5em 0;
+            height: 3rem;
+        }
+
+        .img {
+            width: 240px;
+            height: 240px;
+            object-fit: contain;
+
+        }
+        .gallery .card .card-content {
+            padding: 1px;
+        }
+    </style>
+    <link href="~/Content/PreviewImage.css" rel="stylesheet" />
+}
 
 @section events{
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             M.AutoInit();
+
+            $(".triggerImage").click(function () {
+                $("#modalPreview").css("display", "block");
+                console.log($(this).parents(".box"));
+                $("#imagePreview").attr("src", $(this).parents(".box").children(".card-image").children("label").children("img").attr("src"));
+
+            });
+            $("#modalPreview").click(function () {
+                $(this).css("display", "none");
+            });
         });
+
     </script>
+    <script src="~/Scripts/scriptUploadImages.js"></script>
 }
-<div class="row">
-    <div class="col s12 m5 l4 xl3">
-        <div class="card" style="height:100%">
-            <div class="card-content">
-                <div class="input-field">
-                    <span class="card-title">Mover Fotos</span> 
+    <div class="row" style="padding: 1rem 1.2rem;">
+
+        <div class="col s12 m7 l8 xl9">
+            <div class="row gallery">
+                @if (Model.Count() > 0)
+                {
+                    foreach (PHOTO p in Model)
+                    {
+                        <div class="col s12 m3">
+                            <div class="card col s12">
+                                <div id="div_@p.ID" class="box">
+                                    <div class="card-image">
+                                        <input type="checkbox" id="check_@p.ID" /><label for="check_@p.ID"><img src="~/images/Sesion/@ViewBag.SessionName/@p.PICTURE" draggable="true" id="@p.ID" class="img" /></label>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-action">
+                                            <div>
+                                                <span class="triggerImage">@p.PICTURE</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                              
+                                </div>
+                            </div>
+                            </div>
+                            
+                    }
+
+                }
+                else
+                {
+                    <h1>¡No hay fotos actualmente!</h1>
+                    <h1>¡Intenta subir unas cuantas!</h1>
+                }
+
+            </div>
+        </div>
+
+        <div class="col s12 m5 l4 xl3">
+            <div class="card" style="height:100%">
+                <div class="card-content">
+                    <div class="input-field">
+                        <span class="card-title" style="display: flex;
+    justify-content: center;
+    align-items: center;"><i class="material-icons" style="margin: 0 10px; font-size:2.2rem;" >panorama</i>Mover Fotos</span>
                         <select id="sessions">
                             <option value="null" disabled selected>Selecciona una sessión</option>
+                            @foreach (SESION s in ViewBag.Sessions)
+                            {
+                                <option value="@s.ID">@s.NAME</option>
+                            }
                         </select>
-                        <button type="button" id="move" class="btn waves-effect waves-darken green">Mover</button> 
-                </div>
-                <div>
-
+                        <button type="button" id="move" class="btn waves-effect waves-darken green">Mover</button>
+                    </div>
+                    <div class="input-field">
+                        <span class="card-title" style="display: flex;
+    justify-content: center;
+    align-items: center;"><i class="material-icons" style="margin: 0 10px; font-size: 2.2rem">photo_library</i>Ordenar Fotos</span>
+                        <button type="button" id="delete" class="btn waves-effect waves-darken green">Ordenar</button>
+                    </div>
+                    <div class="separador" style="width: 100%;    height: 1px;background: rgba(0, 0, 0, 0.12941176470588237);"></div>
+                    <div class="input-field">
+                        <button type="button" id="delete" class="btn waves-effect waves-darken red">Eliminar</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col s12 m7 l8 xl9">
-        <div class="row">
-            @if (Model.Count() > 0)
-            {
-                foreach (PHOTO p in Model)
-                {
-                    <div class="col s3">
-                        <div id="div_@p.ID" class="box">
-                            <input type="checkbox" id="check_@p.ID" /><label for="check_@p.ID"><img src="~/images/Sesion/@ViewBag.SessionName/@p.PICTURE" draggable="true" id="@p.ID" style="width:150px; height:150px;" /></label>
-                            <span>@p.PICTURE</span>
-                        </div>
-                    </div>    
-                }
 
-            }
-            else
-            {
-                <h1>¡No hay fotos actualmente!</h1>
-                <h1>¡Intenta subir unas cuantas!</h1>
-            }
-
-        </div>
-    </div>
+<!-- The Modal -->
+<div id="modalPreview" class="modal-Preview">
+    <span class="close">&times;</span>
+    <img class="modal-content-Preview" id="imagePreview">
+    <div id="caption"></div>
 </div>
-
