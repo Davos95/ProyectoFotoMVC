@@ -34,9 +34,9 @@ namespace RepositorioPictureManager.Repositories
 {
     public class RepositoryWork : IRepositoryWork
     {
-        EntidadPicturesManager entity;
+        EntityPictureManager entity;
 
-        public RepositoryWork(EntidadPicturesManager entity) {
+        public RepositoryWork(EntityPictureManager entity) {
             this.entity = entity;
         }
 

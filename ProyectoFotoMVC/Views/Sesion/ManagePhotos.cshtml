@@ -22,6 +22,18 @@
         .gallery .card .card-content {
             padding: 1px;
         }
+
+        .check {
+            visibility:hidden;
+        }
+
+        input[type=checkbox]:checked ~ div > .check {
+            visibility: visible;
+            position: absolute;
+            bottom: 11em;
+            left: 16em;
+            width: 6em;
+        }
     </style>
     <link href="~/Content/PreviewImage.css" rel="stylesheet" />
 }
@@ -37,6 +49,7 @@
                 $("#imagePreview").attr("src", $(this).parents(".box").children(".card-image").children("label").children("img").attr("src"));
 
             });
+
             $("#modalPreview").click(function () {
                 $(this).css("display", "none");
             });
@@ -58,7 +71,13 @@
                                 <div id="div_@p.ID" class="box">
                                     <div class="card-image">
                                         <input type="checkbox" id="check_@p.ID" /><label for="check_@p.ID"><img src="~/images/Sesion/@ViewBag.SessionName/@p.PICTURE" draggable="true" id="@p.ID" class="img" /></label>
+                                        <div style="position: relative; width: 0; height: 0">
+                                            <div class="check">
+                                                <img src="~/images/check.png" />
+                                            </div>
+                                        </div>
                                     </div>
+                                    
                                     <div class="card-content">
                                         <div class="card-action">
                                             <div>
@@ -66,7 +85,7 @@
                                             </div>
                                         </div>
                                     </div>
-                              
+
                                 </div>
                             </div>
                             </div>

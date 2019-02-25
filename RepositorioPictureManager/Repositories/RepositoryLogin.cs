@@ -28,8 +28,8 @@ namespace RepositorioPictureManager.Repositories
 {
     public class RepositoryLogin : IRepositoryLogin
     {
-        EntidadPicturesManager entity;
-        public RepositoryLogin(EntidadPicturesManager entity)
+        EntityPictureManager entity;
+        public RepositoryLogin(EntityPictureManager entity)
         {
             this.entity = entity;
         }

@@ -31,7 +31,6 @@ namespace RepositorioPictureManager.Models
         public virtual COMISION COMISION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHOTO> PHOTO { get; set; }
-        public virtual PHOTO PHOTO1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SESION_WORKER> SESION_WORKER { get; set; }
     }

@@ -14,19 +14,11 @@ namespace RepositorioPictureManager.Models
     
     public partial class PHOTO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PHOTO()
-        {
-            this.SESION1 = new HashSet<SESION>();
-        }
-    
         public int ID { get; set; }
         public string PICTURE { get; set; }
         public Nullable<int> IDSESION { get; set; }
         public Nullable<int> ORDERPHOTO { get; set; }
     
         public virtual SESION SESION { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SESION> SESION1 { get; set; }
     }
 }

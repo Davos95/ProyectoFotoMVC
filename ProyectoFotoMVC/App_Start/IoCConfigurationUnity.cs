@@ -22,7 +22,7 @@ namespace ProyectoFotoMVC.App_Start
 
         private static void RegistrarContext(UnityContainer container)
         {
-            container.RegisterType<EntidadPicturesManager>();
+            container.RegisterType<EntityPictureManager>();
         }
 
         public static void RegistrarRepos(UnityContainer container)

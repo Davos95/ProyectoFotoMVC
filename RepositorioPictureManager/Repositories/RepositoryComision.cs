@@ -74,8 +74,8 @@ namespace RepositorioPictureManager.Repositories
 {
     public class RepositoryComision : IRepositoryComision
     {
-        EntidadPicturesManager entity;
-        public RepositoryComision(EntidadPicturesManager entity)
+        EntityPictureManager entity;
+        public RepositoryComision(EntityPictureManager entity)
         {
             this.entity = entity;
         }
@@ -105,7 +105,7 @@ namespace RepositorioPictureManager.Repositories
             COMISION comision = GetComisionByID(id);
             String file = comision.PHOTO.Split('\\')[1];
             File.Delete(folder+"\\"+file);
-            this.entity.DELETECOMISION1(id);
+            this.entity.DELETECOMISION(id);
         }
 
         public void ModifyComision(int id, String name, String description, String folder, String image, float price)

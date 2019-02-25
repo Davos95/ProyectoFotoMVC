@@ -30,8 +30,8 @@ namespace RepositorioPictureManager.Repositories
 {
     public class RepositoryPhoto : IRepositoryPhoto
     {
-        EntidadPicturesManager entity;
-        public RepositoryPhoto(EntidadPicturesManager entity)
+        EntityPictureManager entity;
+        public RepositoryPhoto(EntityPictureManager entity)
         {
             this.entity = entity;
         }

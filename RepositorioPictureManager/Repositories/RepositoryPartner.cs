@@ -44,9 +44,9 @@ namespace RepositorioPictureManager.Repositories
 {
     public class RepositoryPartner : IRepositoryPartner
     {
-        EntidadPicturesManager entity;
+        EntityPictureManager entity;
 
-        public RepositoryPartner(EntidadPicturesManager entity)
+        public RepositoryPartner(EntityPictureManager entity)
         {
             this.entity = entity;
         }

@@ -74,8 +74,8 @@ namespace RepositorioPictureManager.Repositories
 {
     public class RepositorySesion : IRepositorySesion
     {
-        EntidadPicturesManager entity;
-        public RepositorySesion(EntidadPicturesManager entity)
+        EntityPictureManager entity;
+        public RepositorySesion(EntityPictureManager entity)
         {
             this.entity = entity;
         }

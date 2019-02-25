@@ -22,10 +22,10 @@ namespace RepositorioPictureManager.Models
     
         public int ID { get; set; }
         public string NAME { get; set; }
-        public string PHOTO { get; set; }
         public string DESCRIPTION { get; set; }
         public Nullable<int> ORDERCOMISION { get; set; }
         public Nullable<double> PRICE { get; set; }
+        public string PHOTO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SESION> SESION { get; set; }

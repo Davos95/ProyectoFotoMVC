@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="pictureManagerModelStoreContainer" CdmEntityContainer="EntidadPicturesManager">
+  <EntityContainerMapping StorageEntityContainer="PictureManagerModelStoreContainer" CdmEntityContainer="EntityPictureManager">
     <EntitySetMapping Name="COMISION">
-      <EntityTypeMapping TypeName="pictureManagerModel.COMISION">
+      <EntityTypeMapping TypeName="PictureManagerModel.COMISION">
         <MappingFragment StoreEntitySet="COMISION">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
-          <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
           <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
           <ScalarProperty Name="ORDERCOMISION" ColumnName="ORDERCOMISION" />
           <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PHOTO">
-      <EntityTypeMapping TypeName="pictureManagerModel.PHOTO">
+      <EntityTypeMapping TypeName="PictureManagerModel.PHOTO">
         <MappingFragment StoreEntitySet="PHOTO">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
@@ -24,7 +24,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SESION">
-      <EntityTypeMapping TypeName="pictureManagerModel.SESION">
+      <EntityTypeMapping TypeName="PictureManagerModel.SESION">
         <MappingFragment StoreEntitySet="SESION">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -36,7 +36,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SESION_WORKER">
-      <EntityTypeMapping TypeName="pictureManagerModel.SESION_WORKER">
+      <EntityTypeMapping TypeName="PictureManagerModel.SESION_WORKER">
         <MappingFragment StoreEntitySet="SESION_WORKER">
           <ScalarProperty Name="IDSESION" ColumnName="IDSESION" />
           <ScalarProperty Name="IDWORKER" ColumnName="IDWORKER" />
@@ -45,18 +45,18 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="USERS">
-      <EntityTypeMapping TypeName="pictureManagerModel.USERS">
+      <EntityTypeMapping TypeName="PictureManagerModel.USERS">
         <MappingFragment StoreEntitySet="USERS">
-          <ScalarProperty Name="ROLE" ColumnName="ROLE" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NICK" ColumnName="NICK" />
           <ScalarProperty Name="PWD" ColumnName="PWD" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ROLE" ColumnName="ROLE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="WORK">
-      <EntityTypeMapping TypeName="pictureManagerModel.WORK">
+      <EntityTypeMapping TypeName="PictureManagerModel.WORK">
         <MappingFragment StoreEntitySet="WORK">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -64,7 +64,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="WORKER">
-      <EntityTypeMapping TypeName="pictureManagerModel.WORKER">
+      <EntityTypeMapping TypeName="PictureManagerModel.WORKER">
         <MappingFragment StoreEntitySet="WORKER">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -73,25 +73,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="MOSTRARPARTICIPANTES" FunctionName="pictureManagerModel.Store.MOSTRARPARTICIPANTES" />
-    <FunctionImportMapping FunctionImportName="MOSTRARTRABAJOS" FunctionName="pictureManagerModel.Store.MOSTRARTRABAJOS" />
-    <FunctionImportMapping FunctionImportName="ADDPARTICIPANTE" FunctionName="pictureManagerModel.Store.ADDPARTICIPANTE" />
-    <FunctionImportMapping FunctionImportName="DELETEPARTICIPANTE" FunctionName="pictureManagerModel.Store.DELETEPARTICIPANTE" />
-    <FunctionImportMapping FunctionImportName="UPDATEPARTICIPANTE" FunctionName="pictureManagerModel.Store.UPDATEPARTICIPANTE" />
-    <FunctionImportMapping FunctionImportName="ADDTRABAJO" FunctionName="pictureManagerModel.Store.ADDTRABAJO" />
-    <FunctionImportMapping FunctionImportName="DELETETRABAJO" FunctionName="pictureManagerModel.Store.DELETETRABAJO" />
-    <FunctionImportMapping FunctionImportName="INSERTCOMISION" FunctionName="pictureManagerModel.Store.INSERTCOMISION" />
-    <FunctionImportMapping FunctionImportName="GETCOMISIONS" FunctionName="pictureManagerModel.Store.GETCOMISIONS" />
-    <FunctionImportMapping FunctionImportName="GETUSER" FunctionName="pictureManagerModel.Store.GETUSER" />
-    <FunctionImportMapping FunctionImportName="MODIFYORDERCOMISION" FunctionName="pictureManagerModel.Store.MODIFYORDERCOMISION" />
-    <FunctionImportMapping FunctionImportName="INSERTSESION" FunctionName="pictureManagerModel.Store.INSERTSESION" />
-    <FunctionImportMapping FunctionImportName="GETSESION" FunctionName="pictureManagerModel.Store.GETSESION" />
-    <FunctionImportMapping FunctionImportName="DELETESESION" FunctionName="pictureManagerModel.Store.DELETESESION" />
-    <FunctionImportMapping FunctionImportName="GETSESIONID" FunctionName="pictureManagerModel.Store.GETSESIONID" />
-    <FunctionImportMapping FunctionImportName="ADDPARTNERWORKINTOSESION" FunctionName="pictureManagerModel.Store.ADDPARTNERWORKINTOSESION" />
-    <FunctionImportMapping FunctionImportName="GETPARTNERWORKBYSESION" FunctionName="pictureManagerModel.Store.GETPARTNERWORKBYSESION">
+    <FunctionImportMapping FunctionImportName="ADDPARTICIPANTE" FunctionName="PictureManagerModel.Store.ADDPARTICIPANTE" />
+    <FunctionImportMapping FunctionImportName="ADDPARTNERWORKINTOSESION" FunctionName="PictureManagerModel.Store.ADDPARTNERWORKINTOSESION" />
+    <FunctionImportMapping FunctionImportName="ADDTRABAJO" FunctionName="PictureManagerModel.Store.ADDTRABAJO" />
+    <FunctionImportMapping FunctionImportName="DELETECOMISION" FunctionName="PictureManagerModel.Store.DELETECOMISION" />
+    <FunctionImportMapping FunctionImportName="DELETEPARTERWORKFROMSESION" FunctionName="PictureManagerModel.Store.DELETEPARTERWORKFROMSESION" />
+    <FunctionImportMapping FunctionImportName="DELETEPARTICIPANTE" FunctionName="PictureManagerModel.Store.DELETEPARTICIPANTE" />
+    <FunctionImportMapping FunctionImportName="DELETESESION" FunctionName="PictureManagerModel.Store.DELETESESION" />
+    <FunctionImportMapping FunctionImportName="DELETETRABAJO" FunctionName="PictureManagerModel.Store.DELETETRABAJO" />
+    <FunctionImportMapping FunctionImportName="GETCOMISIONS" FunctionName="PictureManagerModel.Store.GETCOMISIONS" />
+    <FunctionImportMapping FunctionImportName="GETPARTNERWORKBYSESION" FunctionName="PictureManagerModel.Store.GETPARTNERWORKBYSESION">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="pictureManagerModel.GETPARTNERWORKBYSESION_Result">
+        <ComplexTypeMapping TypeName="PictureManagerModel.GETPARTNERWORKBYSESION_Result">
           <ScalarProperty Name="IDPARTNER" ColumnName="IDPARTNER" />
           <ScalarProperty Name="PARTNER" ColumnName="PARTNER" />
           <ScalarProperty Name="IDWORK" ColumnName="IDWORK" />
@@ -99,11 +92,18 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="DELETEPARTERWORKFROMSESION" FunctionName="pictureManagerModel.Store.DELETEPARTERWORKFROMSESION" />
-    <FunctionImportMapping FunctionImportName="MODIFYSESION" FunctionName="pictureManagerModel.Store.MODIFYSESION" />
-    <FunctionImportMapping FunctionImportName="DELETECOMISION1" FunctionName="pictureManagerModel.Store.DELETECOMISION" />
-    <FunctionImportMapping FunctionImportName="MODIFYSESSION" FunctionName="pictureManagerModel.Store.MODIFYSESSION" />
-    <FunctionImportMapping FunctionImportName="GETPHOTOS" FunctionName="pictureManagerModel.Store.GETPHOTOS" />
-    <FunctionImportMapping FunctionImportName="INSERTPHOTO" FunctionName="pictureManagerModel.Store.INSERTPHOTO" />
+    <FunctionImportMapping FunctionImportName="GETPHOTOS" FunctionName="PictureManagerModel.Store.GETPHOTOS" />
+    <FunctionImportMapping FunctionImportName="GETSESION" FunctionName="PictureManagerModel.Store.GETSESION" />
+    <FunctionImportMapping FunctionImportName="GETSESIONID" FunctionName="PictureManagerModel.Store.GETSESIONID" />
+    <FunctionImportMapping FunctionImportName="GETUSER" FunctionName="PictureManagerModel.Store.GETUSER" />
+    <FunctionImportMapping FunctionImportName="INSERTCOMISION" FunctionName="PictureManagerModel.Store.INSERTCOMISION" />
+    <FunctionImportMapping FunctionImportName="INSERTPHOTO" FunctionName="PictureManagerModel.Store.INSERTPHOTO" />
+    <FunctionImportMapping FunctionImportName="INSERTSESION" FunctionName="PictureManagerModel.Store.INSERTSESION" />
+    <FunctionImportMapping FunctionImportName="MODIFYORDERCOMISION" FunctionName="PictureManagerModel.Store.MODIFYORDERCOMISION" />
+    <FunctionImportMapping FunctionImportName="MODIFYSESION" FunctionName="PictureManagerModel.Store.MODIFYSESION" />
+    <FunctionImportMapping FunctionImportName="MODIFYCOMISION" FunctionName="PictureManagerModel.Store.MODIFYSESSION" />
+    <FunctionImportMapping FunctionImportName="MOSTRARPARTICIPANTES" FunctionName="PictureManagerModel.Store.MOSTRARPARTICIPANTES" />
+    <FunctionImportMapping FunctionImportName="MOSTRARTRABAJOS" FunctionName="PictureManagerModel.Store.MOSTRARTRABAJOS" />
+    <FunctionImportMapping FunctionImportName="UPDATEPARTICIPANTE" FunctionName="PictureManagerModel.Store.UPDATEPARTICIPANTE" />
   </EntityContainerMapping>
 </Mapping>

@@ -49,6 +49,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -81,19 +83,19 @@
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EntityPictureManager.Context.cs">
-      <DependentUpon>EntityPictureManager.Context.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>EntityPictureManager.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EntityPictureManager.cs">
-      <DependentUpon>EntityPictureManager.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EntityPictureManager.Designer.cs">
-      <DependentUpon>EntityPictureManager.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>EntityPictureManager.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\GETCOMISIONS_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
@@ -113,16 +115,7 @@
     <Compile Include="Models\GETUSER_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\GETUSER_Result1.cs">
-      <DependentUpon>EntityPictureManager.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\MOSTRARPARTICIPANTES_Result.cs">
-      <DependentUpon>EntityPictureManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MOSTRARSESIONES1_Result.cs">
-      <DependentUpon>EntityPictureManager.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MOSTRARSESIONES_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MOSTRARTRABAJOS_Result.cs">
@@ -162,20 +155,20 @@
     <Compile Include="Repositories\RepositoryWork.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\EntityPictureManager.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EntityPictureManager.edmx</DependentUpon>
-      <LastGenOutput>EntityPictureManager.cs</LastGenOutput>
-    </Content>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Models\EntityPictureManager.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EntityPictureManager.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\EntityPictureManager.edmx.diagram">
+    <None Include="Models\EntityPictureManager.edmx.diagram">
       <DependentUpon>EntityPictureManager.edmx</DependentUpon>
-    </Content>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\EntityPictureManager.Context.tt">
@@ -183,9 +176,11 @@
       <DependentUpon>EntityPictureManager.edmx</DependentUpon>
       <LastGenOutput>EntityPictureManager.Context.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Models\EntityPictureManager.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityPictureManager.edmx</DependentUpon>
+      <LastGenOutput>EntityPictureManager.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

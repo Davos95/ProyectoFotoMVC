@@ -15,10 +15,10 @@ namespace RepositorioPictureManager.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class EntidadPicturesManager : DbContext
+    public partial class EntityPictureManager : DbContext
     {
-        public EntidadPicturesManager()
-            : base("name=EntidadPicturesManager")
+        public EntityPictureManager()
+            : base("name=EntityPictureManager")
         {
         }
     
@@ -34,26 +34,6 @@ namespace RepositorioPictureManager.Models
         public virtual DbSet<USERS> USERS { get; set; }
         public virtual DbSet<WORK> WORK { get; set; }
         public virtual DbSet<WORKER> WORKER { get; set; }
-    
-        public virtual ObjectResult<WORKER> MOSTRARPARTICIPANTES()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WORKER>("MOSTRARPARTICIPANTES");
-        }
-    
-        public virtual ObjectResult<WORKER> MOSTRARPARTICIPANTES(MergeOption mergeOption)
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WORKER>("MOSTRARPARTICIPANTES", mergeOption);
-        }
-    
-        public virtual ObjectResult<WORK> MOSTRARTRABAJOS()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WORK>("MOSTRARTRABAJOS");
-        }
-    
-        public virtual ObjectResult<WORK> MOSTRARTRABAJOS(MergeOption mergeOption)
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WORK>("MOSTRARTRABAJOS", mergeOption);
-        }
     
         public virtual int ADDPARTICIPANTE(string nAME, string cONTACT, string uRLCONTACT)
         {
@@ -72,34 +52,21 @@ namespace RepositorioPictureManager.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ADDPARTICIPANTE", nAMEParameter, cONTACTParameter, uRLCONTACTParameter);
         }
     
-        public virtual int DELETEPARTICIPANTE(Nullable<int> iD)
+        public virtual int ADDPARTNERWORKINTOSESION(Nullable<int> iDSESION, Nullable<int> iDPARTER, Nullable<int> iDWORK)
         {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
+            var iDSESIONParameter = iDSESION.HasValue ?
+                new ObjectParameter("IDSESION", iDSESION) :
+                new ObjectParameter("IDSESION", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETEPARTICIPANTE", iDParameter);
-        }
+            var iDPARTERParameter = iDPARTER.HasValue ?
+                new ObjectParameter("IDPARTER", iDPARTER) :
+                new ObjectParameter("IDPARTER", typeof(int));
     
-        public virtual int UPDATEPARTICIPANTE(Nullable<int> iD, string nAME, string cONTACT, string uRLCONTACT)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
+            var iDWORKParameter = iDWORK.HasValue ?
+                new ObjectParameter("IDWORK", iDWORK) :
+                new ObjectParameter("IDWORK", typeof(int));
     
-            var nAMEParameter = nAME != null ?
-                new ObjectParameter("NAME", nAME) :
-                new ObjectParameter("NAME", typeof(string));
-    
-            var cONTACTParameter = cONTACT != null ?
-                new ObjectParameter("CONTACT", cONTACT) :
-                new ObjectParameter("CONTACT", typeof(string));
-    
-            var uRLCONTACTParameter = uRLCONTACT != null ?
-                new ObjectParameter("URLCONTACT", uRLCONTACT) :
-                new ObjectParameter("URLCONTACT", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATEPARTICIPANTE", iDParameter, nAMEParameter, cONTACTParameter, uRLCONTACTParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ADDPARTNERWORKINTOSESION", iDSESIONParameter, iDPARTERParameter, iDWORKParameter);
         }
     
         public virtual int ADDTRABAJO(string nAME)
@@ -111,6 +78,50 @@ namespace RepositorioPictureManager.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ADDTRABAJO", nAMEParameter);
         }
     
+        public virtual int DELETECOMISION(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETECOMISION", iDParameter);
+        }
+    
+        public virtual int DELETEPARTERWORKFROMSESION(Nullable<int> iD, Nullable<int> iDPARTNER, Nullable<int> iDWORK)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var iDPARTNERParameter = iDPARTNER.HasValue ?
+                new ObjectParameter("IDPARTNER", iDPARTNER) :
+                new ObjectParameter("IDPARTNER", typeof(int));
+    
+            var iDWORKParameter = iDWORK.HasValue ?
+                new ObjectParameter("IDWORK", iDWORK) :
+                new ObjectParameter("IDWORK", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETEPARTERWORKFROMSESION", iDParameter, iDPARTNERParameter, iDWORKParameter);
+        }
+    
+        public virtual int DELETEPARTICIPANTE(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETEPARTICIPANTE", iDParameter);
+        }
+    
+        public virtual int DELETESESION(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETESESION", iDParameter);
+        }
+    
         public virtual int DELETETRABAJO(Nullable<int> iD)
         {
             var iDParameter = iD.HasValue ?
@@ -118,37 +129,6 @@ namespace RepositorioPictureManager.Models
                 new ObjectParameter("ID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETETRABAJO", iDParameter);
-        }
-    
-        public virtual ObjectResult<SESION> MOSTRARSESIONES()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("MOSTRARSESIONES");
-        }
-    
-        public virtual ObjectResult<SESION> MOSTRARSESIONES(MergeOption mergeOption)
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("MOSTRARSESIONES", mergeOption);
-        }
-    
-        public virtual int INSERTCOMISION(string nAME, string dESCRIPTION, string pATH, Nullable<double> pRICE)
-        {
-            var nAMEParameter = nAME != null ?
-                new ObjectParameter("NAME", nAME) :
-                new ObjectParameter("NAME", typeof(string));
-    
-            var dESCRIPTIONParameter = dESCRIPTION != null ?
-                new ObjectParameter("DESCRIPTION", dESCRIPTION) :
-                new ObjectParameter("DESCRIPTION", typeof(string));
-    
-            var pATHParameter = pATH != null ?
-                new ObjectParameter("PATH", pATH) :
-                new ObjectParameter("PATH", typeof(string));
-    
-            var pRICEParameter = pRICE.HasValue ?
-                new ObjectParameter("PRICE", pRICE) :
-                new ObjectParameter("PRICE", typeof(double));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERTCOMISION", nAMEParameter, dESCRIPTIONParameter, pATHParameter, pRICEParameter);
         }
     
         public virtual ObjectResult<COMISION> GETCOMISIONS()
@@ -161,38 +141,59 @@ namespace RepositorioPictureManager.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<COMISION>("GETCOMISIONS", mergeOption);
         }
     
-        public virtual int DELETECOMISION(Nullable<int> iD)
+        public virtual ObjectResult<GETPARTNERWORKBYSESION_Result> GETPARTNERWORKBYSESION(Nullable<int> iD)
         {
             var iDParameter = iD.HasValue ?
                 new ObjectParameter("ID", iD) :
                 new ObjectParameter("ID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETECOMISION", iDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GETPARTNERWORKBYSESION_Result>("GETPARTNERWORKBYSESION", iDParameter);
         }
     
-        public virtual int MODIFYCOMISION(Nullable<int> iD, string nAME, string pHOTO, string dESCRIPTION, Nullable<double> pRICE)
+        public virtual ObjectResult<PHOTO> GETPHOTOS(Nullable<int> iDSESION)
+        {
+            var iDSESIONParameter = iDSESION.HasValue ?
+                new ObjectParameter("IDSESION", iDSESION) :
+                new ObjectParameter("IDSESION", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PHOTO>("GETPHOTOS", iDSESIONParameter);
+        }
+    
+        public virtual ObjectResult<PHOTO> GETPHOTOS(Nullable<int> iDSESION, MergeOption mergeOption)
+        {
+            var iDSESIONParameter = iDSESION.HasValue ?
+                new ObjectParameter("IDSESION", iDSESION) :
+                new ObjectParameter("IDSESION", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PHOTO>("GETPHOTOS", mergeOption, iDSESIONParameter);
+        }
+    
+        public virtual ObjectResult<SESION> GETSESION()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESION");
+        }
+    
+        public virtual ObjectResult<SESION> GETSESION(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESION", mergeOption);
+        }
+    
+        public virtual ObjectResult<SESION> GETSESIONID(Nullable<int> iD)
         {
             var iDParameter = iD.HasValue ?
                 new ObjectParameter("ID", iD) :
                 new ObjectParameter("ID", typeof(int));
     
-            var nAMEParameter = nAME != null ?
-                new ObjectParameter("NAME", nAME) :
-                new ObjectParameter("NAME", typeof(string));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESIONID", iDParameter);
+        }
     
-            var pHOTOParameter = pHOTO != null ?
-                new ObjectParameter("PHOTO", pHOTO) :
-                new ObjectParameter("PHOTO", typeof(string));
+        public virtual ObjectResult<SESION> GETSESIONID(Nullable<int> iD, MergeOption mergeOption)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
     
-            var dESCRIPTIONParameter = dESCRIPTION != null ?
-                new ObjectParameter("DESCRIPTION", dESCRIPTION) :
-                new ObjectParameter("DESCRIPTION", typeof(string));
-    
-            var pRICEParameter = pRICE.HasValue ?
-                new ObjectParameter("PRICE", pRICE) :
-                new ObjectParameter("PRICE", typeof(double));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFYCOMISION", iDParameter, nAMEParameter, pHOTOParameter, dESCRIPTIONParameter, pRICEParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESIONID", mergeOption, iDParameter);
         }
     
         public virtual ObjectResult<USERS> GETUSER(string nICK, string pWD)
@@ -221,17 +222,38 @@ namespace RepositorioPictureManager.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USERS>("GETUSER", mergeOption, nICKParameter, pWDParameter);
         }
     
-        public virtual int MODIFYORDERCOMISION(Nullable<int> iD, Nullable<int> oRDER)
+        public virtual int INSERTCOMISION(string nAME, string dESCRIPTION, string pATH, Nullable<double> pRICE)
         {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
+            var nAMEParameter = nAME != null ?
+                new ObjectParameter("NAME", nAME) :
+                new ObjectParameter("NAME", typeof(string));
     
-            var oRDERParameter = oRDER.HasValue ?
-                new ObjectParameter("ORDER", oRDER) :
-                new ObjectParameter("ORDER", typeof(int));
+            var dESCRIPTIONParameter = dESCRIPTION != null ?
+                new ObjectParameter("DESCRIPTION", dESCRIPTION) :
+                new ObjectParameter("DESCRIPTION", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFYORDERCOMISION", iDParameter, oRDERParameter);
+            var pATHParameter = pATH != null ?
+                new ObjectParameter("PATH", pATH) :
+                new ObjectParameter("PATH", typeof(string));
+    
+            var pRICEParameter = pRICE.HasValue ?
+                new ObjectParameter("PRICE", pRICE) :
+                new ObjectParameter("PRICE", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERTCOMISION", nAMEParameter, dESCRIPTIONParameter, pATHParameter, pRICEParameter);
+        }
+    
+        public virtual int INSERTPHOTO(string nAMEPHOTO, Nullable<int> iDSESION)
+        {
+            var nAMEPHOTOParameter = nAMEPHOTO != null ?
+                new ObjectParameter("NAMEPHOTO", nAMEPHOTO) :
+                new ObjectParameter("NAMEPHOTO", typeof(string));
+    
+            var iDSESIONParameter = iDSESION.HasValue ?
+                new ObjectParameter("IDSESION", iDSESION) :
+                new ObjectParameter("IDSESION", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERTPHOTO", nAMEPHOTOParameter, iDSESIONParameter);
         }
     
         public virtual int INSERTSESION(string nAME, string dESCRIPTION, Nullable<System.DateTime> dATE, Nullable<int> iDCOMISION)
@@ -255,84 +277,17 @@ namespace RepositorioPictureManager.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERTSESION", nAMEParameter, dESCRIPTIONParameter, dATEParameter, iDCOMISIONParameter);
         }
     
-        public virtual ObjectResult<SESION> GETSESION()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESION");
-        }
-    
-        public virtual ObjectResult<SESION> GETSESION(MergeOption mergeOption)
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESION", mergeOption);
-        }
-    
-        public virtual int DELETESESION(Nullable<int> iD)
+        public virtual int MODIFYORDERCOMISION(Nullable<int> iD, Nullable<int> oRDER)
         {
             var iDParameter = iD.HasValue ?
                 new ObjectParameter("ID", iD) :
                 new ObjectParameter("ID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETESESION", iDParameter);
-        }
+            var oRDERParameter = oRDER.HasValue ?
+                new ObjectParameter("ORDER", oRDER) :
+                new ObjectParameter("ORDER", typeof(int));
     
-        public virtual ObjectResult<SESION> GETSESIONID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESIONID", iDParameter);
-        }
-    
-        public virtual ObjectResult<SESION> GETSESIONID(Nullable<int> iD, MergeOption mergeOption)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SESION>("GETSESIONID", mergeOption, iDParameter);
-        }
-    
-        public virtual int ADDPARTNERWORKINTOSESION(Nullable<int> iDSESION, Nullable<int> iDPARTER, Nullable<int> iDWORK)
-        {
-            var iDSESIONParameter = iDSESION.HasValue ?
-                new ObjectParameter("IDSESION", iDSESION) :
-                new ObjectParameter("IDSESION", typeof(int));
-    
-            var iDPARTERParameter = iDPARTER.HasValue ?
-                new ObjectParameter("IDPARTER", iDPARTER) :
-                new ObjectParameter("IDPARTER", typeof(int));
-    
-            var iDWORKParameter = iDWORK.HasValue ?
-                new ObjectParameter("IDWORK", iDWORK) :
-                new ObjectParameter("IDWORK", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ADDPARTNERWORKINTOSESION", iDSESIONParameter, iDPARTERParameter, iDWORKParameter);
-        }
-    
-        public virtual ObjectResult<GETPARTNERWORKBYSESION_Result> GETPARTNERWORKBYSESION(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GETPARTNERWORKBYSESION_Result>("GETPARTNERWORKBYSESION", iDParameter);
-        }
-    
-        public virtual int DELETEPARTERWORKFROMSESION(Nullable<int> iD, Nullable<int> iDPARTNER, Nullable<int> iDWORK)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var iDPARTNERParameter = iDPARTNER.HasValue ?
-                new ObjectParameter("IDPARTNER", iDPARTNER) :
-                new ObjectParameter("IDPARTNER", typeof(int));
-    
-            var iDWORKParameter = iDWORK.HasValue ?
-                new ObjectParameter("IDWORK", iDWORK) :
-                new ObjectParameter("IDWORK", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETEPARTERWORKFROMSESION", iDParameter, iDPARTNERParameter, iDWORKParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFYORDERCOMISION", iDParameter, oRDERParameter);
         }
     
         public virtual int MODIFYSESION(Nullable<int> iD, string nAME, string dESCRIPTION, Nullable<System.DateTime> dATESESION, Nullable<int> iDCOMISION)
@@ -360,21 +315,7 @@ namespace RepositorioPictureManager.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFYSESION", iDParameter, nAMEParameter, dESCRIPTIONParameter, dATESESIONParameter, iDCOMISIONParameter);
         }
     
-        public virtual ObjectResult<MOSTRARSESIONES1_Result> MOSTRARSESIONES1()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MOSTRARSESIONES1_Result>("MOSTRARSESIONES1");
-        }
-    
-        public virtual int DELETECOMISION1(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETECOMISION1", iDParameter);
-        }
-    
-        public virtual int MODIFYSESSION(Nullable<int> iD, string nAME, string pHOTO, string dESCRIPTION, Nullable<double> pRICE)
+        public virtual int MODIFYCOMISION(Nullable<int> iD, string nAME, string pHOTO, string dESCRIPTION, Nullable<double> pRICE)
         {
             var iDParameter = iD.HasValue ?
                 new ObjectParameter("ID", iD) :
@@ -396,38 +337,48 @@ namespace RepositorioPictureManager.Models
                 new ObjectParameter("PRICE", pRICE) :
                 new ObjectParameter("PRICE", typeof(double));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFYSESSION", iDParameter, nAMEParameter, pHOTOParameter, dESCRIPTIONParameter, pRICEParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFYCOMISION", iDParameter, nAMEParameter, pHOTOParameter, dESCRIPTIONParameter, pRICEParameter);
         }
     
-        public virtual ObjectResult<PHOTO> GETPHOTOS(Nullable<int> iDSESION)
+        public virtual ObjectResult<WORKER> MOSTRARPARTICIPANTES()
         {
-            var iDSESIONParameter = iDSESION.HasValue ?
-                new ObjectParameter("IDSESION", iDSESION) :
-                new ObjectParameter("IDSESION", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PHOTO>("GETPHOTOS", iDSESIONParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WORKER>("MOSTRARPARTICIPANTES");
         }
     
-        public virtual ObjectResult<PHOTO> GETPHOTOS(Nullable<int> iDSESION, MergeOption mergeOption)
+        public virtual ObjectResult<WORKER> MOSTRARPARTICIPANTES(MergeOption mergeOption)
         {
-            var iDSESIONParameter = iDSESION.HasValue ?
-                new ObjectParameter("IDSESION", iDSESION) :
-                new ObjectParameter("IDSESION", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PHOTO>("GETPHOTOS", mergeOption, iDSESIONParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WORKER>("MOSTRARPARTICIPANTES", mergeOption);
         }
     
-        public virtual int INSERTPHOTO(string nAMEPHOTO, Nullable<int> iDSESION)
+        public virtual ObjectResult<WORK> MOSTRARTRABAJOS()
         {
-            var nAMEPHOTOParameter = nAMEPHOTO != null ?
-                new ObjectParameter("NAMEPHOTO", nAMEPHOTO) :
-                new ObjectParameter("NAMEPHOTO", typeof(string));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WORK>("MOSTRARTRABAJOS");
+        }
     
-            var iDSESIONParameter = iDSESION.HasValue ?
-                new ObjectParameter("IDSESION", iDSESION) :
-                new ObjectParameter("IDSESION", typeof(int));
+        public virtual ObjectResult<WORK> MOSTRARTRABAJOS(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WORK>("MOSTRARTRABAJOS", mergeOption);
+        }
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERTPHOTO", nAMEPHOTOParameter, iDSESIONParameter);
+        public virtual int UPDATEPARTICIPANTE(Nullable<int> iD, string nAME, string cONTACT, string uRLCONTACT)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var nAMEParameter = nAME != null ?
+                new ObjectParameter("NAME", nAME) :
+                new ObjectParameter("NAME", typeof(string));
+    
+            var cONTACTParameter = cONTACT != null ?
+                new ObjectParameter("CONTACT", cONTACT) :
+                new ObjectParameter("CONTACT", typeof(string));
+    
+            var uRLCONTACTParameter = uRLCONTACT != null ?
+                new ObjectParameter("URLCONTACT", uRLCONTACT) :
+                new ObjectParameter("URLCONTACT", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATEPARTICIPANTE", iDParameter, nAMEParameter, cONTACTParameter, uRLCONTACTParameter);
         }
     }
 }
