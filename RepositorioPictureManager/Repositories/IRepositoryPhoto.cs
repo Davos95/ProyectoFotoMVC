@@ -14,6 +14,6 @@ namespace RepositorioPictureManager.Repositories
         void MovePhotosSesion();
         void OrderPhotos();
         void RemovePhotos(int idPhoto);
-
+        PHOTO GetPhotoById(int idPhoto);
     }
 }

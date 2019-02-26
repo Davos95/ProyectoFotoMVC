@@ -41,6 +41,12 @@ namespace RepositorioPictureManager.Repositories
         {
             this.entity = entity;
         }
+
+        public PHOTO GetPhotoById(int idPhoto)
+        {
+            return this.entity.GETPHOTOBYID(idPhoto).FirstOrDefault();
+        }
+
         public List<PHOTO> GetPhotos(int idSesion)
         {
             return this.entity.GETPHOTOS(idSesion).ToList();

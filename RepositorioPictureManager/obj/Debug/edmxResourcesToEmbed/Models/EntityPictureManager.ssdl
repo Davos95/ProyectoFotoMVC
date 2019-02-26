@@ -172,6 +172,9 @@
   <Function Name="GETPARTNERWORKBYSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="int" Mode="In" />
   </Function>
+  <Function Name="GETPHOTOBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDPHOTO" Type="int" Mode="In" />
+  </Function>
   <Function Name="GETPHOTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IDSESION" Type="int" Mode="In" />
   </Function>

@@ -177,6 +177,9 @@
         <Function Name="GETPARTNERWORKBYSESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="GETPHOTOBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDPHOTO" Type="int" Mode="In" />
+        </Function>
         <Function Name="GETPHOTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDSESION" Type="int" Mode="In" />
         </Function>
@@ -524,6 +527,9 @@
             <Parameter Name="URLCONTACT" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DELETEPHOTO">
+          <Parameter Name="IDPHOTO" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GETPHOTOBYID" EntitySet="PHOTO" ReturnType="Collection(PictureManagerModel.PHOTO)">
             <Parameter Name="IDPHOTO" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
@@ -579,6 +585,12 @@
         <ComplexType Name="MOSTRARTRABAJOS_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="NAME" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GETPHOTOBYID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="PICTURE" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDSESION" Nullable="true" />
+          <Property Type="Int32" Name="ORDERPHOTO" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -698,6 +710,8 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UPDATEPARTICIPANTE" FunctionName="PictureManagerModel.Store.UPDATEPARTICIPANTE" />
           <FunctionImportMapping FunctionImportName="DELETEPHOTO" FunctionName="PictureManagerModel.Store.DELETEPHOTO" />
+          <FunctionImportMapping FunctionImportName="GETPHOTOBYID" FunctionName="PictureManagerModel.Store.GETPHOTOBYID">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

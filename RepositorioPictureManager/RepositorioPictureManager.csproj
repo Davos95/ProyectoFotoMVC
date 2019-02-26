@@ -103,6 +103,9 @@
     <Compile Include="Models\GETPARTNERWORKBYSESION_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GETPHOTOBYID_Result.cs">
+      <DependentUpon>EntityPictureManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GETPHOTOS_Result.cs">
       <DependentUpon>EntityPictureManager.tt</DependentUpon>
     </Compile>

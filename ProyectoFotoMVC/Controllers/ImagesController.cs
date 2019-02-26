@@ -51,12 +51,16 @@ namespace ProyectoFotoMVC.Controllers
         {
             String[] idPhotos = Request.Form["idPhotos"].Split(',');
 
-            String nameSession = this.repoSesion.GetSESIONID(idSesion).NAME;
+            String sessionName = this.repoSesion.GetSESIONID(idSesion).NAME;
+
+            String rootpath = Server.MapPath("~/images");
+            String path = Path.Combine(rootpath + "\\Sesion\\" + sessionName);
 
             foreach (String id in idPhotos)
             {
+                String namePhoto = this.repoPhoto.GetPhotoById(int.Parse(id)).PICTURE;
                 this.repoPhoto.RemovePhotos(int.Parse(id));
-                ToolImage.RemoveImage(nameSession, nameSession);
+                ToolImage.RemoveImage(namePhoto, path);
             }
 
             return Json(true);

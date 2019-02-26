@@ -13,24 +13,17 @@ namespace RepositorioPictureManager.Models
 {
 
 using System;
-    using System.Collections.Generic;
     
-public partial class SESION_WORKER
+public partial class GETPHOTOBYID_Result
 {
 
-    public int IDSESION { get; set; }
+    public int ID { get; set; }
 
-    public int IDWORKER { get; set; }
+    public string PICTURE { get; set; }
 
-    public Nullable<int> IDWORK { get; set; }
+    public Nullable<int> IDSESION { get; set; }
 
-
-
-    public virtual SESION SESION { get; set; }
-
-    public virtual WORKER WORKER { get; set; }
-
-    public virtual WORK WORK { get; set; }
+    public Nullable<int> ORDERPHOTO { get; set; }
 
 }
 

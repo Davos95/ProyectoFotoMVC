@@ -40,6 +40,8 @@
         $(document).ready(function () {
             M.AutoInit();
 
+            var flag = true;
+
             $(".triggerImage").click(function () {
                 $("#modalPreview").css("display", "block");
                 console.log($(this).parents(".box"));
@@ -88,6 +90,50 @@
                 });
 
             });
+
+            var origenCaja = "";
+
+            $(".box")
+                .on("dragover", function (e) {
+                    //RECOGEMOS INFORMACION DE LA IMAGEN ORIGEN
+                    e.preventDefault();
+                    if (flag) {
+                        origenCaja = $(this).attr("id");
+                        //origenCaja = origenCaja.split('_')[1];
+                        console.log(origenCaja);
+                        flag = false;
+                    }
+                }).on("drop", function (e) {
+                    //INTERCAMBIAMOS INFORMACION ENTRE LA IMAGEN ORIGEN Y LA DE DESTINO
+                    e.preventDefault();
+                    var destinoCaja = $(this).attr('id');
+
+                    /* Intercambio de imagenes */
+                    var origenImagen = $("#" + origenCaja + ">.card-image>label>img").attr('src');
+                    var destinoImagen = $("#" + destinoCaja + ">.card-image>label>img").attr('src');
+
+                    $("#" + destinoCaja + ">.card-image>label>img").attr('src',origenImagen);
+                    $("#" + origenCaja + ">.card-image>label>img").attr('src', destinoImagen);
+
+                    /* Intercambio de ids en checkboxes */
+                    var origenCheck = $("#" + origenCaja + ">.card-image>input").attr("id");
+                    var destinoCheck = $("#" + destinoCaja + ">.card-image>input").attr("id");
+
+                    $("#" + origenCaja + ">.card-image>input").attr("id", destinoCheck);
+                    $("#" + destinoCaja + ">.card-image>input").attr("id", origenCheck);
+
+                    /* Intercambio textos */
+                    var origenTextoImagen = $("#" + origenCaja + ">.card-content>.card-action>div>span").text();
+                    var destinoTextoImagen = $("#" + destinoCaja + ">.card-content>.card-action>div>span").text();
+
+                    $("#" + origenCaja + ">.card-content>.card-action>div>span").text(destinoTextoImagen);
+                    $("#" + destinoCaja + ">.card-content>.card-action>div>span").text(origenTextoImagen);
+
+                    console.log(origenTextoImagen);
+
+                    flag = true;
+                });
+
         });
 
     </script>

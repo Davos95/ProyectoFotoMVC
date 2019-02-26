@@ -263,6 +263,9 @@
     <FunctionImport Name="DELETEPHOTO">
       <Parameter Name="IDPHOTO" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="GETPHOTOBYID" EntitySet="PHOTO" ReturnType="Collection(PictureManagerModel.PHOTO)">
+      <Parameter Name="IDPHOTO" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GETCOMISIONS_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -316,5 +319,11 @@
   <ComplexType Name="MOSTRARTRABAJOS_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="NAME" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="GETPHOTOBYID_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="PICTURE" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="IDSESION" Nullable="true" />
+    <Property Type="Int32" Name="ORDERPHOTO" Nullable="true" />
   </ComplexType>
 </Schema>
