@@ -1,4 +1,5 @@
 ﻿using ProyectoFotoMVC.Atributes;
+using RepositorioPictureManager.Models;
 using RepositorioPictureManager.Repositories;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,21 @@ namespace ProyectoFotoMVC.Controllers
                 this.repoPhoto.InsertPhoto(fileContent.FileName, idSesion);
             }
             
+            return Json(true);
+        }
+        [HttpPost]
+        public async Task<ActionResult> DeleteImages(int idSesion)
+        {
+            String[] idPhotos = Request.Form["idPhotos"].Split(',');
+
+            String nameSession = this.repoSesion.GetSESIONID(idSesion).NAME;
+
+            foreach (String id in idPhotos)
+            {
+                this.repoPhoto.RemovePhotos(int.Parse(id));
+                ToolImage.RemoveImage(nameSession, nameSession);
+            }
+
             return Json(true);
         }
     }

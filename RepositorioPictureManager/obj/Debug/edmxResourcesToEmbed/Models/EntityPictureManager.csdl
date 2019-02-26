@@ -260,6 +260,9 @@
       <Parameter Name="CONTACT" Mode="In" Type="String" />
       <Parameter Name="URLCONTACT" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="DELETEPHOTO">
+      <Parameter Name="IDPHOTO" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GETCOMISIONS_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />

@@ -12,7 +12,7 @@ using RepositorioPictureManager.Models;
 AS
 	SELECT * FROM PHOTO
 	WHERE IDSESION = @IDSESION
-	ORDER BY ORDERPHOTO DESC;
+	ORDER BY ORDERPHOTO ASC;
 GO
 
 CREATE PROCEDURE INSERTPHOTO
@@ -23,6 +23,12 @@ AS
 	INSERT INTO PHOTO VALUES(@NAMEPHOTO,@IDSESION,@NUM)
 GO
 
+CREATE PROCEDURE DELETEPHOTO
+(@IDPHOTO INT)
+AS
+	DELETE FROM PHOTO
+	WHERE ID = @IDPHOTO;
+GO
 */
 #endregion
 
@@ -55,9 +61,10 @@ namespace RepositorioPictureManager.Repositories
             throw new NotImplementedException();
         }
 
-        public void RemovePhotos()
+
+        public void RemovePhotos(int idPhoto)
         {
-            throw new NotImplementedException();
+            this.entity.DELETEPHOTO(idPhoto);
         }
     }
 }

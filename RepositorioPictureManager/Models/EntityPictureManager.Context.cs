@@ -380,5 +380,14 @@ namespace RepositorioPictureManager.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATEPARTICIPANTE", iDParameter, nAMEParameter, cONTACTParameter, uRLCONTACTParameter);
         }
+    
+        public virtual int DELETEPHOTO(Nullable<int> iDPHOTO)
+        {
+            var iDPHOTOParameter = iDPHOTO.HasValue ?
+                new ObjectParameter("IDPHOTO", iDPHOTO) :
+                new ObjectParameter("IDPHOTO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETEPHOTO", iDPHOTOParameter);
+        }
     }
 }

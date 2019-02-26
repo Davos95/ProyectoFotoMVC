@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PictureManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PictureManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="COMISION">
           <Key>
             <PropertyRef Name="ID" />
@@ -164,6 +164,9 @@
         <Function Name="DELETEPARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="DELETEPHOTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDPHOTO" Type="int" Mode="In" />
+        </Function>
         <Function Name="DELETESESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
@@ -256,8 +259,7 @@
             <End Role="SESION_WORKER" EntitySet="SESION_WORKER" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PictureManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -445,10 +447,10 @@
             <Parameter Name="IDWORK" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ADDTRABAJO">
-            <Parameter Name="NAME" Mode="In" Type="String" />
+          <Parameter Name="NAME" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DELETECOMISION">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DELETEPARTERWORKFROMSESION">
             <Parameter Name="ID" Mode="In" Type="Int32" />
@@ -456,24 +458,24 @@
             <Parameter Name="IDWORK" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DELETEPARTICIPANTE">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DELETESESION">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DELETETRABAJO">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GETCOMISIONS" EntitySet="COMISION" ReturnType="Collection(PictureManagerModel.COMISION)" />
           <FunctionImport Name="GETPARTNERWORKBYSESION" ReturnType="Collection(PictureManagerModel.GETPARTNERWORKBYSESION_Result)">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GETPHOTOS" EntitySet="PHOTO" ReturnType="Collection(PictureManagerModel.PHOTO)">
-            <Parameter Name="IDSESION" Mode="In" Type="Int32" />
+          <Parameter Name="IDSESION" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GETSESION" EntitySet="SESION" ReturnType="Collection(PictureManagerModel.SESION)" />
           <FunctionImport Name="GETSESIONID" EntitySet="SESION" ReturnType="Collection(PictureManagerModel.SESION)">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GETUSER" EntitySet="USERS" ReturnType="Collection(PictureManagerModel.USERS)">
             <Parameter Name="NICK" Mode="In" Type="String" />
@@ -520,6 +522,9 @@
             <Parameter Name="NAME" Mode="In" Type="String" />
             <Parameter Name="CONTACT" Mode="In" Type="String" />
             <Parameter Name="URLCONTACT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DELETEPHOTO">
+            <Parameter Name="IDPHOTO" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GETCOMISIONS_Result">
@@ -692,6 +697,7 @@
           <FunctionImportMapping FunctionImportName="MOSTRARTRABAJOS" FunctionName="PictureManagerModel.Store.MOSTRARTRABAJOS">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UPDATEPARTICIPANTE" FunctionName="PictureManagerModel.Store.UPDATEPARTICIPANTE" />
+          <FunctionImportMapping FunctionImportName="DELETEPHOTO" FunctionName="PictureManagerModel.Store.DELETEPHOTO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

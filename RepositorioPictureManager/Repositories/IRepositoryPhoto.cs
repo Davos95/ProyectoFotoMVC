@@ -13,7 +13,7 @@ namespace RepositorioPictureManager.Repositories
         void InsertPhoto(String name, int idSesion);
         void MovePhotosSesion();
         void OrderPhotos();
-        void RemovePhotos();
+        void RemovePhotos(int idPhoto);
 
     }
 }

@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "ManagePhotos";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Sesion = Request["idSesion"];
 }
 @section styles{
     <style>
@@ -17,22 +18,18 @@
             width: 240px;
             height: 240px;
             object-fit: contain;
-
         }
+
         .gallery .card .card-content {
             padding: 1px;
         }
 
         .check {
-            visibility:hidden;
+            visibility: hidden;
         }
 
-        input[type=checkbox]:checked ~ div > .check {
-            visibility: visible;
-            position: absolute;
-            bottom: 11em;
-            left: 16em;
-            width: 6em;
+        input[type=checkbox]:checked {
+            /*opacity:1;*/
         }
     </style>
     <link href="~/Content/PreviewImage.css" rel="stylesheet" />
@@ -53,86 +50,124 @@
             $("#modalPreview").click(function () {
                 $(this).css("display", "none");
             });
+
+            $(".img").click(function () {
+
+                if (!$(this).parents(".box").children(".card-image").children("input").prop("checked")) {
+                    $(this).parents(".box").children(".card-content").children(".card-action").children("div").children(".check").css("visibility", "visible");
+                }
+                else {
+                    $(this).parents(".box").children(".card-content").children(".card-action").children("div").children(".check").css("visibility", "hidden");
+                }
+
+            });
+
+            $("#delete").click(function () {
+                var array = new Array();
+                $("input[type=checkbox]:checked").each(function () {
+                    array.push($(this).attr("id"));
+                });
+                var sesion = @ViewBag.Sesion;
+                console.log(array);
+                console.log(sesion);
+
+                var formData = new FormData();
+                formData.append("idPhotos", array);
+                formData.append("idSesion", sesion);
+                $.ajax({
+                    type: "POST",
+                    url: "/Images/DeleteImages",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (data) {
+                            location.reload();
+                        }
+                    }
+                });
+
+            });
         });
 
     </script>
     <script src="~/Scripts/scriptUploadImages.js"></script>
 }
-    <div class="row" style="padding: 1rem 1.2rem;">
 
-        <div class="col s12 m7 l8 xl9">
-            <div class="row gallery">
-                @if (Model.Count() > 0)
+<div class="row" style="padding: 1rem 1.2rem;">
+
+    <div class="col s12 m7 l8 xl9">
+        <div class="row gallery">
+            @if (Model.Count() > 0)
+            {
+                foreach (PHOTO p in Model)
                 {
-                    foreach (PHOTO p in Model)
-                    {
-                        <div class="col s12 m3">
-                            <div class="card col s12">
-                                <div id="div_@p.ID" class="box">
-                                    <div class="card-image">
-                                        <input type="checkbox" id="check_@p.ID" /><label for="check_@p.ID"><img src="~/images/Sesion/@ViewBag.SessionName/@p.PICTURE" draggable="true" id="@p.ID" class="img" /></label>
-                                        <div style="position: relative; width: 0; height: 0">
+                    <div class="col s12 m3">
+                        <div class="card col s12">
+                            <div id="div_@p.ID" class="box">
+                                <div class="card-image">
+                                    <input type="checkbox" id="@p.ID" /><label for="@p.ID"><img src="~/images/Sesion/@ViewBag.SessionName/@p.PICTURE" draggable="true" id="img_@p.ID" class="img" /></label>
+                                    @*<div style="position: relative; width: 0; height: 0">
                                             <div class="check">
                                                 <img src="~/images/check.png" />
                                             </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="card-content">
-                                        <div class="card-action">
-                                            <div>
-                                                <span class="triggerImage">@p.PICTURE</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                        </div>*@
                                 </div>
+                                <div class="card-content">
+                                    <div class="card-action">
+                                        <div>
+                                            <span class="triggerImage">@p.PICTURE</span>
+                                            <i class="material-icons check" style="color:green; float: right">check</i>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            </div>
-                            
-                    }
-
-                }
-                else
-                {
-                    <h1>¡No hay fotos actualmente!</h1>
-                    <h1>¡Intenta subir unas cuantas!</h1>
-                }
-
-            </div>
-        </div>
-
-        <div class="col s12 m5 l4 xl3">
-            <div class="card" style="height:100%">
-                <div class="card-content">
-                    <div class="input-field">
-                        <span class="card-title" style="display: flex;
-    justify-content: center;
-    align-items: center;"><i class="material-icons" style="margin: 0 10px; font-size:2.2rem;" >panorama</i>Mover Fotos</span>
-                        <select id="sessions">
-                            <option value="null" disabled selected>Selecciona una sessión</option>
-                            @foreach (SESION s in ViewBag.Sessions)
-                            {
-                                <option value="@s.ID">@s.NAME</option>
-                            }
-                        </select>
-                        <button type="button" id="move" class="btn waves-effect waves-darken green">Mover</button>
+                        </div>
                     </div>
-                    <div class="input-field">
-                        <span class="card-title" style="display: flex;
+
+                }
+
+            }
+            else
+            {
+                <h1>¡No hay fotos actualmente!</h1>
+                <h1>¡Intenta subir unas cuantas!</h1>
+            }
+
+        </div>
+    </div>
+
+    <div class="col s12 m5 l4 xl3">
+        <div class="card" style="height:100%">
+            <div class="card-content">
+                <div class="input-field">
+                    <span class="card-title" style="display: flex;
+    justify-content: center;
+    align-items: center;"><i class="material-icons" style="margin: 0 10px; font-size:2.2rem;">panorama</i>Mover Fotos</span>
+                    <select id="sessions">
+                        <option value="null" disabled selected>Selecciona una sessión</option>
+                        @foreach (SESION s in ViewBag.Sessions)
+                        {
+                            <option value="@s.ID">@s.NAME</option>
+                        }
+                    </select>
+                    <button type="button" id="move" class="btn waves-effect waves-darken green">Mover</button>
+                </div>
+                <div class="input-field">
+                    <span class="card-title" style="display: flex;
     justify-content: center;
     align-items: center;"><i class="material-icons" style="margin: 0 10px; font-size: 2.2rem">photo_library</i>Ordenar Fotos</span>
-                        <button type="button" id="delete" class="btn waves-effect waves-darken green">Ordenar</button>
-                    </div>
-                    <div class="separador" style="width: 100%;    height: 1px;background: rgba(0, 0, 0, 0.12941176470588237);"></div>
-                    <div class="input-field">
-                        <button type="button" id="delete" class="btn waves-effect waves-darken red">Eliminar</button>
-                    </div>
+                    <button type="button" id="order" class="btn waves-effect waves-darken green">Ordenar</button>
+                </div>
+                <div class="separador" style="width: 100%;    height: 1px;background: rgba(0, 0, 0, 0.12941176470588237);"></div>
+                <div class="input-field">
+                    <button type="button" id="delete" class="btn waves-effect waves-darken red">Eliminar</button>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 <!-- The Modal -->
 <div id="modalPreview" class="modal-Preview">
     <span class="close">&times;</span>
