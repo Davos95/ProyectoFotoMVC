@@ -46,15 +46,16 @@ namespace ProyectoFotoMVC.Controllers
             {
                 this.repoP.UpdatePartner(id.Value, name, contact, urlContact);
             }
-            else
-            if (option == 3)
-            {
-                this.repoP.RemovePartner(id.Value);
-            }
+            
             List<WORKER> p = this.repoP.GetPartners();
             return View(p);
         }
 
+        public ActionResult DeletePartner(int id)
+        {
+            this.repoP.RemovePartner(id);
+            return RedirectToAction("Partners");
+        }
 
         //GET: WORKS
         public ActionResult Works()
@@ -71,15 +72,17 @@ namespace ProyectoFotoMVC.Controllers
             {
                 this.repoW.InsertWork(work);
             }
-            else if (option == 1)
-            {
-                this.repoW.DeleteWork(id.Value);
-            }
 
             List<WORK> works = this.repoW.GetWORKs();
             return View(works);
         }
 
+        public ActionResult DeleteWork(int id)
+        {
+            this.repoW.DeleteWork(id);
+
+            return RedirectToAction("Works");
+        }
 
 
     }

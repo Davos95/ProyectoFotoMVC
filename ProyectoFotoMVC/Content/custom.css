@@ -43,8 +43,8 @@ li>.dropdown-content {
     color: white;
 }
 
-.dropdown-content>li:hover {
-    background-color:rebeccapurple;
+.dropdown-content > li:hover {
+    background-color: #616161;
 }
 
 

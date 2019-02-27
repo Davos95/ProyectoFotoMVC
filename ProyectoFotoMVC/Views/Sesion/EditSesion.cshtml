@@ -5,30 +5,33 @@
     ViewBag.Title = "Editar Sesion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section styles {
+<link href="~/Content/styleEditSession.css" rel="stylesheet" />
 
+}
 @section events{
     <script>
         $(document).ready( function() {
             M.AutoInit();
             $("#Partner>.collection-item").click(function () {
-                if ($(this).css("background-color") == "rgb(255, 0, 0)") {
+                if ($(this).css("background-color") == "rgb(224, 224, 224)") {
                     $("#Partner>.collection-item").css("background-color", "white");
                     $("#idPartner").val("");
                 } else {
                     $("#Partner>.collection-item").css("background-color", "white");
-                    $(this).css("background-color", "red");
+                    $(this).css("background-color", "rgb(224, 224, 224)");
   
                     $("#idPartner").val($(this).data("partner"));
                 }
             });
             $("#Work>.collection-item").click(function () {
-                if ($(this).css("background-color") == "rgb(255, 0, 0)") {
+                if ($(this).css("background-color") == "rgb(224, 224, 224)") {
                     $("#Work>.collection-item").css("background-color", "white");
 
                     $("#idWork").val();
                 } else {
                     $("#Work>.collection-item").css("background-color", "white");
-                    $(this).css("background-color", "red");
+                    $(this).css("background-color", "rgb(224, 224, 224)");
 
                     $("#idWork").val($(this).data("work"));
                 }
@@ -45,14 +48,14 @@
                 <form method="post">
                     <div class="input-field">
                         <input type="text" name="name" id="name" value="@Model.NAME" />
-                        <label for="name">Nombre de la sesión</label>
+                        <label for="name"><i class="material-icons iconInput">label</i>Nombre de la sesión</label>
                     </div>
                     <div class="input-field">
                         <textarea name="description" placeholder="Descripcion">@Model.DESCRIPTION</textarea>
                     </div>
                     <div class="input-field">
                         <input type="date" name="date" id="date" value="@ViewBag.Date"/>
-                        <label for="date">Fecha de la sesión</label>
+                        <label for="date"><i class="material-icons iconInput">date_range</i>Fecha de la sesión</label>
                     </div>
                     <div class="input-field">
                         <select name="comision" id="comision">
@@ -72,7 +75,7 @@
                     </div>
                     <div class="input-field">
                         <input type="hidden" name="idSesion" value="@Model.ID" />
-                        <button type="submit" name="option" value="MODIFY" class="btn waves-effect waves-darken amber accent-3" >Modificar</button>
+                        <button type="submit" name="option" value="MODIFY" class="btn waves-effect waves-darken green" >Modificar</button>
                     </div>
                 </form>
             </div>
@@ -108,12 +111,12 @@
                         </table>
                     </div>
                     <div class="col m1">
-                        <div>
+                        <div class="divAddButton">
                             <form method="post">
                                 <input type="hidden" name="idSesion" value="@Model.ID" />
                                 <input type="hidden" name="idPartner" id="idPartner" />
                                 <input type="hidden" name="idWork" id="idWork" />
-                                <button type="submit" name="option" value="ADD"  class="btn waves-effect">Añadir</button>
+                                <button type="submit" name="option" value="ADD" class="btn-floating btn-large green"><i class="large material-icons">add_circle</i></button>
                             </form>
                         </div>
                     </div>

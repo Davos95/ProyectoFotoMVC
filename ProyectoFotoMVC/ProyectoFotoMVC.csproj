@@ -137,9 +137,13 @@
     <Content Include="Content\images\parallax1.jpg" />
     <Content Include="Content\images\windows.jpg" />
     <Content Include="Content\PreviewImage.css" />
+    <Content Include="Content\styleCreateSession.css" />
+    <Content Include="Content\styleEditSession.css" />
     <Content Include="Content\styleLogin.css" />
     <Content Include="Content\styleMenu.css" />
+    <Content Include="Content\stylePartners.css" />
     <Content Include="Content\styleUploadImages.css" />
+    <Content Include="Content\sweetalert2.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\check.png" />
@@ -151,6 +155,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\PreviewImage.js" />
     <Content Include="Scripts\scriptUploadImages.js" />
+    <Content Include="Scripts\sweetalert2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

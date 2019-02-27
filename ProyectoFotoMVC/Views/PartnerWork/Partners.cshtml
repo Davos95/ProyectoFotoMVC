@@ -7,11 +7,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section styles {
+
+<link href="~/Content/stylePartners.css" rel="stylesheet" />
+
+}
+
+
 @section events {
     <script>
         $(document).ready(function () {
             $("tr").click(function () {
-                if ($(this).css("background-color") == "rgb(255, 0, 0)") {
+                if ($(this).css("background-color") == "rgb(224, 224, 224)") {
                     $("tr").css("background-color", "white");
                     $("#name").val("");
                     $("#contact").val("");
@@ -19,7 +26,7 @@
                     $("#id").val("");
                 } else {
                     $("tr").css("background-color", "white");
-                    $(this).css("background-color", "red");
+                    $(this).css("background-color", "rgb(224, 224, 224)");
                     $("#contact").val($(this).find("td")[1].textContent).focus();
                     $("#urlContact").val($(this).find("td")[2].textContent).focus();
                     $("#name").val($(this).find("td")[0].textContent).focus();
@@ -39,28 +46,28 @@
     </script>
 }
 
-<div class="row">
+<div class="row" style="padding: 1rem 1.2rem;">
     <div class="col s12 m4 l4 xl3">
         <div class="card">
-            <div class="card-title center-align">Participante</div>
+            <div class="card-title center-align title"><i class="material-icons iconTitle">person_add</i>Participante</div>
             <form method="post">
                 <div class="card-content card-content-padding">
                     <div class="input-field">
                         <input type="text" name="name" id="name" />
-                        <label for="name">Nombre</label>
+                        <label for="name"><i class="material-icons iconInput">person</i> Nombre</label>
                     </div>
                     <div class="input-field">
                         <input type="text" name="contact" id="contact" />
-                        <label for="contact">Contacto</label>
+                        <label for="contact"><i class="material-icons iconInput">contact_mail</i>Contacto</label>
                     </div>
                     <div class="input-field">
                         <input type="text" name="urlContact" id="urlContact" />
-                        <label for="urlContact">Url Contacto</label>
+                        <label for="urlContact"><i class="material-icons iconInput">attachment</i>Url Contacto</label>
                     </div>
                     <input type="number" name="id" id="id" hidden />
                     <button type="submit" class="btn green waves-effect waves-darken" name="option" value="1">Añadir</button>
-                    <button type="submit" class="btn orange waves-effect waves-darken" name="option" value="2">Mod</button>
-                    <button type="submit" class="btn red waves-effect waves-darken" name="option" value="3">Elim</button>
+                    <div class="divider"></div>
+                    <button type="submit" class="btn green waves-effect waves-darken" name="option" value="2">Modificar</button>
                 </div>
             </form>
         </div>
@@ -75,6 +82,7 @@
                             <th>Nombre</th>
                             <th>Contacto</th>
                             <th>Enlace</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody class="tbpar">
@@ -86,7 +94,7 @@
                                     <td>@w.NAME</td>
                                     <td>@w.CONTACT</td>
                                     <td><a target="_blank" rel="" href="@w.URLCONTACT">@w.URLCONTACT</a></td>
-                                    <td hidden>@w.ID</td>
+                                    <td><a href="@Url.Action("DeletePartner","PartnerWork",new { id = w.ID})"><i class="material-icons" style="color:red; float:right">backspace</i></a></td>
                                 </tr>
                             }
                         }

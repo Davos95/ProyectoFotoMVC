@@ -7,6 +7,7 @@
 }
 @section styles {
     <link href="~/Content/styleUploadImages.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert2.css" rel="stylesheet" />
 }
 
 @section events {
@@ -17,6 +18,8 @@
     </script>
 
     <script src="~/Scripts/scriptUploadImages.js"></script>
+    <script src="~/Scripts/sweetalert2.js"></script>
+
 }
 <div class="row">
     <div class="col s12 m10 l8 xl6 offset-m1 offset-l2 offset-xl3 ">
@@ -58,7 +61,9 @@
             </div>
 
         </form>
-        @*<div id="div"></div>*@
+        <div style="display:none" id="divLink" >
+            
+        </div>
     </div>
 </div>
 

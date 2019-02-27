@@ -71,7 +71,23 @@ function uploadData(arrayImages, sesion) {
             console.log(data);
             setTimeout(function () {
                 $("#loading").fadeOut(100);
-                M.toast({ html: 'Se han subido las fotos correctamente!' });
+                Swal.fire({
+                    title: 'Completado!',
+                    text: "Las imagenes se han subido correctamente. Quieres ir a gestionarlas?",
+                    type: 'success',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4caf50',
+                    cancelButtonColor: '#f44336 ',
+                    confirmButtonText: 'Aceptar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.value) {
+                        window.location = '/Sesion/ManagePhotos?idSesion=' + sesion;
+
+                        //$("#divLink").html('<a id="goSession" href="/Sesion/ManagePhotos?idSesion='+sesion+'">link</a>');
+                        //$("#goSession").click();
+                    }
+                })
             },1000);
             
         }
