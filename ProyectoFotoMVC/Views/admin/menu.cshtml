@@ -3,7 +3,11 @@
     ViewBag.Title = "menu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section styles{
 
+
+    <link href="~/Content/styleMenu.css" rel="stylesheet" />
+}
 @section events {
     <script>
         $(document).ready(function () {
@@ -24,21 +28,25 @@
             <div class="col s12 m4 l3 xl2 offset-m3 offset-l3 offset-xl3 ">
                 <div class="card">
                     <div class="card-image">
-                        <div style=" margin:0 auto;"> <i class="material-icons center" style="font-size:170px;">insert_photo</i></div>
+                        <div style=" margin:0 auto;"> <i class="material-icons center">insert_photo</i></div>
                     </div>
                     <div class="card-content">
-                        <h5>@Html.ActionLink("Subir Fotos", "UploadImages","Images")</h5>
+                        <div class="card-action">
+                            <h5 class="center-align textMenu">@Html.ActionLink("Subir Fotos", "UploadImages", "Images")</h5>
+                        </div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="col s12 m4 l3 xl2 offset-m3 offset-l2 offset-xl1">
                 <div class="card">
                     <div class="card-image">
-                        <i class="material-icons" style="font-size:170px; margin:0 auto;">photo_camera</i>
+                        <i class="material-icons">photo_camera</i>
                     </div>
                     <div class="card-content">
-                        <h5>@Html.ActionLink("Sesiones", "Sesion", "Sesion")</h5>
+                        <div class="card-action">
+                            <h5 class="center-align textMenu green-text">@Html.ActionLink("Sesiones", "Sesion", "Sesion")</h5>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,24 +55,28 @@
             <div class="col s12 m4 l3 xl2  offset-m3 offset-l3 offset-xl3 btnMenu">
                 <div class="card">
                     <div class="card-image">
-                        <i class="material-icons" style="font-size:170px; margin:0 auto;">portrait</i>
+                        <i class="material-icons">portrait</i>
                     </div>
                     <div class="card-content">
-                        <a class="center-align" id="btnParTar"><h5>Participantes y Trabajos</h5></a>
+                        <div class="card-action">
+                            <a class="center-align textMenu" id="btnParTar"><h5>Participantes y Trabajos</h5></a>
+                        </div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="col s12 m4 l3 xl2  offset-m3 offset-l2 offset-xl1 btnMenu">
                 <div class="card">
                     <div class="card-image">
-                        <i class="material-icons" style="font-size:170px; margin:0 auto;">monetization_on</i>
+                        <i class="material-icons">monetization_on</i>
                     </div>
                     <div class="card-content">
-                        <a class="center-align" id="btnComision"><h5>Comisiones</h5></a>
+                        <div class="card-action">
+                            <a class="center-align textMenu" id="btnComision"><h5>Comisiones</h5></a>
+                        </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>

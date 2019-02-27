@@ -227,6 +227,14 @@
         </Function>
         <Function Name="MOSTRARPARTICIPANTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MOSTRARTRABAJOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MOVEPHOTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDPHOTO" Type="int" Mode="In" />
+          <Parameter Name="IDSESION" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ORDERPHOTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDPHOTO" Type="int" Mode="In" />
+          <Parameter Name="NUMORDER" Type="int" Mode="In" />
+        </Function>
         <Function Name="UPDATEPARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
           <Parameter Name="NAME" Type="nvarchar" Mode="In" />
@@ -530,7 +538,15 @@
           <Parameter Name="IDPHOTO" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GETPHOTOBYID" EntitySet="PHOTO" ReturnType="Collection(PictureManagerModel.PHOTO)">
+          <Parameter Name="IDPHOTO" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ORDERPHOTO">
             <Parameter Name="IDPHOTO" Mode="In" Type="Int32" />
+            <Parameter Name="NUMORDER" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MOVEPHOTOS">
+            <Parameter Name="IDPHOTO" Mode="In" Type="Int32" />
+            <Parameter Name="IDSESION" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GETCOMISIONS_Result">
@@ -712,6 +728,8 @@
           <FunctionImportMapping FunctionImportName="DELETEPHOTO" FunctionName="PictureManagerModel.Store.DELETEPHOTO" />
           <FunctionImportMapping FunctionImportName="GETPHOTOBYID" FunctionName="PictureManagerModel.Store.GETPHOTOBYID">
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ORDERPHOTO" FunctionName="PictureManagerModel.Store.ORDERPHOTO" />
+          <FunctionImportMapping FunctionImportName="MOVEPHOTOS" FunctionName="PictureManagerModel.Store.MOVEPHOTOS" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -137,6 +137,8 @@
     <Content Include="Content\images\parallax1.jpg" />
     <Content Include="Content\images\windows.jpg" />
     <Content Include="Content\PreviewImage.css" />
+    <Content Include="Content\styleLogin.css" />
+    <Content Include="Content\styleMenu.css" />
     <Content Include="Content\styleUploadImages.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

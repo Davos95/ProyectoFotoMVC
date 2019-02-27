@@ -11,8 +11,8 @@ namespace RepositorioPictureManager.Repositories
     {
         List<PHOTO> GetPhotos(int idSesion);
         void InsertPhoto(String name, int idSesion);
-        void MovePhotosSesion();
-        void OrderPhotos();
+        void MovePhotosSesion(int idPhoto, int idSesion);
+        void OrderPhotos(int idPhoto, int orderNumber);
         void RemovePhotos(int idPhoto);
         PHOTO GetPhotoById(int idPhoto);
     }

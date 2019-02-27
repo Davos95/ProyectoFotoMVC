@@ -222,6 +222,14 @@
   </Function>
   <Function Name="MOSTRARPARTICIPANTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="MOSTRARTRABAJOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="MOVEPHOTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDPHOTO" Type="int" Mode="In" />
+    <Parameter Name="IDSESION" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ORDERPHOTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDPHOTO" Type="int" Mode="In" />
+    <Parameter Name="NUMORDER" Type="int" Mode="In" />
+  </Function>
   <Function Name="UPDATEPARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="int" Mode="In" />
     <Parameter Name="NAME" Type="nvarchar" Mode="In" />

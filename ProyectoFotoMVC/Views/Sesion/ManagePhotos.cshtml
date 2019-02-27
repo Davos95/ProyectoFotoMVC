@@ -27,11 +27,8 @@
         .check {
             visibility: hidden;
         }
-
-        input[type=checkbox]:checked {
-            /*opacity:1;*/
-        }
     </style>
+
     <link href="~/Content/PreviewImage.css" rel="stylesheet" />
 }
 
@@ -91,6 +88,64 @@
 
             });
 
+            $("#order").click(function () {
+                var array = new Array();
+                $("input[type=checkbox]").each(function () {
+                    array.push($(this).attr("id"));
+                });
+                console.log(array);
+
+                var formData = new FormData();
+                formData.append("idPhotos", array);
+                $.ajax({
+                    type: "POST",
+                    url: "/Images/OrderPhotos",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (data) {
+                            M.toast({ html: 'Se han ordenado las fotos correctamente!' });                            
+                        }
+                    }
+                });
+            });
+
+            $("#move").click(function () {
+                var array = new Array();
+                $("input[type=checkbox]:checked").each(function () {
+                    array.push($(this).attr("id"));
+                });
+                var sesion = @ViewBag.Sesion;
+                var destinationSession = $("#sessions").val();
+
+                console.log(array);
+                console.log(sesion);
+                console.log(destinationSession);
+
+                var formData = new FormData();
+                formData.append("idPhotos", array);
+                formData.append("oldSession", sesion);
+                formData.append("session", destinationSession);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Images/MovePhotos",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (data) {
+                            M.toast({ html: 'Se han movido las fotos a otra sesión correctamente!' });
+                        }
+                        setTimeout(function () {
+                            location.reload();
+                        },2000);
+                    }
+                });
+
+            });
+
             var origenCaja = "";
 
             $(".box")
@@ -115,12 +170,16 @@
                     $("#" + destinoCaja + ">.card-image>label>img").attr('src',origenImagen);
                     $("#" + origenCaja + ">.card-image>label>img").attr('src', destinoImagen);
 
-                    /* Intercambio de ids en checkboxes */
+                    /* Intercambio de ids en checkboxes y referencias de labels */
                     var origenCheck = $("#" + origenCaja + ">.card-image>input").attr("id");
+                     
                     var destinoCheck = $("#" + destinoCaja + ">.card-image>input").attr("id");
 
                     $("#" + origenCaja + ">.card-image>input").attr("id", destinoCheck);
+                    $("#" + origenCaja + ">.card-image>label").attr('for',destinoCheck);
                     $("#" + destinoCaja + ">.card-image>input").attr("id", origenCheck);
+                    $("#" + destinoCaja + ">.card-image>label").attr('for', origenCheck);
+
 
                     /* Intercambio textos */
                     var origenTextoImagen = $("#" + origenCaja + ">.card-content>.card-action>div>span").text();

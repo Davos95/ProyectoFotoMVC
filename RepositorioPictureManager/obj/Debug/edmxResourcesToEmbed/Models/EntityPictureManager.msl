@@ -107,5 +107,7 @@
     <FunctionImportMapping FunctionImportName="UPDATEPARTICIPANTE" FunctionName="PictureManagerModel.Store.UPDATEPARTICIPANTE" />
     <FunctionImportMapping FunctionImportName="DELETEPHOTO" FunctionName="PictureManagerModel.Store.DELETEPHOTO" />
     <FunctionImportMapping FunctionImportName="GETPHOTOBYID" FunctionName="PictureManagerModel.Store.GETPHOTOBYID" />
+    <FunctionImportMapping FunctionImportName="ORDERPHOTO" FunctionName="PictureManagerModel.Store.ORDERPHOTO" />
+    <FunctionImportMapping FunctionImportName="MOVEPHOTOS" FunctionName="PictureManagerModel.Store.MOVEPHOTOS" />
   </EntityContainerMapping>
 </Mapping>

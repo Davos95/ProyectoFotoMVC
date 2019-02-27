@@ -1,0 +1,21 @@
+﻿.textMenu, i, a {
+    margin: 0 auto !important;
+}
+i {
+    font-size: 10em !important;
+}
+.card-image{
+    display:flex;
+}
+
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: #263238 !important;
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease;
+    text-transform: uppercase;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
+        color: #b0bec5 !important;
+}

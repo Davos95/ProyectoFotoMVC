@@ -32,6 +32,13 @@ namespace RepositorioPictureManager.Repositories
             File.Delete(path);
         }
 
+        public static void MoveImage(String image, String originFolder, String destinationFolder)
+        {
+            String oPath = Path.Combine(originFolder + "\\"+ image);
+            String dPath = Path.Combine(destinationFolder + "\\" + image);
+            File.Move(oPath, dPath);
+        }
+
         public static void CreateFolder(String path, String name)
         {
             String routeFolder = Path.Combine(path + "/"+ name);
@@ -48,8 +55,11 @@ namespace RepositorioPictureManager.Repositories
         {
             String pathOldSession = Path.Combine(path + "\\" + oldName);
             String pathNewSession = Path.Combine(path + "\\" + newName);
-   
-            Directory.Move(pathOldSession, pathNewSession);
+            if(pathNewSession != pathOldSession)
+            {
+                Directory.Move(pathOldSession, pathNewSession);
+            }
+            
         }
         
     }

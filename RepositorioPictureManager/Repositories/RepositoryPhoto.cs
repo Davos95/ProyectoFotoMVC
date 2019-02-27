@@ -29,6 +29,30 @@ AS
 	DELETE FROM PHOTO
 	WHERE ID = @IDPHOTO;
 GO
+
+CREATE PROCEDURE ORDERPHOTO
+(@IDPHOTO INT, @NUMORDER INT)
+AS
+	UPDATE PHOTO SET ORDERPHOTO = @NUMORDER
+	WHERE ID = @IDPHOTO;
+GO
+
+CREATE PROCEDURE MOVEPHOTOS
+(@IDPHOTO INT, @IDSESION INT)
+AS
+	DECLARE @COUNT INT
+	
+	SELECT @COUNT = COUNT(*) 
+	FROM PHOTO
+	WHERE IDSESION = @IDSESION
+
+	UPDATE PHOTO 
+	SET IDSESION = @IDSESION,
+	ORDERPHOTO = @COUNT
+	WHERE ID = @IDPHOTO
+	
+GO
+
 */
 #endregion
 
@@ -57,14 +81,14 @@ namespace RepositorioPictureManager.Repositories
             this.entity.INSERTPHOTO(name, idSesion);
         }
 
-        public void MovePhotosSesion()
+        public void MovePhotosSesion(int idPhoto, int idSesion)
         {
-            throw new NotImplementedException();
+            this.entity.MOVEPHOTOS(idPhoto, idSesion);
         }
 
-        public void OrderPhotos()
+        public void OrderPhotos(int idPhoto, int orderNumber)
         {
-            throw new NotImplementedException();
+            this.entity.ORDERPHOTO(idPhoto, orderNumber);
         }
 
 

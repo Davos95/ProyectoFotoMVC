@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "login";
 }
-
+@section styles {
+    <link href="~/Content/styleLogin.css" rel="stylesheet" />
+}
 <div class="row">
     <div class="col s12" style="text-align:center">
         <h3>Pictures Manager</h3>
@@ -16,14 +18,14 @@
                     {
                         <div class="input-field">
                             <input type="text" name="nick" id="nick" />
-                            <label for="nick">Nickname</label>
+                            <label for="nick"><i class="material-icons loginIcon">person</i>Nickname</label>
                         </div>
                         <div class="input-field">
                             <input type="password" name="password" id="password" />
-                            <label for="password">Password</label>
+                            <label for="password"><i class="material-icons loginIcon">vpn_key</i>Password</label>
                         </div>
                         <div class="input-field">
-                            <button type="submit" class="btn blue waves waves-effect waves-darken">ENTRAR</button>
+                            <button type="submit" class="btn green waves waves-effect waves-darken">ENTRAR</button>
                         </div>
                     }
                 </div>
