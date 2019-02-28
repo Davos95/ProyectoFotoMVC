@@ -5,11 +5,14 @@
     ViewBag.Title = "Comision";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section styles{
 
+    <link href="~/Content/styleComision.css" rel="stylesheet" />
+}
 @section events {
     <script>
         $(document).ready(function () {
-           
+
 
             $("#photo").change(function () {
                 readImage(this);
@@ -20,9 +23,9 @@
                 }
             });
             $("#photo").mouseleave(function () {
-                    if (this.files[0]) {
-                        $("#divPreview").css("display", "none");
-                    }
+                if (this.files[0]) {
+                    $("#divPreview").css("display", "none");
+                }
             });
             var origenImagen = "";
             var origenCaja = "";
@@ -78,7 +81,7 @@
 
                     flag = true;
                 }).click(function () {
-                    var id = $(this).attr("id"); 
+                    var id = $(this).attr("id");
                     var price = $("#" + id + ">input[name=price]").val();
                     var description = $("#" + id + ">input[name=description]").val();
                     console.log(price);
@@ -132,15 +135,15 @@
 
     </script>
 }
-<div class="row">
-    <div class="col s12 m5 l5 xl5 offset-m1 offset-l1 offset-xl1">
+<div class="row" style="padding: 1rem 1.2rem;">
+    <div class="col s12 m7 l6 xl5 ">
         <div class="card">
             <div class="card-title center-align" style="margin:0 !important; padding: 0 !important">Comisión</div>
             <div class="card-content" style="padding-top: 0 !important">
                 <form method="post" enctype="multipart/form-data" id="formComision">
                     <div class="input-field">
                         <input type="text" name="name" id="name" />
-                        <label for="name">Nombre</label>
+                        <label for="name"><i class="material-icons iconInput">label</i>Nombre</label>
                     </div>
                     <div class="input-field">
                         <textarea name="description" id="description" placeholder="Descripcion" style="resize:none; height:70px;"></textarea>
@@ -164,32 +167,34 @@
                     </div>
                     <div class="input-field">
                         <button type="submit" name="option" value="ADD" class="btn waves-effect waves-darken green">Añadir</button>
-                        <button type="submit" name="option" value="UPDATE" class="btn waves-effect waves-darken orange">Modificar</button>
+                        <div class="divider"></div>
+                        <button type="submit" name="option" value="UPDATE" class="btn waves-effect waves-darken green">Modificar</button>
+                        <div class="divider"></div>
                         <button type="submit" name="option" value="DELETE" class="btn waves-effect waves-darken red">Eliminar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="col s12 m5 l5 xl5">
+    <div class="col s12 m7 l6 xl5 offset-xl2">
         <div class="card">
             <div class="card-content">
                 @if (Model != null)
                 {
                     foreach (COMISION comision in Model)
                     {
-                    <div class="card" style="height:150px; width: 80%; margin: auto; margin-bottom:20px;">
-                        <div class="card-image" >
-                            <div class="box" id="@comision.ID">
-                                <img src="@Url.Content(comision.PHOTO)" style="height:150px;"  draggable="true" />
-                                <div class="card-title">
-                                    @comision.NAME
+                        <div class="card" style="height:150px; width: 80%; margin: auto; margin-bottom:20px;">
+                            <div class="card-image">
+                                <div class="box" id="@comision.ID">
+                                    <img src="@Url.Content(comision.PHOTO)" style="height:150px;" draggable="true" />
+                                    <div class="card-title">
+                                        @comision.NAME
+                                    </div>
+                                    <input type="text" name="price" value="@comision.PRICE" hidden />
+                                    <input type="text" name="description" value="@comision.DESCRIPTION" hidden />
                                 </div>
-                                <input type="text" name="price" value="@comision.PRICE" hidden />
-                                <input type="text" name="description" value="@comision.DESCRIPTION" hidden />
                             </div>
                         </div>
-                    </div>
                     }
                 }
             </div>
